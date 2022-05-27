@@ -13,12 +13,11 @@ slug: /
 
 <!---
 
-your comment goes here
-
-and here
+MY
+**
 💅 Посетите **[лучшие сайты Docusaurus](/showcase?tags=favorite)**  вдохновения и прочитайте несколько отзывов .
 -->
-
+💅 Посетите **лучшие сайты Docusaurus**  вдохновения и прочитайте несколько отзывов .
 
 🧐 Docusaurus - **генератор статических сайтов**. Он создает **одностраничное приложение** с быстрой навигацией на стороне клиента, используя всю мощь **React** чтобы сделать ваш сайт интерактивным. Он предоставляет готовые **функции документации** но может использоваться для создания **любого типа сайта** (личный веб-сайт, продукт, блог, маркетинговые целевые страницы и так далее).
 
@@ -74,75 +73,76 @@ import LiteYouTubeEmbed from 'react-lite-youtube-embed';
 
 ## Отказ от ответственности {#disclaimer}
 
-Docusaurus v2 is **beta** but already quite stable and widely used.
+Docusaurus v2 является **бета-версией** , но уже достаточно стабилен и широко используется.
 
-We highly encourage you to **use Docusaurus v2 over Docusaurus v1**, as Docusaurus v1 will be deprecated soon.
+Мы настоятельно рекомендуем вам **Docusaurus v2 вместо Docusaurus v1**, поскольку поддержка Docusaurus v1 скоро будет прекращена.
 
 <!---
 
-your comment goes here
+MY
 
-and here
-A [lot of users](/showcase) are already using Docusaurus v2 ([trends](https://www.npmtrends.com/docusaurus-vs-@docusaurus/core)).
+Многие [пользователи](/showcase) уже используют Docusaurus v2 ([тренды](https://www.npmtrends.com/docusaurus-vs-@docusaurus/core)).
+
+**
 -->
+Многие **пользователи** уже используют Docusaurus v2 ([тренды](https://www.npmtrends.com/docusaurus-vs-@docusaurus/core)).
 
 
+**Используйте Docusaurus v2, если:**
 
-**Use Docusaurus v2 if:**
+- :white_check_mark: Вам нужен современный сайт документации Jamstack
+- :white_check_mark: Вам нужно одностраничное приложение (SPA) с маршрутизацией на стороне клиента
+- :white_check_mark: Вам нужна вся мощь React и MDX
+- :white_check_mark: Вам не нужна поддержка IE11
 
-- :white_check_mark: You want a modern Jamstack documentation site
-- :white_check_mark: You want a single-page application (SPA) with client-side routing
-- :white_check_mark: You want the full power of React and MDX
-- :white_check_mark: You do not need support for IE11
+**Используйте [Docusaurus v1](https://v1.docusaurus.io/), если:**
 
-**Use [Docusaurus v1](https://v1.docusaurus.io/) if:**
+- :x: Вам не нужно одностраничное приложение (SPA)
+- :x: Вам нужна поддержка IE11
 
-- :x: You don't want a single-page application (SPA)
-- :x: You need support for IE11
+## Характеристики {#features}
 
-## Features {#features}
+Docusaurus построен с большим вниманием к опыту разработчиков и участников.
 
-Docusaurus is built with high attention to the developer and contributor experience.
+- ⚛️ **Построен с 💚 и React**:
+  - Расширение и настройка с помощью React
+  - Получите полный контроль над просмотром вашего сайта, предоставив свои собственные компоненты React
+- **Подключаемый**:
+  - Начните свой сайт с базового шаблона, а затем используйте расширенные функции и плагины
+  - Откройте исходный код своих плагинов, чтобы поделиться с сообществом
+- ✂️ **Опыт разработчика**:
+  - Начните писать свои документы прямо сейчас
+  - Универсальная точка входа в конфигурацию, чтобы сделать ее более удобной для участников.
+  - Горячая перезагрузка с молниеносной инкрементной сборкой изменений
+  - Код на основе маршрутов и разделение данных
+  - С легкостью публикуйте в GitHub Pages, Netlify, Vercel и других службах развертывания.
 
-- ⚛️ **Built with 💚 and React**:
-  - Extend and customize with React
-  - Gain full control of your site's browsing experience by providing your own React components
-- **Pluggable**:
-  - Bootstrap your site with a basic template, then use advanced features and plugins
-  - Open source your plugins to share with the community
-- ✂️ **Developer experience**:
-  - Start writing your docs right now
-  - Universal configuration entry point to make it more maintainable by contributors
-  - Hot reloading with lightning-fast incremental build on changes
-  - Route-based code and data splitting
-  - Publish to GitHub Pages, Netlify, Vercel, and other deployment services with ease
+Наша общая цель — помочь вашим пользователям быстро найти то, что им нужно, и лучше понять ваши продукты. Мы делимся нашими передовыми методами, чтобы помочь вам правильно и качественно создать сайт документации.
 
-Our shared goal—to help your users quickly find what they need and understand your products better. We share our best practices to help you build your docs site right and well.
+- 🎯 **Оптимизация для SEO**:
+  - Файлы HTML генерируются статически для каждого возможного пути.
+  - Поисковая оптимизация для конкретных страниц, чтобы помочь вашим пользователям перейти к вашим официальным документам, непосредственно касающимся их проблем.
+- 📝 **Работает на MDX**:
+  - Пишите интерактивные компоненты через JSX и React, встроенные в markdown.
+  - Поделитесь своим кодом в живых редакторах, чтобы ваши пользователи сразу полюбили ваши продукты.
+- 🔍 **Поиск**: Весь ваш сайт доступен для поиска
+- 💾 **Управление версиями документов**: Помогает синхронизировать документацию с выпусками проекта.
+- 🌍 **Интернационализация (i18n)**: Переведите свой сайт на несколько языков.
 
-- 🎯 **SEO friendly**:
-  - HTML files are statically generated for every possible path.
-  - Page-specific SEO to help your users land on your official docs directly relating their problems at hand.
-- 📝 **Powered by MDX**:
-  - Write interactive components via JSX and React embedded in markdown.
-  - Share your code in live editors to get your users to love your products on the spot.
-- 🔍 **Search**: Your full site is searchable.
-- 💾 **Document Versioning**: Helps you keep documentation in sync with project releases.
-- 🌍 **Internationalization (i18n)**: Translate your site in multiple locales.
+Docusaurus 2 создан для того, чтобы быть доступным для всех ваших пользователей и молниеносным.
 
-Docusaurus 2 is born to be compassionately accessible to all your users, and lightning-fast.
+- ⚡️ **Молниеносно**. Docusaurus 2 следует [шаблону PRPL](https://developers.google.com/web/fundamentals/performance/prpl-pattern/) который обеспечивает молниеносную загрузку вашего контента.
+- 🦖 **Доступно**. Внимание к доступности, делая ваш сайт одинаково доступным для всех пользователей.
 
-- ⚡️ **Lightning-fast**. Docusaurus 2 follows the [PRPL Pattern](https://developers.google.com/web/fundamentals/performance/prpl-pattern/) that makes sure your content loads blazing fast.
-- 🦖 **Accessible**. Attention to accessibility, making your site equally accessible to all users.
+## Принципы проектирования {#design-principles}
 
-## Design principles {#design-principles}
+- **Мало учиться**. Docusaurus должен быть прост в освоении и использовании, поскольку API довольно мал. Большинство вещей по-прежнему будут достижимы пользователями, даже если им потребуется больше кода и больше времени для написания. Отсутствие абстракций лучше, чем наличие неправильных абстракций, и мы не хотим, чтобы пользователям приходилось обходить неправильные абстракции. Обязательный разговор — [Минимальная площадь поверхности API.](https://www.youtube.com/watch?v=4anAwXYqLG8).
+- **Интуитивно понятный**. Пользователи не будут перегружены просмотром каталога проекта Docusaurus или добавлением новых функций. Он должен выглядеть интуитивно понятным и простым в построении с использованием знакомых им подходов.
+- **Слоистая архитектура**. Разделение проблем между каждым уровнем нашего стека (контент/тематика/стиль) должно быть четким — хорошо абстрагированным и модульным.
+- **Разумные значения по умолчанию**. Для пользователей будут выполняться общие и популярные оптимизации производительности и конфигурации, но им предоставляется возможность переопределить их.
+- **Нет привязки к поставщику**. Пользователям не требуется использовать плагины или CSS по умолчанию, хотя настоятельно рекомендуется. Некоторые базовые инфраструктуры, такие как React Loadable и React Router, нельзя поменять местами, потому что мы делаем для них оптимизацию производительности по умолчанию, а не для более высокого уровня. Выбор движков Markdown, фреймворков CSS, методологии CSS и других архитектур будет полностью зависеть от пользователей.
 
-- **Little to learn**. Docusaurus should be easy to learn and use as the API is quite small. Most things will still be achievable by users, even if it takes them more code and more time to write. Not having abstractions is better than having the wrong abstractions, and we don't want users to have to hack around the wrong abstractions. Mandatory talk—[Minimal API Surface Area](https://www.youtube.com/watch?v=4anAwXYqLG8).
-- **Intuitive**. Users will not feel overwhelmed when looking at the project directory of a Docusaurus project or adding new features. It should look intuitive and easy to build on top of, using approaches they are familiar with.
-- **Layered architecture**. The separations of concerns between each layer of our stack (content/theming/styling) should be clear—well-abstracted and modular.
-- **Sensible defaults**. Common and popular performance optimizations and configurations will be done for users but they are given the option to override them.
-- **No vendor lock-in**. Users are not required to use the default plugins or CSS, although they are highly encouraged to. Certain core infrastructures like React Loadable and React Router cannot be swapped because we do default performance optimization on them, but not higher-level ones. Choice of Markdown engines, CSS frameworks, CSS methodology, and other architectures will be entirely up to users.
-
-We believe that, as developers, knowing how a library works helps us become better at using it. Hence we're dedicating effort to explaining the architecture and various components of Docusaurus with the hope that users reading it will gain a deeper understanding of the tool and be even more proficient in using it.
+Мы считаем, что как разработчики, знание того, как работает библиотека, помогает нам лучше ее использовать. Поэтому мы прилагаем усилия для объяснения архитектуры и различных компонентов Docusaurus в надежде, что пользователи, читающие его, получат более глубокое представление об этом инструменте и станут еще более опытными в его использовании.
 
 <!--
 
@@ -156,75 +156,73 @@ References
 
 -->
 
-## Comparison with other tools {#comparison-with-other-tools}
+## Сравнение с другими инструментами {#comparison-with-other-tools}
 
-Across all static site generators, Docusaurus has a unique focus on documentation sites and has many out-of-the-box features.
+Среди всех генераторов статических сайтов Docusaurus уделяет особое внимание сайтам документации и имеет множество готовых функций.
 
-We've also studied other main static site generators and would like to share our insights on the comparison, hopefully helping you navigate through the prismatic choices out there.
+Мы также изучили другие основные генераторы статических сайтов и хотели бы поделиться своими мыслями о сравнении, надеюсь, это поможет вам сориентироваться в призматических вариантах.
 
 ### Gatsby {#gatsby}
 
-[Gatsby](https://www.gatsbyjs.com/) is packed with a lot of features, has a rich ecosystem of plugins, and is capable of doing everything that Docusaurus does. Naturally, that comes at a cost of a higher learning curve. Gatsby does many things well and is suitable for building many types of websites. On the other hand, Docusaurus tries to do one thing super well - be the best tool for writing and publishing content.
+[Gatsby](https://www.gatsbyjs.com/) обладает множеством функций, имеет богатую экосистему плагинов и способен делать все то же, что и Docusaurus. Естественно, это происходит за счет более высокой кривой обучения. Gatsby хорошо справляется со многими задачами и подходит для создания многих типов веб-сайтов. С другой стороны, Docusaurus пытается делать одну вещь очень хорошо — быть лучшим инструментом для написания и публикации контента.
 
-GraphQL is also pretty core to Gatsby, although you don't necessarily need GraphQL to build a Gatsby site. In most cases when building static websites, you won't need the flexibility that GraphQL provides.
+GraphQL также довольно важен для Gatsby, хотя вам не обязательно нужен GraphQL для создания сайта Gatsby. В большинстве случаев при создании статических веб-сайтов вам не понадобится гибкость, которую обеспечивает GraphQL.
 
-Many aspects of Docusaurus 2 were inspired by the best things about Gatsby and it's a great alternative.
+Многие аспекты Docusaurus 2 были вдохновлены лучшими вещами о Гэтсби, и это отличная альтернатива.
 
-[Docz](https://github.com/pedronauck/docz) is a Gatsby theme to build documentation websites. It is currently less featured than Docusaurus.
+[Docz](https://github.com/pedronauck/docz) это тема Gatsby для создания веб-сайтов с документацией. В настоящее время он менее популярен, чем Docusaurus.
 
 ### Next.js {#nextjs}
 
-[Next.js](https://nextjs.org/) is another very popular hybrid React framework. It can help you build a good documentation website, but it is not opinionated toward the documentation use-case, and it will require a lot more work to implement what Docusaurus provides out-of-the-box.
+[Next.js](https://nextjs.org/) еще один очень популярный гибридный фреймворк React. Он может помочь вам создать хороший веб-сайт с документацией, но он не ориентирован на вариант использования документации, и потребуется гораздо больше работы, чтобы реализовать то, что Docusaurus предоставляет из коробки.
 
-[Nextra](https://github.com/shuding/nextra) is an opinionated static site generator built on top of Next.js. It is currently less featured than Docusaurus.
+[Nextra](https://github.com/shuding/nextra) это самоуверенный генератор статических сайтов, построенный на базе Next.js. В настоящее время он менее популярен, чем Docusaurus.
 
 ### VuePress {#vuepress}
 
-[VuePress](https://vuepress.vuejs.org/) has many similarities with Docusaurus - both focus heavily on content-centric website and provides tailored documentation features out of the box. However, VuePress is powered by Vue, while Docusaurus is powered by React. If you want a Vue-based solution, VuePress would be a decent choice.
+[VuePress](https://vuepress.vuejs.org/) имеет много общего с Docusaurus — оба приложения в значительной степени ориентированы на контент-ориентированный веб-сайт и предоставляют специальные функции документации из коробки. Однако VuePress работает на Vue, а Docusaurus — на React. Если вам нужно решение на основе Vue, VuePress будет достойным выбором.
 
 ### MkDocs {#mkdocs}
 
-[MkDocs](https://www.mkdocs.org/) is a popular Python static site generator with value propositions similar to Docusaurus.
+[MkDocs](https://www.mkdocs.org/) популярный генератор статических сайтов на Python с ценностными предложениями, аналогичными Docusaurus.
 
-It is a good option if you don't need a single-page application and don't plan to leverage React.
+Это хороший вариант, если вам не нужно одностраничное приложение и вы не планируете использовать React.
 
-[Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) is a beautiful theme.
+[Материал для MkDocs](https://squidfunk.github.io/mkdocs-material/) красивая тема.
 
 ### Docsify {#docsify}
 
-[Docsify](https://docsify.js.org/) makes it easy to create a documentation website, but is not a static-site generator and is not SEO friendly.
+[Docsify](https://docsify.js.org/) упрощает создание веб-сайта с документацией, но не является генератором статических сайтов и не оптимизирован для SEO.
 
 ### GitBook {#gitbook}
 
-[GitBook](https://www.gitbook.com/) has a very clean design and has been used by many open source projects. With its focus shifting towards a commercial product rather than an open-source tool, many of its requirements no longer fit the needs of open source projects' documentation sites. As a result, many have turned to other products. You may read about Redux's switch to Docusaurus [here](https://github.com/reduxjs/redux/issues/3161).
+[GitBook](https://www.gitbook.com/) имеет очень чистый дизайн и используется во многих проектах с открытым исходным кодом. Поскольку его акцент смещается в сторону коммерческого продукта, а не инструмента с открытым исходным кодом, многие из его требований больше не соответствуют потребностям сайтов документации проектов с открытым исходным кодом. В результате многие обратились к другим продуктам. Вы можете прочитать о переходе Redux на Docusaurus [здесь](https://github.com/reduxjs/redux/issues/3161).
 
-Currently, GitBook is only free for open-source and non-profit teams. Docusaurus is free for everyone.
+В настоящее время GitBook бесплатен только для разработчиков с открытым исходным кодом и некоммерческих команд. Docusaurus бесплатен для всех.
 
 ### Jekyll {#jekyll}
 
-[Jekyll](https://github.com/jekyll/jekyll) is one of the most mature static site generators around and has been a great tool to use — in fact, before Docusaurus, most of Facebook's Open Source websites are/were built on Jekyll! It is extremely simple to get started. We want to bring a similar developer experience as building a static site with Jekyll.
+[Jekyll](https://github.com/jekyll/jekyll) является одним из самых зрелых генераторов статических сайтов и был отличным инструментом для использования — фактически, до Docusaurus большинство веб-сайтов Facebook с открытым исходным кодом были построены на Jekyll! Начать очень просто. Мы хотим предоставить такой же опыт разработчика, как создание статического сайта с помощью Jekyll.
 
-In comparison with statically generated HTML and interactivity added using `<script />` tags, Docusaurus sites are React apps. Using modern JavaScript ecosystem tooling, we hope to set new standards on doc sites' performance, asset building pipeline and optimizations, and ease to set up.
+По сравнению со статически сгенерированным HTML и интерактивностью, добавленной с помощью `<script />` тегов, сайты Docusaurus представляют собой приложения React. Используя современные инструменты экосистемы JavaScript, мы надеемся установить новые стандарты производительности сайтов документации, конвейера создания ресурсов и оптимизации, а также простоты настройки.
 
-## Staying informed {#staying-informed}
+## Оставаться в курсе {#staying-informed}
 
 - [GitHub](https://github.com/facebook/docusaurus)
 - [Twitter](https://twitter.com/docusaurus)
 - [Blog](/blog)
 - [Discord](https://discord.gg/docusaurus)
 
-## Something missing? {#something-missing}
+## Чего-то не хватает? {#something-missing}
 
-If you find issues with the documentation or have suggestions on how to improve the documentation or the project in general, please [file an issue](https://github.com/facebook/docusaurus) for us, or send a tweet mentioning the [@docusaurus](https://twitter.com/docusaurus) Twitter account.
+Если вы обнаружите проблемы с документацией или у вас есть предложения по улучшению документации или проекта в целом, отправьте нам сообщение о [проблеме](https://github.com/facebook/docusaurus) или отправьте твит с упоминанием аккаунта [@docusaurus](https://twitter.com/docusaurus) в Твиттере.
 
 <!---
 
-your comment goes here
+MY
 
-and here
-
-For new feature requests, you can create a post on our [feature requests board (Canny)](/feature-requests), which is a handy tool for road-mapping and allows for sorting by upvotes, which gives the core team a better indicator of what features are in high demand, as compared to GitHub issues which are harder to triage. Refrain from making a Pull Request for new features (especially large ones) as someone might already be working on it or will be part of our roadmap. Talk to us first!
+Для новых запросов функций вы можете создать сообщение на нашей [доске запросов функций (Canny)](/feature-requests), которая является удобным инструментом для составления дорожных карт и позволяет сортировать по голосам, что дает основной команде лучший показатель того, какие функции пользуются большим спросом, по сравнению с проблемами GitHub, которые сложнее решить.сортировка. Воздержитесь от запроса на получение новых функций (особенно больших), поскольку кто-то уже может работать над этим или будет частью нашей дорожной карты. Сначала поговорите с нами!
 
 -->
-
+Для новых запросов функций вы можете создать сообщение на нашей **доске запросов функций (Canny)**, которая является удобным инструментом для составления дорожных карт и позволяет сортировать по голосам, что дает основной команде лучший показатель того, какие функции пользуются большим спросом, по сравнению с проблемами GitHub, которые сложнее решить.сортировка. Воздержитесь от запроса на получение новых функций (особенно больших), поскольку кто-то уже может работать над этим или будет частью нашей дорожной карты. Сначала поговорите с нами!
 
