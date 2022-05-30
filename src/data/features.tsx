@@ -21,7 +21,7 @@ export type FeatureItem = {
 const FEATURES: FeatureItem[] = [
   {
     title: translate({
-      message: 'Powered by MDX',
+      message: 'Работает на MDX',
       id: 'homepage.features.powered-by-mdx.title',
     }),
     image: {
@@ -31,16 +31,17 @@ const FEATURES: FeatureItem[] = [
     },
     text: (
       <Translate id="homepage.features.powered-by-mdx.text">
-        Save time and focus on text documents. Simply write docs and blog posts
-        with MDX, and Docusaurus builds them into static HTML files ready to be
-        served. You can even embed React components in your Markdown thanks to
-        MDX.
+        Экономьте время и сосредоточьтесь на текстовых документах.
+        Просто пишите документы и сообщения в блогах с помощью MDX,
+        и Docusaurus строит их в статические HTML-файлы,
+        готовые к обслуживанию.
+        Вы даже можете встроить компоненты React в свою Markdown благодаря MDX.
       </Translate>
     ),
   },
   {
     title: translate({
-      message: 'Built Using React',
+      message: 'Построен с использованием React',
       id: 'homepage.features.built-using-react.title',
     }),
     image: {
@@ -50,15 +51,15 @@ const FEATURES: FeatureItem[] = [
     },
     text: (
       <Translate id="homepage.features.built-using-react.text">
-        Extend and customize your project&apos;s layout by writing React
-        components. Leverage the pluggable architecture, and design your own
-        site while reusing the same data created by Docusaurus plugins.
+        Расширьте и настройте макет вашего проекта, написав компоненты React. 
+        Используйте подключаемую архитектуру и создавайте свой собственный сайт, 
+        повторно используя те же данные, созданные плагинами Docusaurus.
       </Translate>
     ),
   },
   {
     title: translate({
-      message: 'Ready for Translations',
+      message: 'Готов к переводу',
       id: 'homepage.features.ready-for-translations.title',
     }),
     image: {
@@ -68,14 +69,15 @@ const FEATURES: FeatureItem[] = [
     },
     text: (
       <Translate id="homepage.features.ready-for-translations.text">
-        Localization comes out-of-the-box. Use git, Crowdin, or any other
-        translation manager to translate your docs and deploy them individually.
+        Локализация выходит из коробки. 
+        Используйте git, Crowdin или любой другой менеджер переводов 
+        для перевода ваших документов и их индивидуального развертывания.
       </Translate>
     ),
   },
   {
     title: translate({
-      message: 'Document Versioning',
+      message: 'Управление версиями документов',
       id: 'homepage.features.document-versioning.title',
     }),
     image: {
@@ -85,14 +87,14 @@ const FEATURES: FeatureItem[] = [
     },
     text: (
       <Translate id="homepage.features.document-versioning.text">
-        Support users on all versions of your project. Document versioning helps
-        you keep documentation in sync with project releases.
+        Поддерживайте пользователей во всех версиях вашего проекта. 
+        Управление версиями документов помогает синхронизировать документацию с выпусками проектов.
       </Translate>
     ),
   },
   {
     title: translate({
-      message: 'Content Search',
+      message: 'Поиск контента',
       id: 'homepage.features.content-search.title',
     }),
     image: {
@@ -102,8 +104,8 @@ const FEATURES: FeatureItem[] = [
     },
     text: (
       <Translate id="homepage.features.content-search.text">
-        Make it easy for your community to find what they need in your
-        documentation. We proudly support Algolia documentation search.
+        Сделайте так, чтобы ваше сообщество легко находило то, что им нужно в вашей документации. 
+        Мы с гордостью поддерживаем поиск документации Algolia.
       </Translate>
     ),
   },

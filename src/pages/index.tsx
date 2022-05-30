@@ -43,19 +43,19 @@ function HeroBanner() {
               __html: translate({
                 id: 'homepage.hero.title',
                 message:
-                  'Build <b>optimized</b> websites <b>quickly</b>, focus on your <b>content</b>',
+                  'Создавайте <b>оптимизированные</b> сайты <b>быстро</b>, сосредоточьтесь на своем <b>контенте</b>',
                 description:
-                  'Home page hero title, can contain simple html tags',
+                  'Главный заголовок главной страницы, может содержать простые html-теги',
               }),
             }}
           />
         </h1>
         <div className={styles.indexCtas}>
           <Link className="button button--primary" to="/docs">
-            <Translate>Get Started</Translate>
+            <Translate>Начать</Translate>
           </Link>
           <Link className="button button--info" to="https://docusaurus.new">
-            <Translate>Try a Demo</Translate>
+            <Translate>Попробуйте демо</Translate>
           </Link>
           <span className={styles.indexCtasGitHubButtonWrapper}>
             <iframe
@@ -209,7 +209,7 @@ function FeaturesContainer() {
   return (
     <div className="container text--center">
       <h2>
-        <Translate>Main features</Translate>
+        <Translate>Основные характеристики</Translate>
       </h2>
       <div className="row margin-bottom--lg">
         {firstRow.map((feature, idx) => (
