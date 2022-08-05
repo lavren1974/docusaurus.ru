@@ -42,7 +42,7 @@ npx create-docusaurus@latest my-website classic --typescript
 
 :::info FB-Only
 
-If you are setting up a new Docusaurus website for a Facebook open source project, use the `facebook` template instead, which comes with some useful Facebook-specific defaults:
+Если вы настраиваете новый веб-сайт Docusaurus для проекта Facebook с открытым исходным кодом, используйте шаблон `facebook` , который поставляется с некоторыми полезными настройками по умолчанию для Facebook:
 
 ```bash
 npx create-docusaurus@latest my-website facebook
@@ -51,9 +51,9 @@ npx create-docusaurus@latest my-website facebook
 :::
 
 <details>
-  <summary>Alternative installation commands</summary>
+  <summary>Альтернативные команды установки</summary>
 
-You can also initialize a new project using your preferred project manager:
+Вы также можете инициализировать новый проект, используя предпочитаемого вами менеджера проектов:
 
 ```mdx-code-block
 <Tabs>
@@ -89,11 +89,11 @@ pnpm create docusaurus
 
 </details>
 
-Run `npx create-docusaurus@latest --help`, or check out its [API docs](./api/misc/create-docusaurus.md) for more information about all available flags.
+Запустите `npx create-docusaurus@latest --help`, или ознакомьтесь с документацией по[API docs](./api/misc/create-docusaurus.md) для получения дополнительной информации обо всех доступных флагах.
 
-## Project structure {#project-structure}
+## Структура проекта {#project-structure}
 
-Assuming you chose the classic template and named your site `my-website`, you will see the following files generated under a new directory `my-website/`:
+Предполагая, что вы выбрали классический шаблон и назвали свой сайт `my-website`, вы увидите следующие файлы, сгенерированные в новом каталоге `my-website/`:
 
 ```bash
 my-website
@@ -121,20 +121,20 @@ my-website
 └── yarn.lock
 ```
 
-### Project structure rundown {#project-structure-rundown}
+### Краткое изложение структуры проекта {#project-structure-rundown}
 
-- `/blog/` - Contains the blog Markdown files. You can delete the directory if you've disabled the blog plugin, or you can change its name after setting the `path` option. More details can be found in the [blog guide](blog.mdx)
-- `/docs/` - Contains the Markdown files for the docs. Customize the order of the docs sidebar in `sidebars.js`. You can delete the directory if you've disabled the docs plugin, or you can change its name after setting the `path` option. More details can be found in the [docs guide](./guides/docs/docs-introduction.md)
-- `/src/` - Non-documentation files like pages or custom React components. You don't have to strictly put your non-documentation files here, but putting them under a centralized directory makes it easier to specify in case you need to do some sort of linting/processing
-  - `/src/pages` - Any JSX/TSX/MDX file within this directory will be converted into a website page. More details can be found in the [pages guide](guides/creating-pages.md)
-- `/static/` - Static directory. Any contents inside here will be copied into the root of the final `build` directory
-- `/docusaurus.config.js` - A config file containing the site configuration. This is the equivalent of `siteConfig.js` in Docusaurus v1
-- `/package.json` - A Docusaurus website is a React app. You can install and use any npm packages you like in them
-- `/sidebars.js` - Used by the documentation to specify the order of documents in the sidebar
+- `/blog/` - Содержит файлы блога Markdown. Вы можете удалить каталог, если вы отключили плагин блога, или вы можете изменить его имя после установки `path` параметра. Более подробную информацию можно найти в [руководстве по блогу](blog.mdx)
+- `/docs/` - Содержит файлы Markdown для документов. Настройте порядок расположения боковой панели документов в `sidebars.js`. Вы можете удалить каталог, если вы отключили плагин docs, или вы можете изменить его имя после установки `path` параметра. Более подробную информацию можно найти в [руководстве docs](./guides/docs/docs-introduction.md)
+- `/src/` - Файлы, не относящиеся к документации, такие как страницы или пользовательские компоненты React. Вам не нужно строго размещать здесь файлы, не относящиеся к документации, но размещение их в централизованном каталоге упрощает указание на случай, если вам нужно выполнить какую-то проверку/обработку
+  - `/src/pages` - Любой файл JSX/TSX/MDX в этом каталоге будет преобразован в страницу веб-сайта. Более подробную информацию можно найти в [руководстве по страницам](guides/creating-pages.md)
+- `/static/` - Статический каталог. Любое содержимое здесь будет скопировано в корень конечного `build` каталога
+- `/docusaurus.config.js` - Файл конфигурации, содержащий конфигурацию сайта. Это эквивалент `siteConfig.js` Docusaurus v1
+- `/package.json` - Сайт Docusaurus — это приложение React. Вы можете установить и использовать в них любые пакеты npm, которые вам нравятся
+- `/sidebars.js` - Используется документацией для указания порядка документов на боковой панели
 
-### Monorepos {#monorepos}
+### Монорепозиторий {#monorepos}
 
-If you are using Docusaurus for documentation of an existing project, a monorepo may be the solution for you. Monorepos allow you to share dependencies between similar projects. For example, your website may use your local packages to showcase the latest features, instead of depending on a released version; your contributors can also conveniently update the docs as they implement features. An example monorepo folder structure is below:
+Если вы используете Docusaurus для документирования существующего проекта, вам может подойти монорепозиторий. Монорепозитории позволяют обмениваться зависимостями между похожими проектами. Например, ваш веб-сайт может использовать ваши локальные пакеты для демонстрации новейших функций, а не зависеть от выпущенной версии; ваши участники также могут удобно обновлять документы по мере реализации функций. Ниже приведен пример структуры папок монорепозитория:
 
 ```bash
 my-monorepo
@@ -148,69 +148,71 @@ my-monorepo
 ├── package.json # Monorepo's shared dependencies
 ```
 
-In this case, you should run `npx create-docusaurus` within the `./my-monorepo` folder.
+В этом случае вы должны запустить `npx create-docusaurus` в `./my-monorepo` папке.
 
-If you're using a hosting provider such as Netlify or Vercel, you will need to change the `Base directory` of the site to where your Docusaurus root is. In this case, that would be `./website`. Read more about configuring ignore commands in the [deployment docs](./deployment.mdx#deploying-to-netlify).
+Если вы используете хостинг-провайдера, такого как Netlify или Vercel, вам нужно будет изменить `Базовую директорию` сайта на тот, где находится ваш корень Docusaurus. В данном случае это было бы `./website`. Подробнее о настройке команд игнорирования читайте в [документации по развертыванию](./deployment.mdx#deploying-to-netlify).
 
-Read more about monorepos in the [Yarn documentation](https://yarnpkg.com/features/workspaces) (Yarn is not the only way to set up a monorepo, but it's a common solution), or checkout [Docusaurus](https://github.com/facebook/docusaurus) and [Jest](https://github.com/facebook/jest) for some real-world examples.
+Узнайте больше о монорепозиториях в [Yarn документации](https://yarnpkg.com/features/workspaces) (Yarn — это не единственный способ настроить монорепозиторий, но это распространенное решение), или ознакомьтесь с [Docusaurus](https://github.com/facebook/docusaurus) и [Jest](https://github.com/facebook/jest) чтобы найти несколько реальных примеров.
 
-## Running the development server {#running-the-development-server}
+## Запуск сервера разработки {#running-the-development-server}
 
-To preview your changes as you edit the files, you can run a local development server that will serve your website and reflect the latest changes.
+Для предварительного просмотра изменений по мере редактирования файлов вы можете запустить локальный сервер разработки, который будет обслуживать ваш веб-сайт и отражать последние изменения.
 
 ```bash npm2yarn
 cd my-website
 npm run start
 ```
 
-By default, a browser window will open at http://localhost:3000.
+По умолчанию окно браузера открывается по адресу http://localhost:3000.
 
-Congratulations! You have just created your first Docusaurus site! Browse around the site to see what's available.
+Поздравляем! Вы только что создали свой первый сайт Docusaurus! Просмотрите сайт, чтобы увидеть, что доступно.
 
-## Build {#build}
+## Сборка {#build}
 
-Docusaurus is a modern static website generator so we need to build the website into a directory of static contents and put it on a web server so that it can be viewed. To build the website:
+Docusaurus - это современный генератор статических веб-сайтов, поэтому нам нужно встроить веб-сайт в каталог со статическим содержимым и поместить его на веб-сервер, чтобы его можно было просматривать. Для создания веб-сайта:
 
 ```bash npm2yarn
 npm run build
 ```
 
-and contents will be generated within the `/build` directory, which can be copied to any static file hosting service like [GitHub pages](https://pages.github.com/), [Vercel](https://vercel.com/) or [Netlify](https://www.netlify.com/). Check out the docs on [deployment](deployment.mdx) for more details.
+и содержимое будет создано в `/build` каталоге, который можно скопировать на любой статический файлообменник, такой как [GitHub pages](https://pages.github.com/), [Vercel](https://vercel.com/) или [Netlify](https://www.netlify.com/). Дополнительные сведения смотрите в документации по [развертыванию](deployment.mdx) .
 
-## Updating your Docusaurus version {#updating-your-docusaurus-version}
+## Обновление версии Docusaurus {#updating-your-docusaurus-version}
 
-There are many ways to update your Docusaurus version. One guaranteed way is to manually change the version number in `package.json` to the desired version. Note that all `@docusaurus/`-namespaced packages should be using the same version.
+Есть много способов обновить версию Docusaurus. Один гарантированный способ — вручную изменить номер `package.json` версии на желаемую версию. Обратите внимание, что все `@docusaurus/`- пакеты с пространством имен должны использовать одну и ту же версию.
 
 import UpgradeGuide from '@site/src/components/UpgradeGuide';
 
 <UpgradeGuide />
 
-Then, in the directory containing `package.json`, run your package manager's install command:
+Затем в каталоге, содержащем `package.json`, запустите команду установки вашего менеджера пакетов:
 
 ```bash npm2yarn
 npm install
 ```
 
-To check that the update occurred successfully, run:
+Чтобы убедиться, что обновление прошло успешно, запустите:
 
 ```bash npm2yarn
 npx docusaurus --version
 ```
 
-You should see the correct version as output.
+Вы должны увидеть правильную версию в качестве вывода.
 
-Alternatively, if you are using Yarn, you can do:
+В качестве альтернативы, если вы используете Yarn, вы можете сделать:
 
 ```bash
 yarn upgrade @docusaurus/core@latest @docusaurus/preset-classic@latest
 ```
 
-:::tip
+:::tip совет
 
-Use new unreleased features of Docusaurus with the [`@canary` npm dist tag](/community/canary)
+Используйте новые невыпущенные функции Docusaurus с [`@canary` тегом npm dist](/community/canary)
 
 :::
 
-## Problems? {#problems}
+## Проблемы? {#problems}
 
-Ask for help on [Stack Overflow](https://stackoverflow.com/questions/tagged/docusaurus), on our [GitHub repository](https://github.com/facebook/docusaurus), our [Discord server](https://discordapp.com/invite/docusaurus), or [Twitter](https://twitter.com/docusaurus).
+Обратитесь за помощью в [Stack Overflow](https://stackoverflow.com/questions/tagged/docusaurus), в нашем [GitHub репозитории](https://github.com/facebook/docusaurus), на нашем [сервере Discord](https://discordapp.com/invite/docusaurus), или в [Twitter](https://twitter.com/docusaurus).
+
+**Последнее обновление страницы : 5 августа 2022 г.**
