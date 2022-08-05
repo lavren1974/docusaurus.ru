@@ -28,10 +28,7 @@ npm install --save-dev typescript @docusaurus/module-type-aliases @tsconfig/docu
 
 ```json title="tsconfig.json"
 {
-  "extends": "@tsconfig/docusaurus/tsconfig.json",
-  "compilerOptions": {
-    "baseUrl": "."
-  }
+  "extends": "@tsconfig/docusaurus/tsconfig.json"
 }
 ```
 
@@ -46,10 +43,8 @@ Docusaurus **не сможет** использовать файл конфиг�
 Мы рекомендуем использовать [аннотации типов JSDoc](https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html):
 
 ```js title="docusaurus.config.js"
-// highlight-next-line
 // @ts-check
 
-// highlight-next-line
 /** @type {import('@docusaurus/types').Plugin} */
 function MyPlugin(context, options) {
   return {
@@ -57,7 +52,6 @@ function MyPlugin(context, options) {
   };
 }
 
-// highlight-next-line
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Docusaurus',
@@ -68,7 +62,6 @@ const config = {
   presets: [
     [
       '@docusaurus/preset-classic',
-      // highlight-next-line
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
@@ -83,7 +76,6 @@ const config = {
     ],
   ],
   themeConfig:
-    // highlight-next-line
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       colorMode: {
@@ -104,7 +96,7 @@ const config = {
 module.exports = config;
 ```
 
-:::tip
+:::tip совет
 
 Аннотации типов очень полезны и помогают вашей IDE определить типы каждого параметра в конфигурации!
 
@@ -112,7 +104,7 @@ module.exports = config;
 
 :::
 
-:::info
+:::info информация
 
 Базовая конфигурация TypeScript в Docusaurus не проверяет JavaScript-файлы.
 
@@ -128,4 +120,6 @@ module.exports = config;
 npm run swizzle @docusaurus/theme-classic Footer -- --typescript
 ```
 
-Все официальные темы Docusaurus содержат типизированные компоненты. К таким темам также относятся [`theme-classic`](./api/themes/theme-classic.md), [`theme-live-codeblock`](./ api/themes/theme-live-codeblock.md) и [`theme-search-algolia`](./api/themes/theme-search-algolia.md). Если вы являетесь автором темы для Docusaurus и хотите добавить поддержку TypeScript, вам поможет [документация API жизненного цикла](./api/plugin-methods/extend-infrastructure.md#getTypeScriptThemePath).
+Все официальные темы Docusaurus поддерживают компоненты темы TypeScript, включая[`theme-classic`](./api/themes/theme-classic.md), [`theme-live-codeblock`](./api/themes/theme-live-codeblock.md) и [`theme-search-algolia`](./api/themes/theme-search-algolia.md). Если вы являетесь автором пакета темы Docusaurus и хотите добавить поддержку TypeScript, смотрите [документацию Lifecycle APIs](./api/plugin-methods/extend-infrastructure.md#getTypeScriptThemePath).
+
+**Последнее обновление страницы : 5 августа 2022 г.**

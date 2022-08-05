@@ -30,9 +30,9 @@ const sidebars = {
       label: 'Guides',
       link: {
         type: 'generated-index',
-        title: 'Docusaurus Guides',
+        title: 'Руководства по Docusaurus',
         description:
-          "Let's learn about the most important Docusaurus concepts!",
+          "Давайте узнаем о самых важных концепциях Docusaurus!",
         keywords: ['guides'],
         image: '/img/docusaurus.png',
       },
