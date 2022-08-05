@@ -1,15 +1,15 @@
 ---
-title: Markdown Page example
-description: Markdown Page example
+title: Заголовок страницы Markdown
+description: Описание страницы Markdown
 wrapperClassName: docusaurus-markdown-example
 ---
 
-# Markdown page
+# Markdown страница
 
-This is a page generated from markdown to illustrate the Markdown page feature.
+Это страница, сгенерированная из markdown, чтобы проиллюстрировать функцию страницы markdown.
 
-:::tip
+:::tip совет
 
-Use Markdown pages when you just want to focus on content and the default layout is good enough
+Используйте страницы Markdown, когда вы просто хотите сосредоточиться на содержании, а макет по умолчанию достаточно хорош.
 
 :::
