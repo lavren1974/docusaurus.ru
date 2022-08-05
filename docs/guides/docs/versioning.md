@@ -1,34 +1,34 @@
 ---
-id: versioning
-title: Versioning
 slug: /versioning
 ---
+
+# Версионирование
+
+С помощью специальных команд версионирования в консоли можно создать новую версию документации на основе последнего содержимого в директории `docs`. Затем это замороженное состояние документации будет сохранено и доступно, даже когда документация в директории `docs` продолжит развиваться.
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-You can use the version script to create a new documentation version based on the latest content in the `docs` directory. That specific set of documentation will then be preserved and accessible even as the documentation in the `docs` directory changes moving forward.
-
 :::caution
 
-Think about it before starting to version your documentation - it can become difficult for contributors to help improve it!
+Подумайте об этом, прежде чем приступать к версионированию вашей документации — участникам может стать сложно помогать улучшать ее!
 
 :::
 
-Most of the time, you don't need versioning as it will just increase your build time, and introduce complexity to your codebase. Versioning is **best suited for websites with high-traffic and rapid changes to documentation between versions**. If your documentation rarely changes, don't add versioning to your documentation.
+В большинстве случаев вам не понадобятся разные версии, так как это увеличит время сборки и усложнит вашу кодовую базу. Разные версии **лучше всего подходят для сайтов с высокой посещаемостью и быстрыми изменениями документации между версиями**. Если ваша документация редко меняется, не добавляйте к ней разные версии.
 
-To better understand how versioning works and see if it suits your needs, you can read on below.
+Читайте далее, чтобы лучше понять, как работает управление версиями, и посмотреть, соответствует ли оно вашим потребностям.
 
-## Overview {#overview}
+## Общие сведения {#overview}
 
-A typical versioned doc site looks like below:
+Типичный сайт документации с разными версиями выглядит следующим образом:
 
 ```bash
 website
-├── sidebars.json        # sidebar for the current docs version
-├── docs                 # docs directory for the current docs version
+├── sidebars.json        # боковая панель из текущей версии
+├── docs                 # директория с документацией из текущей версии
 │   ├── foo
 │   │   └── bar.md       # https://mysite.com/docs/next/foo/bar
 │   └── hello.md         # https://mysite.com/docs/next/hello
@@ -49,11 +49,11 @@ website
 └── package.json
 ```
 
-The `versions.json` file is a list of version names, ordered from newest to oldest.
+Файл `versions.json` представляет собой список имен версий, упорядоченных от самой новой к самой старой.
 
-The table below explains how a versioned file maps to its version and the generated URL.
+В приведенной ниже таблице объясняется, как версионируемый файл сопоставляется со своей версией и сгенерированным URL-адресом.
 
-| Path                                    | Version        | URL               |
+| Путь                                    | Версия         | URL-адрес         |
 | --------------------------------------- | -------------- | ----------------- |
 | `versioned_docs/version-1.0.0/hello.md` | 1.0.0          | /docs/1.0.0/hello |
 | `versioned_docs/version-1.1.0/hello.md` | 1.1.0 (latest) | /docs/hello       |
@@ -61,89 +61,95 @@ The table below explains how a versioned file maps to its version and the genera
 
 :::tip
 
-The files in the `docs` directory belong to the `current` docs version.
+Файлы в директории `docs` относятся к `current` (текущей) версии документации.
 
-By default, the `current` docs version is labeled as `Next` and hosted under `/docs/next/*`, but it is entirely configurable to fit your project's release lifecycle.
+По умолчанию `current` версия помечается как `Next` и размещается в папке `/docs/next/*`, но ее можно полностью настроить в соответствии с потребностями релизного цикла вашего проекта.
 
 :::
 
-### Terminology {#terminology}
+### Терминология {#terminology}
 
-Note the terminology we use here.
+Обратите внимание на терминологию, которую мы здесь используем.
 
 <dl>
-<dt><b>Current version</b></dt>
-<dd>The version placed in the <code>./docs</code> folder.</dd>
-<dt><b>Latest version / last version</b></dt>
-<dd>The version served by default for docs navbar items. Usually has path <code>/docs</code>.</dd>
+<dt><b>Current version (текущая версия)</b></dt>
+<dd>Версия лежит в папке <code>./docs</code>.</dd>
+<dt><b>Latest version / last version (последняя версия)</b></dt>
+<dd>Версия, используемая по умолчанию для элементов панели навигации. Обычно имеет путь <code>/docs</code>.</dd>
 </dl>
 
-Current version is defined by the **file system location**, while latest version is defined by the **the navigation behavior**. They may or may not be the same version! (And the default configuration, as shown in the table above, would treat them as different: current version at `/docs/next` and latest at `/docs`.)
+Текущая версия определяется **расположением файловой системы**, а последняя версия определяется **поведением навигации**. Они могут быть, а могут и не быть одной и той же версии! (И конфигурация по умолчанию, как показано в таблице выше, будет рассматривать их как разные: текущая версия в `/docs/next` и последняя в `/docs`.)
 
-## Tutorials {#tutorials}
+## Учебные руководства {#tutorials}
 
-### Tagging a new version {#tagging-a-new-version}
+### Добавление тегов новым версиям {#tagging-a-new-version}
 
-1. First, make sure the current docs version (the `./docs` directory) is ready to be frozen.
-2. Enter a new version number.
+1. Во-первых, убедитесь, что текущая версия документации (каталог `./docs`) готова к заморозке.
+2. Введите номер новой версии.
 
 ```bash npm2yarn
 npm run docusaurus docs:version 1.1.0
 ```
 
-When tagging a new version, the document versioning mechanism will:
+При создании новой версии механизм управления версиями документации делает следующее:
 
-- Copy the full `docs/` folder contents into a new `versioned_docs/version-[versionName]/` folder.
-- Create a versioned sidebars file based from your current [sidebar](docs-introduction.md#sidebar) configuration (if it exists) - saved as `versioned_sidebars/version-[versionName]-sidebars.json`.
-- Append the new version number to `versions.json`.
+- Копирует полное содержимое папки `docs/` в новую папку `versioned_docs/version-[versionName]/`.
+- Создает файл версионированных боковых панелей на основе вашей текущей конфигурации [боковой панели](docs-introduction.md#sidebar) (если она существует) и сохраняет ее как `versioned_sidebars/version-[versionName]-sidebars. json`.
+- Добавляет новый номер версии в `versions.json`.
 
-### Creating new docs {#creating-new-docs}
+### Создание новых страниц {#creating-new-docs}
 
-1. Place the new file into the corresponding version folder.
-2. Include the reference to the new file in the corresponding sidebar file according to the version number.
+1. Добавьте новый файл в папку с соответствующей версией.
+2. Включите ссылку на новый файл в соответствующий файл боковой панели в соответствии с номером версии.
 
+```mdx-code-block
 <Tabs>
-<TabItem value="Current version structure">
+<TabItem value="Структура текущей версии">
+```
 
 ```bash
-# The new file.
+# Ваш новый файл.
 docs/new.md
 
-# Edit the corresponding sidebar file.
+# Отредактируйте соответствующий файл боковой панели.
 sidebars.js
 ```
 
+```mdx-code-block
 </TabItem>
-<TabItem value="Older version structure">
+<TabItem value="Структура старой версии">
+```
 
 ```bash
-# The new file.
+# Ваш новый файл.
 versioned_docs/version-1.0.0/new.md
 
-# Edit the corresponding sidebar file.
+# Отредактируйте соответствующий файл боковой панели.
 versioned_sidebars/version-1.0.0-sidebars.json
 ```
 
+```mdx-code-block
 </TabItem>
 </Tabs>
+```
 
-### Updating an existing version {#updating-an-existing-version}
+### Обновление существующей версии {#updating-an-existing-version}
 
-You can update multiple docs versions at the same time because each directory in `versioned_docs/` represents specific routes when published.
+Вы можете обновлять несколько версий документации одновременно, поскольку каждая директория в `versioned_docs/` представляет определенные роуты при публикации.
 
-1. Edit any file.
-2. Commit and push changes.
-3. It will be published to the version.
+1. Отредактируйте любой файл.
+2. Сохраните и отправьте изменения.
+3. Файл будет опубликован в версии.
 
-Example: When you change any file in `versioned_docs/version-2.6/`, it will only affect the docs for version `2.6`.
+Пример. Если вы измените любой файл в `versioned_docs/version-2.6/`, это повлияет только на документацию под версией `2.6`.
 
-### Deleting an existing version {#deleting-an-existing-version}
+### Удаление существующей версии {#deleting-an-existing-version}
 
-You can delete/remove versions as well.
+У вас всегда будет возможность удалить любую версию документации.
 
-1. Remove the version from `versions.json`.
+1. Удалите версию из `versions.json`.
 
-Example:
+Пример:
 
 ```diff
 [
@@ -154,19 +160,19 @@ Example:
 ]
 ```
 
-2. Delete the versioned docs directory. Example: `versioned_docs/version-1.8.0`.
-3. Delete the versioned sidebars file. Example: `versioned_sidebars/version-1.8.0-sidebars.json`.
+2. Удалите папку с соответствующей версией. Пример: `versioned_docs/version-1.8.0`.
+3. Удалите файл боковой панели с соответствующей версией. Пример: `versioned_sidebars/version-1.8.0-sidebars.json`.
 
-## Configuring versioning behavior {#configuring-versioning-behavior}
+## Настройка модели версионирования {#configuring-versioning-behavior}
 
-The "current" version is the version name for the `./docs` folder. There are different ways to manage versioning, but two very common patterns are:
+«current» («текущая») версия — это имя версии для папки `./docs`. Существуют разные способы управления версиями, но есть два наиболее распространенных подхода:
 
-- You release v1, and start immediately working on v2 (including its docs). In this case, the **current version** is v2, which is in the `./docs` source folder, and can be browsed at `example.com/docs/next`. The **latest version** is v1, which is in the `./versioned_docs/version-1` source folder, and is browsed by most of your users at `example.com/docs`.
-- You release v1, and will maintain it for some time before thinking about v2. In this case, the **current version** and **latest version** will both be point to v1, since the v2 docs doesn't even exist yet!
+- Вы выпускаете версию 1 и сразу же начинаете работать над версией 2 (включая работу над документацией). В этом случае **текущая версия (current)** — это v2, которая находится в исходной папке `./docs` и доступна по адресу `example.com/docs/next`. **последняя версия (latest)** — это v1, которая находится в исходной папке `./versioned_docs/version-1` и используется большинством ваших пользователей по адресу `example.com/docs`.
+- Вы выпускаете версию 1 и некоторое время будете ее поддерживать, прежде чем задумаетесь о версии 2. В этом случае и **текущая версия (current)**, и **последняя версия (latest)** будут указывать на v1, поскольку документации v2 еще даже не существует!
 
-Docusaurus defaults work great for the first use case. We will label the current version as "next" and you can even choose not to publish it.
+Настройки Docusaurus по умолчанию отлично подходят для первого варианта использования. Мы пометим текущую версию как «next», и вы даже можете не публиковать ее.
 
-**For the 2nd use case**: if you release v1 and don't plan to work on v2 anytime soon, instead of versioning v1 and having to maintain the docs in 2 folders (`./docs` + `./versioned_docs/version-1.0.0`), you may consider "pretending" that the current version is a cut version by giving it a path and a label:
+**Для второго варианта использования**: если вы выпускаете v1 и не планируете работать над v2 в ближайшее время, то вместо создания версий v1 и хранения документации в 2 папках ( `./docs` + `./versioned_docs/version-1.0.0`), вы можете «притвориться», что текущая версия является урезанной версией, указав для нее путь и лейбл:
 
 ```js title="docusaurus.config.js"
 module.exports = {
@@ -187,71 +193,71 @@ module.exports = {
 };
 ```
 
-The docs in `./docs` will be served at `/docs/1.0.0` instead of `/docs/next`, and `1.0.0` will become the default version we link to in the navbar dropdown, and you will only need to maintain a single `./docs` folder.
+Документация в `./docs` будет отображаться, как `/docs/1.0.0` вместо `/docs/next`, и `1.0. 0` станет версией по умолчанию, на которую мы ссылаемся в раскрывающемся списке панели навигации, и вам нужно будет поддерживать только одну папку `./docs`.
 
-We offer these plugin options to customize versioning behavior:
+Мы предлагаем следующие параметры плагина для настройки модели версионирования:
 
-- `disableVersioning`: Explicitly disable versioning even with versions. This will make the site only include the current version.
-- `includeCurrentVersion`: Include the current version (the `./docs` folder) of your docs.
-  - **Tip**: turn it off if the current version is a work-in-progress, not ready to be published.
-- `lastVersion`: Sets which version "latest version" (the `/docs` route) refers to.
-  - **Tip**: `lastVersion: 'current'` makes sense if your current version refers to a major version that's constantly patched and released. The actual route base path and label of the latest version are configurable.
-- `onlyIncludeVersions`: Defines a subset of versions from `versions.json` to be deployed.
-  - **Tip**: limit to 2 or 3 versions in dev and deploy previews to improve startup and build time.
-- `versions`: A dictionary of version metadata. For each version, you can customize the following:
-  - `label`: the label displayed in the versions dropdown and banner.
-  - `path`: the route base path of this version. By default, latest version has `/` and current version has `/next`.
-  - `banner`: one of `'none'`, `'unreleased'`, and `'unmaintained'`. Determines what's displayed at the top of every doc page. Any version above the latest version would be "unreleased", and any version below would be "unmaintained".
-  - `badge`: show a badge with the version name at the top of a doc of that version.
-  - `className`: add a custom `className` to the `<html>` element of doc pages of that version.
+- `disableVersioning`: Явно отключает версионирование, даже при наличии версий. Сайт будет отображать только текущую версию.
+- `includeCurrentVersion`: включает текущую версию (папку `./docs`) вашей документации.
+  - **Совет**: отключите этот параметр, если текущая версия находится в стадии разработки и не готова к публикации.
+- `lastVersion`: устанавливает, к какой версии относится «последняя версия (latest)» (по адресу `/docs`).
+  - **Совет**: указывать `lastVersion: 'current'` имеет смысл, если ваша текущая версия относится к основной версии, которая постоянно обновляется и выпускается. Фактический адрес папки и лейбл последней версии настраиваются.
+- `onlyIncludeVersions`: определяет подмножество версий из `versions.json` для деплоя.
+  - **Совет**: ограничьтесь 2-мя или 3-мя версиями в разработке и деплойте предварительные версии, чтобы сократить время запуска и сборки.
+- `versions`: настройки для каждой версии. Для каждой версии вы можете настроить следующие поля:
+  - `label`: название, отображаемое в выпадающем списке версий и баннере.
+  - `path`: адрес каждой версии. По умолчанию, последняя версия (latest) доступна по адресу `/` а текущая (current) находится по адресу `/next`.
+  - `banner`: принимает значения `'none'`, `'unreleased'`, и `'unmaintained'`. Определяет, что отображается в верхней части каждой страницы документации. Любая версия выше последней будет «не выпущенной (unreleased)», а любая версия ниже будет «неподдерживаемой (unmaintained)».
+  - `badge`: показывать ли значок с названием версии в верхней части всех страниц этой версии.
+  - `className`: добавляет пользовательский `className` в тег `<html>` у всех страниц этой версии.
 
-See [docs plugin configuration](../../api/plugins/plugin-content-docs.md#configuration) for more details.
+Дополнительные сведения см. в разделе [настройка плагина документации](../../api/plugins/plugin-content-docs.md#configuration).
 
-## Navbar items {#navbar-items}
+## Элементы панели навигации {#navbar-items}
 
-We offer several navbar items to help you quickly set up navigation without worrying about versioned routes.
+Мы предлагаем несколько элементов панели навигации, которые помогут вам быстро настроить навигацию по сайту, не беспокоясь об адресах версий.
 
-- [`doc`](../../api/themes/theme-configuration.md#navbar-doc-link): a link to a doc.
-- [`docSidebar`](../../api/themes/theme-configuration.md#navbar-doc-sidebar): a link to the first item in a sidebar.
-- [`docsVersion`](../../api/themes/theme-configuration.md#navbar-docs-version): a link to the main doc of the currently viewed version.
-- [`docsVersionDropdown`](../../api/themes/theme-configuration.md#navbar-docs-version-dropdown): a dropdown containing all the versions available.
+- [`doc`](../../api/themes/theme-configuration.md#navbar-doc-link): ссылка на страницу документации.
+- [`docSidebar`](../../api/themes/theme-configuration.md#navbar-doc-sidebar): ссылка на первый элемент боковой панели.
+- [`docsVersion`](../../api/themes/theme-configuration.md#navbar-docs-version): ссылка на главную страницу документации текущей просматриваемой версии.
+- [`docsVersionDropdown`](../../api/themes/theme-configuration.md#navbar-docs-version-dropdown): выпадающий список содержащий все доступные версии.
 
-These links would all look for an appropriate version to link to, in the following order:
+Все эти ссылки будут искать подходящую версию, на которую будут ссылаться, в следующем порядке:
 
-1. **Active version**: the version that the user is currently browsing, if she is on a page provided by this doc plugin. If she's not on a doc page, fall back to...
-2. **Preferred version**: the version that the user last viewed. If there's no history, fall back to...
-3. **Latest version**: the default version that we navigate to, configured by the `lastVersion` option.
+1. **Активная версия**: версия, которую в данный момент просматривает пользователь, если он находится на странице, предоставляемой плагином документации. Если пользователь не на странице документации, возврат к...
+2. **Предпочитаемая версия**: версия, которую пользователь просматривал в последний раз. Если истории нет, возврат к...
+3. **Последняя версия**: версия по умолчанию, к которой мы переходим, настроенная параметром `lastVersion`.
 
-## Recommended practices {#recommended-practices}
+## Рекомендации {#recommended-practices}
 
-### Version your documentation only when needed {#version-your-documentation-only-when-needed}
+### Версионируйте свою документацию только тогда, когда это необходимо {#version-your-documentation-only-when-needed}
 
-For example, you are building documentation for your npm package `foo` and you are currently in version 1.0.0. You then release a patch version for a minor bug fix and it's now 1.0.1.
+Например, вы создаете документацию для своего npm пакета `foo` и в прямо сейчас используете версию 1.0.0. Затем вы выпускаете патч-версию для исправления незначительной ошибки, и теперь это 1.0.1.
 
-Should you cut a new documentation version 1.0.1? **You probably shouldn't**. 1.0.1 and 1.0.0 docs shouldn't differ according to semver because there are no new features!. Cutting a new version for it will only just create unnecessary duplicated files.
+Стоит ли выделить новую версию документации 1.0.1? **Возможно, не стоит**. Документации 1.0.1 и 1.0.0 не должны отличаться в соответствии с semver, потому что в них нет новых функций! Выделение новой версии только лишь создаст ненужные дублированные файлы.
 
-### Keep the number of versions small {#keep-the-number-of-versions-small}
+### Держите количество версий небольшим {#keep-the-number-of-versions-small}
 
-As a good rule of thumb, try to keep the number of your versions below 10. You will **very likely** to have a lot of obsolete versioned documentation that nobody even reads anymore. For example, [Jest](https://jestjs.io/versions) is currently in version `27.4`, and only maintains several latest documentation versions with the lowest being `25.X`. Keep it small 😊
+Как правило, старайтесь, чтобы количество ваших версий не превышало 10. У вас **весьма вероятно** будет много устаревших версий, которые никто никогда даже не прочтет больше. Например, [Jest](https://jestjs.io/versions) в настоящее время имеет версию `27.4` и поддерживает только несколько последних версий документации, самая младшая из которых — `25.Х`. Держите мало версий 😊
 
-:::tip archive older versions
+:::tip архивируйте старые версии
 
-If you deploy your site on a Jamstack provider (e.g. [Netlify](../../deployment.mdx)), the provider will save each production build as a snapshot under an immutable URL. You can include archived versions that will never be rebuilt as external links to these immutable URLs. The Jest website and the Docusaurus website both use such pattern to keep the number of actively built versions low.
+Если вы развернете свой сайт у Jamstack-поставщика (например, [Netlify](../../deployment.mdx)), поставщик сохранит каждую продакшен сборку в виде снепшота с неизменяемым URL-адресом. Вы можете включить заархивированные версии, которые никогда не будут восстановлены, в качестве внешних ссылок на эти неизменяемые URL-адреса. Сайт Jest и сайт Docusaurus используют такой же паттерн, чтобы количество активных версий было низким.
 
 :::
 
-### Use absolute import within the docs {#use-absolute-import-within-the-docs}
+### Используйте абсолютные импорты в документации {#use-absolute-import-within-the-docs}
 
-Don't use relative paths import within the docs. Because when we cut a version the paths no longer work (the nesting level is different, among other reasons). You can utilize the `@site` alias provided by Docusaurus that points to the `website` directory. Example:
+Не используйте относительные пути в импортах в документации. Потому что, когда мы выделяем версию, пути перестают работать (в том числе, уровень вложенности другой). Вы можете использовать алиас `@site`, предоставленный Docusaurus, который указывает на директорию `website`. Пример:
 
 ```diff
 - import Foo from '../src/components/Foo';
 + import Foo from '@site/src/components/Foo';
 ```
 
-### Link docs by file paths {#link-docs-by-file-paths}
+### Ссылайтесь на страницы по относительным путям {#link-docs-by-file-paths}
 
-Refer to other docs by relative file paths with the `.md` extension, so that Docusaurus can rewrite them to actual URL paths during building. Files will be linked to the correct corresponding version.
+Ссылайтесь на другие страницы документации используя относительные пути к файлам с расширением `.md`, чтобы Docusaurus смог заменить их на правильные URL-адреса во время сборки. Файлы будут привязаны к соответствующей версии.
 
 ```md
 The [@hello](hello.md#paginate) document is great!
@@ -259,22 +265,22 @@ The [@hello](hello.md#paginate) document is great!
 See the [Tutorial](../getting-started/tutorial.md) for more info.
 ```
 
-### Global or versioned collocated assets {#global-or-versioned-collocated-assets}
+### Глобальные или версионированные ассеты {#global-or-versioned-collocated-assets}
 
-You should decide if assets like images and files are per-version or shared between versions.
+Вам нужно будет решить, будут ли ассеты, такие как изображения и файлы, использоваться для каждой версии отдельно или будут общие для всех версий.
 
-If your assets should be versioned, put them in the docs version, and use relative paths:
+Если ваши ассеты должны быть разделены между версиями, поместите их в версию документации и используйте относительные пути:
 
 ```md
 ![img alt](./myImage.png)
 
-[download this file](./file.pdf)
+[Скачать этот файл](./file.pdf)
 ```
 
-If your assets are global, put them in `/static` and use absolute paths:
+Если ваши ассеты глобальные, поместите их в `/static` и используйте абсолютные пути:
 
 ```md
 ![img alt](/myImage.png)
 
-[download this file](/file.pdf)
+[Скачать этот файл](/file.pdf)
 ```

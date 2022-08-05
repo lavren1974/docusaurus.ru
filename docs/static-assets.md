@@ -1,13 +1,14 @@
 ---
-id: static-assets
-title: Static Assets
+description: Static assets are the non-code files that are directly copied to the build output. Learn about how they are handled and what the best practices of using static assets are.
 ---
 
-Every website needs assets: images, stylesheets, favicons, etc. By default, you are suggested to put these assets in the `static` folder.
+# Static Assets
 
-Every file you put into **that directory will be copied** into the root of the generated `build` folder with the directory hierarchy preserved. E.g. if you add a file named `sun.jpg` to the static folder, it will be copied to `build/sun.jpg`.
+Static assets are the non-code files that are directly copied to the build output. They include images, stylesheets, favicons, fonts, etc.
 
-This means that:
+By default, you are suggested to put these assets in the `static` folder. Every file you put into **that directory will be copied** into the root of the generated `build` folder with the directory hierarchy preserved. Например. если вы добавили файл с именем `sun.jpg` в статическую папку, он будет скопирован в папку `build/sun.jpg`.
+
+Это означает, что:
 
 - for site `baseUrl: '/'`, the image `/static/img/docusaurus.png` will be served at `/img/docusaurus.png`.
 - for site `baseUrl: '/subpath/'`, the image `/static/img/docusaurus.png` will be served at `/subpath/img/docusaurus.png`.
@@ -68,7 +69,7 @@ You write a link like this: [Download this document](/files/note.docx)
 Docusaurus changes that to: <a href={require('static/files/note.docx')}>Download this document</a>
 ```
 
-:::caution use markdown syntax
+:::caution use Markdown syntax
 
 Docusaurus will only parse links that are in Markdown syntax. If your asset references are using the JSX tag `<a>` / `<img>`, nothing will be done.
 

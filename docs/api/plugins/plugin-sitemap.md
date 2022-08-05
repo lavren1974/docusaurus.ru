@@ -1,11 +1,11 @@
 ---
 sidebar_position: 10
-id: plugin-sitemap
-title: '📦 plugin-sitemap'
-slug: '/api/plugins/@docusaurus/plugin-sitemap'
+slug: /api/plugins/@docusaurus/plugin-sitemap
 ---
 
-import APITable from '@site/src/components/APITable';
+# 📦 plugin-sitemap
+
+импортировать APITable из '@site/src/components/APITable';
 
 This plugin creates sitemaps for your site so that search engine crawlers can crawl your site more accurately.
 
@@ -15,7 +15,7 @@ This plugin is always inactive in development and **only active in production** 
 
 :::
 
-## Installation {#installation}
+## Установка {#installation}
 
 ```bash npm2yarn
 npm install --save @docusaurus/plugin-sitemap
@@ -29,19 +29,24 @@ You can configure this plugin through the [preset options](#ex-config-preset).
 
 :::
 
-## Configuration {#configuration}
+## Файл конфигурации {#configuration}
 
 Accepted fields:
 
+```mdx-code-block
 <APITable>
+```
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `changefreq` | `string` | `'weekly'` | See [sitemap docs](https://www.sitemaps.org/protocol.html#xmlTagDefinitions) |
-| `priority` | `number` | `0.5` | See [sitemap docs](https://www.sitemaps.org/protocol.html#xmlTagDefinitions) |
-| `ignorePatterns` | `string[]` | `[]` | A list of glob patterns; matching route paths will be filtered from the sitemap. Note that you may need to include the base URL in here. |
+| Название         | Type       | По-умолчанию  | Описание                                                                                                                                 |
+| ---------------- | ---------- | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `changefreq`     | `string`   | `'weekly'`    | See [sitemap docs](https://www.sitemaps.org/protocol.html#xmlTagDefinitions)                                                             |
+| `priority`       | `number`   | `0.5`         | See [sitemap docs](https://www.sitemaps.org/protocol.html#xmlTagDefinitions)                                                             |
+| `ignorePatterns` | `string[]` | `[]`          | A list of glob patterns; matching route paths will be filtered from the sitemap. Note that you may need to include the base URL in here. |
+| `filename`       | `string`   | `sitemap.xml` | The path to the created sitemap file, relative to the output directory. Useful if you have two plugin instances outputting two files.    |
 
+```mdx-code-block
 </APITable>
+```
 
 :::info
 
@@ -70,6 +75,7 @@ const config = {
   changefreq: 'weekly',
   priority: 0.5,
   ignorePatterns: ['/tags/**'],
+  filename: 'sitemap.xml',
 };
 ```
 

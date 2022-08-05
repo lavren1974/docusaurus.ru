@@ -2,20 +2,20 @@
 slug: /sidebar/multiple-sidebars
 ---
 
-# Using multiple sidebars
+# Использование нескольких боковых панелей
 
-You can create a sidebar for each **set of Markdown files** that you want to **group together**.
+Вы можете создать боковую панель для каждого **набора Markdown файлов**, которые хотите **сгруппировать вместе**.
 
 :::tip
 
-The Docusaurus site is a good example of using multiple sidebars:
+Сайт Docusaurus — хороший пример использования нескольких боковых панелей:
 
-- [Docs](../../../introduction.md)
+- [Документация](../../../introduction.md)
 - [API](../../../cli.md)
 
 :::
 
-Consider this example:
+Взгляните на следующий пример:
 
 ```js title="sidebars.js"
 module.exports = {
@@ -26,11 +26,11 @@ module.exports = {
 };
 ```
 
-When browsing `doc1` or `doc2`, the `tutorialSidebar` will be displayed; when browsing `doc3` or `doc4`, the `apiSidebar` will be displayed.
+При просмотре `doc1` или `doc2` будет отображаться `tutorialSidebar`; при просмотре `doc3` или `doc4` будет отображаться `apiSidebar`.
 
-## Understanding sidebar association {#sidebar-association}
+## Как работает привязка боковых панелей к директориям {#sidebar-association}
 
-Following the example above, if a `commonDoc` is included in both sidebars:
+Следуя приведенному выше примеру, если `commonDoc` включен в обе боковые панели:
 
 ```js title="sidebars.js"
 module.exports = {
@@ -41,14 +41,14 @@ module.exports = {
 };
 ```
 
-How does Docusaurus know which sidebar to display when browsing `commonDoc`? Answer: it doesn't, and we don't guarantee which sidebar it will pick.
+Как Docusaurus узнает, какую боковую панель отображать при просмотре `commonDoc`? Ответ: никак, и мы не гарантируем, какая боковая панель будет выбрана.
 
-When you add doc Y to sidebar X, it creates a two-way binding: sidebar X contains a link to doc Y, and when browsing doc Y, sidebar X will be displayed. But sometimes, we want to break either implicit binding:
+Когда вы добавляете документ Y на боковую панель X, создается двусторонняя привязка: боковая панель X содержит ссылку на документ Y, и при просмотре документа Y будет отображаться боковая панель X. Но иногда мы хотим разорвать либо неявную привязку:
 
-1. _How do I generate a link to doc Y in sidebar X without making sidebar X displayed on Y?_ For example, when I include doc Y in multiple sidebars as in the example above, and I want to explicitly tell Docusaurus to display one sidebar?
-2. _How do I make sidebar X displayed when browsing doc Y, but sidebar X shouldn't contain the link to Y?_ For example, when Y is a "doc home page" and the sidebar is purely used for navigation?
+1. _Как создать ссылку на документ Y на боковой панели X, не отображая боковую панель X на Y?_ Например, когда мы включаем документ Y в несколько боковых панелей, как в примере выше, и хотим явно указать Docusaurus отображать одну боковую панель?
+2. _Как сделать так, чтобы боковая панель X отображалась при просмотре документа Y, но боковая панель X не содержала ссылку на Y?_ Например, когда Y является «домашней страницей документа», а боковая панель используется исключительно для навигации?
 
-Front matter option `displayed_sidebar` will forcibly set the sidebar association. For the same example, you can still use doc shorthands without any special configuration:
+Front matter параметр `displayed_sidebar` принудительно установит ассоциацию с боковой панелью. В таком же примере вы все еще можете использовать сокращенный синтаксис без какой-либо специальной настройки:
 
 ```js title="sidebars.js"
 module.exports = {
@@ -59,7 +59,7 @@ module.exports = {
 };
 ```
 
-And then add a front matter:
+Затем добавьте front matter параметр на страницу:
 
 ```md title="commonDoc.md"
 ---
@@ -67,7 +67,7 @@ displayed_sidebar: apiSidebar
 ---
 ```
 
-Which explicitly tells Docusaurus to display `apiSidebar` when browsing `commonDoc`. Using the same method, you can make sidebar X which doesn't contain doc Y appear on doc Y:
+Что явно указывает Docusaurus отображать `apiSidebar` при просмотре `commonDoc`. Используя этот же метод, вы можете сделать так, чтобы боковая панель X, которая не содержит документа Y, отображалась на документе Y:
 
 ```md title="home.md"
 ---
@@ -75,17 +75,17 @@ displayed_sidebar: tutorialSidebar
 ---
 ```
 
-Even when `tutorialSidebar` doesn't contain a link to `home`, it will still be displayed when viewing `home`.
+Даже если `tutorialSidebar` не содержит ссылки на `home`, она все равно будет отображаться при просмотре `home`.
 
-If you set `displayed_sidebar: null`, no sidebar will be displayed whatsoever on this page, and subsequently, no pagination either.
+Если вы установите `displayed_sidebar: null`, на этой странице не будет отображаться никакая боковая панель, а впоследствии и не будет пагинации.
 
-## Generating pagination {#generating-pagination}
+## Генерация пагинации {#generating-pagination}
 
-Docusaurus uses the sidebar to generate the "next" and "previous" pagination links at the bottom of each doc page. It strictly uses the sidebar that is displayed: if no sidebar is associated, it doesn't generate pagination either. However, the docs linked as "next" and "previous" are not guaranteed to display the same sidebar: they are included in this sidebar, but in their front matter, they may have a different `displayed_sidebar`.
+Docusaurus использует боковую панель для создания «следующей» и «предыдущей» ссылок пагинации внизу каждой страницы. Боковая панель и пагинация жестко связаны: если боковая панель не отображается на странице, то пагинация тоже не выводится. Однако не гарантируется, что страницы, связанные как «следующая» и «предыдущая», будут отображать одну и ту же боковую панель: они включены в эту боковую панель, но в начале могут иметь разные `displayed_sidebar` (отображаемые панели).
 
-If a sidebar is displayed by setting `displayed_sidebar` front matter, and this sidebar doesn't contain the doc itself, no pagination is displayed.
+Если боковая панель отображается с помощью установки `displayed_sidebar` во front matter страницы, и эта боковая панель не содержит самой этой страницы, пагинация не будет отображаться.
 
-You can customize pagination with front matter `pagination_next` and `pagination_prev`. Consider this sidebar:
+Вы можете настроить пагинацию с помощью `pagination_next` и `pagination_prev`. Давайте рассмотрим эту боковую панель:
 
 ```js title="sidebars.js"
 module.exports = {
@@ -99,7 +99,7 @@ module.exports = {
 };
 ```
 
-The pagination next link on "windows" points to "linux", but that doesn't make sense: you would want readers to proceed to "getting started" after installation. In this case, you can set the pagination manually:
+На странице «Windows» ссылка, ведущая на следующую страницу, указывает на «linux», но это же бессмысленно: было бы логично, чтобы читатели перешли к «началу работы» после установки. В этом случае вы можете задать пагинацию вручную:
 
 ```md title="windows.md"
 ---
@@ -107,20 +107,20 @@ The pagination next link on "windows" points to "linux", but that doesn't make s
 pagination_next: getting-started
 ---
 
-# Installation on Windows
+# Установка на Windows
 ```
 
-You can also disable displaying a pagination link with `pagination_next: null` or `pagination_prev: null`.
+Вы также можете отключить отображение пагинации с помощью `pagination_next: null` или `pagination_prev: null`.
 
-The pagination label by default is the sidebar label. You can use the front matter `pagination_label` to customize how this doc appears in the pagination.
+Лейбл пагинации по умолчанию является лейблом боковой панели. Вы можете использовать front matter параметр `pagination_label`, чтобы настроить отображение этой страницы в пагинации.
 
-## The `ref` item {#sidebar-item-ref}
+## Элемент `ref` {#sidebar-item-ref}
 
-The `ref` type is identical to the [`doc` type](#sidebar-item-doc) in every way, except that it doesn't participate in generating navigation metadata. It only registers itself as a link. When [generating pagination](#generating-pagination) and [displaying sidebar](#sidebar-association), `ref` items are completely ignored.
+Тип `ref` идентичен типу [`doc`](#sidebar-item-doc) во всех отношениях, за исключением того, что он не участвует в создании метаданных навигации. Он только регистрирует себя как ссылку. При [генерации пагинации](#generating-pagination) и [отображении боковой панели](#sidebar-association) элементы `ref` полностью игнорируются.
 
-It is particularly useful where you wish to link to the same document from multiple sidebars. The document only belongs to one sidebar (the one where it's registered as `type: 'doc'` or from an autogenerated directory), but its link will appear in all sidebars that it's registered in.
+На практике это полезно, когда вы хотите сделать ссылку на один и тот же документ с нескольких боковых панелей. Документ принадлежит только одной боковой панели (той, где он зарегистрирован как `type: 'doc'` или из автоматически сгенерированного каталога), но ссылка на него появится на всех боковых панелях, в которых он зарегистрирован.
 
-Consider this example:
+Взгляните на следующий пример:
 
 ```js title="sidebars.js"
 module.exports = {
@@ -138,7 +138,7 @@ module.exports = {
 }
 ```
 
-You can think of the `ref` type as the equivalent to doing the following:
+Вы можете рассматривать тип `ref` как эквивалент следующих действий:
 
-- Setting `displayed_sidebar: tutorialSidebar` for `commonDoc` (`ref` is ignored in sidebar association)
-- Setting `pagination_next: doc5` for `doc2` and setting `pagination_prev: doc2` for `doc5` (`ref` is ignored in pagination generation)
+- Установка `displayed_sidebar: tutorialSidebar` для `commonDoc` (`ref` игнорируется)
+- Установка `pagination_next: doc5` для `doc2` и установка `pagination_prev: doc2` для `doc5` (`ref` игнорируется при генерации пагинации)

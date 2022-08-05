@@ -1,10 +1,10 @@
 ---
-id: search
-title: Search
 keywords:
   - algolia
   - search
 ---
+
+# Search
 
 There are a few options you can use to add search to your website:
 
@@ -266,7 +266,7 @@ If you prefer to edit the Algolia search React component, swizzle the `SearchBar
 npm run swizzle @docusaurus/theme-search-algolia SearchBar
 ```
 
-### Support {#algolia-support}
+### Поддержка {#algolia-support}
 
 The Algolia DocSearch team can help you figure out search problems on your site.
 

@@ -1,0 +1,176 @@
+---
+id: inline-toc
+title: Содержание внутри страницы
+description: Добавление содержания прямо в Markdown страницу
+slug: /markdown-features/inline-toc
+---
+
+import BrowserWindow from '@site/src/components/BrowserWindow';
+
+Каждая страница отображает оглавление в правом верхнем углу. Но выводить содержание можно и непосредственно внутри страницы благодаря MDX.
+
+## Полноценное оглавление {#full-table-of-contents}
+
+Переменная `toc` доступна на любой MDX странице и содержит все заголовки этой страницы. По умолчанию в оглавлении отображаются только заголовки `h2` и `h3`. Вы можете управлять уровнями заголовков, установив `minHeadingLevel` или `maxHeadingLevel` для отдельных компонентов `TOCInline`.
+
+<!-- prettier-ignore -->
+```jsx
+import TOCInline from '@theme/TOCInline';
+
+<TOCInline toc={toc} />
+```
+
+```mdx-code-block
+import TOCInline from '@theme/TOCInline';
+
+<BrowserWindow>
+<TOCInline toc={toc} />
+</BrowserWindow>
+```
+
+## Собственное оглавление {#custom-table-of-contents}
+
+Свойство `toc` — это просто список заголовков:
+
+```ts
+type TOCItem = {
+  value: string;
+  id: string;
+  level: number;
+};
+```
+
+Обратите внимание, что глобальный `toc` представляет собой плоский массив, поэтому вы можете легко вырезать ненужные узлы или вставить дополнительные узлы и создать новое дерево содержания.
+
+<!-- prettier-ignore -->
+```jsx
+import TOCInline from '@theme/TOCInline';
+
+<TOCInline
+  // Only show h2 and h4 headings
+  toc={toc.filter((node) => node.level === 2 || node.level === 4)}
+  minHeadingLevel={2}
+  // Показывать заголовки h4 в дополнение к заголовкам h2 и h3
+  maxHeadingLevel={4}
+/>
+```
+
+```mdx-code-block
+<BrowserWindow>
+<TOCInline
+  toc={toc.filter((node) => node.level === 2 || node.level === 4)}
+  minHeadingLevel={2}
+  maxHeadingLevel={4}
+/>
+</BrowserWindow>
+```
+
+---
+
+:::caution
+
+Весь текст ниже лишь для того, чтобы показать больше элементов оглавления на этой странице.
+
+:::
+
+## Раздел 1 {#example-section-1}
+
+Lorem ipsum
+
+### Подраздел 1 a {#example-subsection-1-a}
+
+Lorem ipsum
+
+#### Подраздел 1 a I
+
+#### Подраздел 1 a II
+
+#### Подраздел 1 a III
+
+### Подраздел 1 b {#example-subsection-1-b}
+
+Lorem ipsum
+
+#### Подраздел 1 b I
+
+#### Подраздел 1 b II
+
+#### Подраздел 1 b III
+
+### Подраздел 1 c {#example-subsection-1-c}
+
+Lorem ipsum
+
+#### Подраздел 1 c I
+
+#### Подраздел 1 c II
+
+#### Подраздел 1 c III
+
+## Раздел 2 {#example-section-2}
+
+Lorem ipsum
+
+### Подраздел 2 a {#example-subsection-2-a}
+
+Lorem ipsum
+
+#### Подраздел 2 a I
+
+#### Подраздел 2 a II
+
+#### Подраздел 2 a III
+
+### Подраздел 2 b {#example-subsection-2-b}
+
+Lorem ipsum
+
+#### Подраздел 2 b I
+
+#### Подраздел 2 b II
+
+#### Подраздел 2 b III
+
+### Подраздел 2 c {#example-subsection-2-c}
+
+Lorem ipsum
+
+#### Подраздел 2 c I
+
+#### Подраздел 2 c II
+
+#### Подраздел 2 c III
+
+## Раздел 3 {#example-section-3}
+
+Lorem ipsum
+
+### Подраздел 3 a {#example-subsection-3-a}
+
+Lorem ipsum
+
+#### Подраздел 3 a I
+
+#### Подраздел 3 a II
+
+#### Подраздел 3 a III
+
+### Подраздел 3 b {#example-subsection-3-b}
+
+Lorem ipsum
+
+#### Подраздел 3 b I
+
+#### Подраздел 3 b II
+
+#### Подраздел 3 b III
+
+### Подраздел 3 c {#example-subsection-3-c}
+
+Lorem ipsum
+
+#### Подраздел 3 c I
+
+#### Подраздел 3 c II
+
+#### Подраздел 3 c III

@@ -1,31 +1,31 @@
 ---
-id: creating-pages
-title: Creating Pages
 slug: /creating-pages
-sidebar_label: Pages
+sidebar_label: Страницы
 ---
 
-In this section, we will learn about creating pages in Docusaurus.
+# Создание страниц
 
-The `@docusaurus/plugin-content-pages` plugin empowers you to create **one-off standalone pages** like a showcase page, playground page, or support page. You can use React components, or Markdown.
+В этом разделе мы расскажем, как создавать страницы в Docusaurus.
+
+Плагин `@docusaurus/plugin-content-pages` позволяет создавать **отдельные самостоятельные страницы** наподобие страницы с примерами проектов, песочницы, или страницы поддержки пользователей. Вы можете использовать React компоненты, или Markdown.
 
 :::note
 
-Pages do not have sidebars, only [docs](./docs/docs-introduction.md) do.
+У самостоятельных страниц нет боковой панели, она есть только у [страниц документации](./docs/docs-introduction.md).
 
 :::
 
 :::info
 
-Check the [Pages Plugin API Reference documentation](./../api/plugins/plugin-content-pages.md) for an exhaustive list of options.
+Полный список опций описан в [справочной документации по API плагина для генерации страниц](./../api/plugins/plugin-content-pages.md).
 
 :::
 
-## Add a React page {#add-a-react-page}
+## Как создать страницу на React {#add-a-react-page}
 
-React is used as the UI library to create pages. Every page component should export a React component, and you can leverage the expressiveness of React to build rich and interactive content.
+React используется как библиотека для создания интерфейсов на странице. Каждый страница должна экспортировать React компонент, таким образом вы сможете использовать всю мощь React для создания богатого и интерактивного контента.
 
-Create a file `/src/pages/helloReact.js`:
+Создайте файл `/src/pages/helloReact.js`:
 
 ```jsx title="/src/pages/helloReact.js"
 import React from 'react';
@@ -51,67 +51,67 @@ export default function Hello() {
 }
 ```
 
-Once you save the file, the development server will automatically reload the changes. Now open `http://localhost:3000/helloReact` and you will see the new page you just created.
+Как только вы сохраните файл, дев-сервер автоматически подхватит изменения и обновит бандл сайта. Теперь откройте [http://localhost:3000/helloReact](http://localhost:3000/helloReact), и вы увидите только что созданную новую страницу.
 
-Each page doesn't come with any styling. You will need to import the `Layout` component from `@theme/Layout` and wrap your contents within that component if you want the navbar and/or footer to appear.
+По умолчанию на вашей странице не будет никаких стилей. Вам нужно будет импортировать компонент `Layout` из `@theme/Layout` и обернуть им содержимое вашей страницы, если вы хотите, чтобы отображалась панель навигации и/или футер.
 
 :::tip
 
-You can also create TypeScript pages with the `.tsx` extension (`helloReact.tsx`).
+Вы также можете создавать страницы на TypeScript с расширением `.tsx` (`helloReact.tsx`).
 
 :::
 
-## Add a Markdown page {#add-a-markdown-page}
+## Как создать страницу в формате Markdown {#add-a-markdown-page}
 
-Create a file `/src/pages/helloMarkdown.md`:
+Создайте файл `/src/pages/helloMarkdown.md`:
 
 ```md title="/src/pages/helloMarkdown.md"
 ---
-title: my hello page title
-description: my hello page description
+title: мета-заголовок моей приветственной страницы
+description: мета-описание моей приветственной страницы
 hide_table_of_contents: true
 ---
 
-# Hello
+# Привет
 
-How are you?
+Как поживаешь?
 ```
 
-In the same way, a page will be created at `http://localhost:3000/helloMarkdown`.
+Таким же образом будет создана страница по адресу [http://localhost:3000/helloMarkdown](http://localhost:3000/helloMarkdown).
 
-Markdown pages are less flexible than React pages because it always uses the theme layout.
+Markdown-страницы менее гибкие, чем страницы на React, потому что они ограничены рамками макета выбранной вами темы.
 
-Here's an [example Markdown page](/examples/markdownPageExample).
+Вот [пример страницы в формате Markdown](/examples/markdownPageExample).
 
 :::tip
 
-You can use the full power of React in Markdown pages too, refer to the [MDX](https://mdxjs.com/) documentation.
+Вы также можете использовать всю мощь React в Markdown-страницах, подробнее в руководстве по [MDX](https://mdxjs.com/).
 
 :::
 
-## Routing {#routing}
+## Роутинг {#routing}
 
-If you are familiar with other static site generators like Jekyll and Next, this routing approach will feel familiar to you. Any JavaScript file you create under `/src/pages/` directory will be automatically converted to a website page, following the `/src/pages/` directory hierarchy. For example:
+Если вы знакомы с другими генераторами статических сайтов, такими как Jekyll и Next, этот подход к роутингу покажется вам знакомым. Любой JavaScript-файл, который вы создаете в директории `/src/pages/`, будет автоматически преобразован в страницу сайта в соответствии с вложенностью внутри `/src/pages/`. Например:
 
 - `/src/pages/index.js` → `[baseUrl]`
 - `/src/pages/foo.js` → `[baseUrl]/foo`
 - `/src/pages/foo/test.js` → `[baseUrl]/foo/test`
 - `/src/pages/foo/index.js` → `[baseUrl]/foo/`
 
-In this component-based development era, it is encouraged to co-locate your styling, markup, and behavior together into components. Each page is a component, and if you need to customize your page design with your own styles, we recommend co-locating your styles with the page component in its own directory. For example, to create a "Support" page, you could do one of the following:
+В эпоху разработки, основанной на компонентах, рекомендуется объединять стили, разметку и поведение в компоненты. Каждая страница является компонентом, и если вам нужно стилизовать страницу с помощью собственных стилей, мы рекомендуем размещать ваши стили вместе с компонентом страницы в отдельной директории. Например, чтобы создать страницу «Поддержка пользователей», вы можете выполнить одно из следующих действий:
 
-- Add a `/src/pages/support.js` file
-- Create a `/src/pages/support/` directory and a `/src/pages/support/index.js` file.
+- Добавить файл `/src/pages/support.js`
+- Создать папку `/src/pages/support/` и файл `/src/pages/support/index.js` в этой папке.
 
-The latter is preferred as it has the benefits of letting you put files related to the page within that directory. For example, a CSS module file (`styles.module.css`) with styles meant to only be used on the "Support" page.
+Последний вариант предпочтительнее, так как он позволяет размещать файлы, связанные со страницей, в ее же директории. Например, файл со стилями (`styles.module.css`), предназначенными для использования только на странице «Поддержка».
 
 :::note
 
-This is merely a recommended directory structure, and you will still need to manually import the CSS module file within your component module (`support/index.js`).
+Это всего лишь рекомендуемая структура расположения файлов, и вам все равно придется вручную импортировать файл стилей в ваш компонент (`support/index.js`).
 
 :::
 
-By default, any Markdown or JavaScript file starting with `_` will be ignored and no routes will be created for that file (see the `exclude` option).
+По умолчанию любой Markdown- или JavaScript-файл, начинающийся с `_`, будет игнорироваться, и для этого файла не будет создан урл (см. параметр `exclude`).
 
 ```bash
 my-website
@@ -131,10 +131,10 @@ my-website
 
 :::caution
 
-All JavaScript/TypeScript files within the `src/pages/` directory will have corresponding website paths generated for them. If you want to create reusable components into that directory, use the `exclude` option (by default, files prefixed with `_`, test files(`.test.js`), and files in `__tests__` directory are not turned into pages).
+Для всех JavaScript/TypeScript-файлов в папке `src/pages/` будут сгенерированы соответствующие урлы. Если вы хотите создать переиспользуемые компоненты в этом директории, используйте параметр `exclude` (по умолчанию файлы с префиксом `_`, тестовые файлы (`.test.js`), и файлы в папке `__tests__` не превращаются в страницы).
 
 :::
 
-### Duplicate Routes {#duplicate-routes}
+### Дублирование роутов {#duplicate-routes}
 
-You may accidentally create multiple pages that are meant to be accessed on the same route. When this happens, Docusaurus will warn you about duplicate routes when you run `yarn start` or `yarn build`, but the site will still be built successfully. The page that was created last will be accessible, but it will override other conflicting pages. To resolve this issue, you should modify or remove any conflicting routes.
+Вы можете случайно создать несколько страниц, доступ к которым должен осуществляться по одному и тому же адресу. Когда это произойдет, Docusaurus предупредит вас о повторяющихся адресах при запуске `yarn start` или `yarn build`, но сайт все равно будет успешно собран. По этому адресу будет открываться страница, которая была создана последней, и она перебьет другие конфликтующие страницы. Чтобы решить эту проблему, вам нужно будет изменить или удалить все конфликтующие роуты.

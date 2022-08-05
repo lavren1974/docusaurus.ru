@@ -1,11 +1,11 @@
 ---
 sidebar_position: 7
-id: plugin-google-gtag
-title: '📦 plugin-google-gtag'
-slug: '/api/plugins/@docusaurus/plugin-google-gtag'
+slug: /api/plugins/@docusaurus/plugin-google-gtag
 ---
 
-import APITable from '@site/src/components/APITable';
+# 📦 plugin-google-gtag
+
+импортировать APITable из '@site/src/components/APITable';
 
 The default [Global Site Tag (gtag.js)](https://developers.google.com/analytics/devguides/collection/gtagjs/) plugin. It is a JavaScript tagging framework and API that allows you to send event data to Google Analytics, Google Ads, and Google Marketing Platform. This section describes how to configure a Docusaurus site to enable global site tag for Google Analytics.
 
@@ -21,7 +21,7 @@ This plugin is always inactive in development and **only active in production** 
 
 :::
 
-## Installation {#installation}
+## Установка {#installation}
 
 ```bash npm2yarn
 npm install --save @docusaurus/plugin-google-gtag
@@ -35,18 +35,22 @@ You can configure this plugin through the preset options.
 
 :::
 
-## Configuration {#configuration}
+## Файл конфигурации {#configuration}
 
 Accepted fields:
 
+```mdx-code-block
 <APITable>
+```
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `trackingID` | `string` | **Required** | The tracking ID of your gtag service. |
-| `anonymizeIP` | `boolean` | `false` | Whether the IP should be anonymized when sending requests. |
+| Название      | Type      | По-умолчанию | Описание                                                   |
+| ------------- | --------- | ------------ | ---------------------------------------------------------- |
+| `trackingID`  | `string`  | **Required** | The tracking ID of your gtag service.                      |
+| `anonymizeIP` | `boolean` | `false`      | Whether the IP should be anonymized when sending requests. |
 
+```mdx-code-block
 </APITable>
+```
 
 ### Example configuration {#ex-config}
 

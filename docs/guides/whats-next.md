@@ -1,21 +1,21 @@
-# What's next?
+# Что дальше?
 
-Congratulations! You have understood most core features of Docusaurus now. You have:
+Поздравляем! Теперь вы поняли большинство основных функций Docusaurus. Вы знаете:
 
-- [Used the pages plugin](./creating-pages.md) to create a standalone React / Markdown page
-- [Used the docs plugin](./docs/docs-introduction.md) to create documentation pages. This includes [configuring the sidebar](./docs/sidebar/index.md), and even [versioning](./docs/versioning.md)
-- [Used the blog plugin](../blog.mdx) to create a fully featured blog
-- Tried your hands on [a range of Markdown features](./markdown-features/markdown-features-intro.mdx), which are useful for all content plugins
-- [Used stylesheets](../styling-layout.md) or [swizzling](../swizzling.md) to customize your site's appearance
-- [Included images and other assets](../static-assets.md) in your pages
-- [Added search](../search.md) to your site
-- Understood how [browser support](../browser-support.md) and [SEO](../seo.md) are done through standard Docusaurus APIs
-- Learned about how [individual plugins](../using-plugins.md) are installed and configured
-- [Deployed](../deployment.mdx) your site to a content host
-- [Internationalized](../i18n/i18n-tutorial.md) your site to include multiple languages
+- [Как использовать плагин страниц](./creating-pages.md) для создания отдельной страницы React/Markdown
+- [Как использовать плагин документации](./docs/docs-introduction.md) для создания страниц документации. Он включает в себя [настройку боковой панели](./docs/sidebar/index.md) и даже [управление версиями](./docs/versioning.md)
+- [Как использовать плагин блога](../blog.mdx) для создания полнофункционального блога
+- Как работают [функций Markdown](./markdown-features/markdown-features-intro.mdx), которые полезны для всех контентных плагинов
+- [Как работать со стилями](../styling-layout.md) и [swizzling](../swizzling.md) и настраивать внешний вид сайта
+- [Как вставлять изображения и подключать другие ресурсы](../static-assets.md) на ваши страницы
+- [Как добавить поиск](../search.md) на сайт
+- Как осуществляется [поддержка браузеров](../browser-support.md) и [SEO](../seo.md) с помощью стандартных API Docusaurus
+- Как устанавливаются и настраиваются [отдельные плагины](../using-plugins.md)
+- [Как деплоить](../deployment.mdx) ваш сайт на хостинг
+- [Как интернационализировать](../i18n/i18n-tutorial.md) свой сайт, чтобы включить несколько языков
 
-At this point, you probably have a big `docusaurus.config.js` already😄 However, you haven't written much code yet! Most of the features are implemented through calling encapsulated Docusaurus APIs. As you continue your journey, you can take three paths:
+К этому моменту у вас, вероятно, уже есть большой `docusaurus.config.js`😄 Однако вы ведь даже не писали много кода! Большинство функций реализуются посредством вызова инкапсулированных API-интерфейсов Docusaurus. Продолжая свое путешествие, вы можете пойти тремя путями:
 
-- Learn more advanced Docusaurus concepts. This will help you gain a deeper understand of what the APIs do.
-- Read about [all existing APIs](../docusaurus-core.md). Many of them have not been covered in the Guides!
-- Learn to [develop a plugin](../api/plugin-methods/README.md) to extend the functionality of your site.
+- Узнать больше о продвинутых возможностях Docusaurus. Это поможет вам глубже понять, что делают API.
+- Прочитать обо [всех существующих API](../docusaurus-core.md). Многие из них не были описаны в Руководствах!
+- Научиться [разрабатывать плагины](../api/plugin-methods/README.md) для расширения функциональности вашего сайта.

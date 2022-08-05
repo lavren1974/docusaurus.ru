@@ -1,13 +1,13 @@
 ---
 sidebar_position: 1
-id: theme-configuration
-title: 'Theme configuration'
-sidebar_label: 'Configuration'
-slug: '/api/themes/configuration'
+sidebar_label: Файл конфигурации
+slug: /api/themes/configuration
 toc_max_heading_level: 4
 ---
 
-import APITable from '@site/src/components/APITable';
+# Theme configuration
+
+импортировать APITable из '@site/src/components/APITable';
 
 This configuration applies to all [main themes](./overview.md).
 
@@ -21,15 +21,19 @@ It is possible to customize the color mode support within the `colorMode` object
 
 Accepted fields:
 
+```mdx-code-block
 <APITable>
+```
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `defaultMode` | <code>'light' \| 'dark'</code> | `'light'` | The color mode when user first visits the site. |
-| `disableSwitch` | `boolean` | `false` | Hides the switch in the navbar. Useful if you want to support a single color mode. |
-| `respectPrefersColorScheme` | `boolean` | `false` | Whether to use the `prefers-color-scheme` media-query, using user system preferences, instead of the hardcoded `defaultMode`. |
+| Название                    | Type                      | По-умолчанию | Описание                                                                                                                      |
+| --------------------------- | ------------------------- | ------------ | ----------------------------------------------------------------------------------------------------------------------------- |
+| `defaultMode`               | <code>'light' \| 'dark'</code> | `'light'`    | The color mode when user first visits the site.                                                                               |
+| `disableSwitch`             | `boolean`                 | `false`      | Hides the switch in the navbar. Useful if you want to support a single color mode.                                            |
+| `respectPrefersColorScheme` | `boolean`                 | `false`      | Whether to use the `prefers-color-scheme` media-query, using user system preferences, instead of the hardcoded `defaultMode`. |
 
+```mdx-code-block
 </APITable>
+```
 
 Example configuration:
 
@@ -61,13 +65,17 @@ You can configure a default image that will be used for your meta tag, in partic
 
 Accepted fields:
 
+```mdx-code-block
 <APITable>
+```
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `image` | `string` | `undefined` | The meta image URL for the site. Relative to your site's "static" directory. Cannot be SVGs. Can be external URLs too. |
+| Название | Type     | По-умолчанию | Описание                                                                                                               |
+| -------- | -------- | ------------ | ---------------------------------------------------------------------------------------------------------------------- |
+| `image`  | `string` | `undefined`  | The meta image URL for the site. Relative to your site's "static" directory. Cannot be SVGs. Can be external URLs too. |
 
+```mdx-code-block
 </APITable>
+```
 
 Example configuration:
 
@@ -82,17 +90,21 @@ module.exports = {
 
 ### Metadata {#metadata}
 
-You can configure additional html metadata (and override existing ones).
+You can configure additional HTML metadata (and override existing ones).
 
 Accepted fields:
 
+```mdx-code-block
 <APITable>
+```
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `metadata` | `Metadata[]` | `[]` | Any field will be directly passed to the `<meta />` tag. Possible fields include `id`, `name`, `property`, `content`, `itemprop`, etc. |
+| Название   | Type         | По-умолчанию | Описание                                                                                                                                     |
+| ---------- | ------------ | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `metadata` | `Metadata[]` | `[]`         | Any field will be directly passed to the `<meta />` tag. Possible fields include `id`, `name`, `property`, `content`, `itemprop`, etc. |
 
+```mdx-code-block
 </APITable>
+```
 
 Example configuration:
 
@@ -111,17 +123,21 @@ Sometimes you want to announce something in your website. Just for such a case, 
 
 Accepted fields:
 
+```mdx-code-block
 <APITable name="announcement-bar">
+```
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `id` | `string` | `'announcement-bar'` | Any value that will identify this message. |
-| `content` | `string` | `''` | The text content of the announcement. HTML will be interpolated. |
-| `backgroundColor` | `string` | `'#fff'` | Background color of the entire bar. |
-| `textColor` | `string` | `'#000'` | Announcement text color. |
-| `isCloseable` | `boolean` | `true` | Whether this announcement can be dismissed with a '×' button. |
+| Название          | Type      | По-умолчанию         | Описание                                                         |
+| ----------------- | --------- | -------------------- | ---------------------------------------------------------------- |
+| `id`              | `string`  | `'announcement-bar'` | Any value that will identify this message.                       |
+| `content`         | `string`  | `''`                 | The text content of the announcement. HTML will be interpolated. |
+| `backgroundColor` | `string`  | `'#fff'`             | Background color of the entire bar.                              |
+| `textColor`       | `string`  | `'#000'`             | Announcement text color.                                         |
+| `isCloseable`     | `boolean` | `true`               | Whether this announcement can be dismissed with a '×' button.    |
 
+```mdx-code-block
 </APITable>
+```
 
 Example configuration:
 
@@ -146,17 +162,21 @@ module.exports = {
 
 Accepted fields:
 
+```mdx-code-block
 <APITable name="navbar-overview">
+```
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `title` | `string` | `undefined` | Title for the navbar. |
-| `logo` | _See below_ | `undefined` | Customization of the logo object. |
-| `items` | `NavbarItem[]` | `[]` | A list of navbar items. See specification below. |
-| `hideOnScroll` | `boolean` | `false` | Whether the navbar is hidden when the user scrolls down. |
-| `style` | <code>'primary' \| 'dark'</code> | Same as theme | Sets the navbar style, ignoring the dark/light theme. |
+| Название       | Type                      | По-умолчанию  | Описание                                                 |
+| -------------- | ------------------------- | ------------- | -------------------------------------------------------- |
+| `title`        | `string`                  | `undefined`   | Title for the navbar.                                    |
+| `logo`         | _See below_               | `undefined`   | Customization of the logo object.                        |
+| `items`        | `NavbarItem[]`            | `[]`          | A list of navbar items. See specification below.         |
+| `hideOnScroll` | `boolean`                 | `false`       | Whether the navbar is hidden when the user scrolls down. |
+| `style`        | <code>'primary' \| 'dark'</code> | Same as theme | Sets the navbar style, ignoring the dark/light theme.    |
 
+```mdx-code-block
 </APITable>
+```
 
 ### Navbar logo {#navbar-logo}
 
@@ -166,19 +186,25 @@ To improve dark mode support, you can also set a different logo for this mode.
 
 Accepted fields:
 
+```mdx-code-block
 <APITable name="navbar-logo">
+```
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `alt` | `string` | `undefined` | Alt tag for the logo image. |
-| `src` | `string` | **Required** | URL to the logo image. Base URL is appended by default. |
-| `srcDark` | `string` | `logo.src` | An alternative image URL to use in dark mode. |
-| `href` | `string` | `siteConfig.baseUrl` | Link to navigate to when the logo is clicked. |
-| `width` | <code>string \| number</code> | `undefined` | Specifies the `width` attribute. |
-| `height` | <code>string \| number</code> | `undefined` | Specifies the `height` attribute. |
-| `target` | `string` | Calculated based on `href` (external links will open in a new tab, all others in the current one). | The `target` attribute of the link; controls whether the link is opened in a new tab, the current one, or otherwise. |
+| Название    | Type                      | По-умолчанию                                                                                       | Описание                                                                                                             |
+| ----------- | ------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `alt`       | `string`                  | `undefined`                                                                                        | Alt tag for the logo image.                                                                                          |
+| `src`       | `string`                  | **Required**                                                                                       | URL to the logo image. Base URL is appended by default.                                                              |
+| `srcDark`   | `string`                  | `logo.src`                                                                                         | An alternative image URL to use in dark mode.                                                                        |
+| `href`      | `string`                  | `siteConfig.baseUrl`                                                                               | Link to navigate to when the logo is clicked.                                                                        |
+| `width`     | <code>string \| number</code> | `undefined`                                                                                        | Specifies the `width` attribute.                                                                                     |
+| `height`    | <code>string \| number</code> | `undefined`                                                                                        | Specifies the `height` attribute.                                                                                    |
+| `target`    | `string`                  | Calculated based on `href` (external links will open in a new tab, all others in the current one). | The `target` attribute of the link; controls whether the link is opened in a new tab, the current one, or otherwise. |
+| `className` | `string`                  | `undefined`                                                                                        | CSS class applied to the image.                                                                                      |
+| `style`     | `object`                  | `undefined`                                                                                        | CSS inline style object. React/JSX flavor, using camelCase properties.                                               |
 
+```mdx-code-block
 </APITable>
+```
 
 Example configuration:
 
@@ -196,6 +222,8 @@ module.exports = {
         target: '_self',
         width: 32,
         height: 32,
+        className: 'custom-navbar-logo-class',
+        style: {border: 'solid red'},
       },
       // highlight-end
     },
@@ -253,22 +281,26 @@ Outbound (external) links automatically get `target="_blank" rel="noopener noref
 
 Accepted fields:
 
+```mdx-code-block
 <APITable name="navbar-link">
+```
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `type` | `'default'` | Optional | Sets the type of this item to a link. |
-| `label` | `string` | **Required** | The name to be shown for this item. |
-| `html` | `string` | Optional | Same as `label`, but renders pure HTML instead of text content. |
-| `to` | `string` | **Required** | Client-side routing, used for navigating within the website. The baseUrl will be automatically prepended to this value. |
-| `href` | `string` | **Required** | A full-page navigation, used for navigating outside of the website. **Only one of `to` or `href` should be used.** |
-| `prependBaseUrlToHref` | `boolean` | `false` | Prepends the baseUrl to `href` values. |
-| `position` | <code>'left' \| 'right'</code> | `'left'` | The side of the navbar this item should appear on. |
-| `activeBasePath` | `string` | `to` / `href` | To apply the active class styling on all routes starting with this path. This usually isn't necessary. |
-| `activeBaseRegex` | `string` | `undefined` | Alternative to `activeBasePath` if required. |
-| `className` | `string` | `''` | Custom CSS class (for styling any item). |
+| Название               | Type                      | По-умолчанию  | Описание                                                                                                                |
+| ---------------------- | ------------------------- | ------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `type`                 | `'default'`               | Optional      | Sets the type of this item to a link.                                                                                   |
+| `label`                | `string`                  | **Required**  | The name to be shown for this item.                                                                                     |
+| `html`                 | `string`                  | Optional      | Same as `label`, but renders pure HTML instead of text content.                                                         |
+| `to`                   | `string`                  | **Required**  | Client-side routing, used for navigating within the website. The baseUrl will be automatically prepended to this value. |
+| `href`                 | `string`                  | **Required**  | A full-page navigation, used for navigating outside of the website. **Only one of `to` or `href` should be used.**      |
+| `prependBaseUrlToHref` | `boolean`                 | `false`       | Prepends the baseUrl to `href` values.                                                                                  |
+| `position`             | <code>'left' \| 'right'</code> | `'left'`      | The side of the navbar this item should appear on.                                                                      |
+| `activeBasePath`       | `string`                  | `to` / `href` | To apply the active class styling on all routes starting with this path. This usually isn't necessary.                  |
+| `activeBaseRegex`      | `string`                  | `undefined`   | Alternative to `activeBasePath` if required.                                                                            |
+| `className`            | `string`                  | `''`          | Custom CSS class (for styling any item).                                                                                |
 
+```mdx-code-block
 </APITable>
+```
 
 :::note
 
@@ -318,16 +350,20 @@ Note that the dropdown base item is a clickable link as well, so this item can r
 
 Accepted fields:
 
+```mdx-code-block
 <APITable name="navbar-dropdown">
+```
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `type` | `'dropdown'` | Optional | Sets the type of this item to a dropdown. |
-| `label` | `string` | **Required** | The name to be shown for this item. |
-| `items` | <code>[LinkLikeItem](#navbar-dropdown)[]</code> | **Required** | The items to be contained in the dropdown. |
-| `position` | <code>'left' \| 'right'</code> | `'left'` | The side of the navbar this item should appear on. |
+| Название   | Type                      | По-умолчанию | Описание                                           |
+| ---------- | ------------------------- | ------------ | -------------------------------------------------- |
+| `type`     | `'dropdown'`              | Optional     | Sets the type of this item to a dropdown.          |
+| `label`    | `string`                  | **Required** | The name to be shown for this item.                |
+| `items`    | <code>[LinkLikeItem](#navbar-dropdown)[]</code> | **Required** | The items to be contained in the dropdown.         |
+| `position` | <code>'left' \| 'right'</code> | `'left'`     | The side of the navbar this item should appear on. |
 
+```mdx-code-block
 </APITable>
+```
 
 Example configuration:
 
@@ -367,17 +403,21 @@ If you want to link to a specific doc, this special navbar item type will render
 
 Accepted fields:
 
+```mdx-code-block
 <APITable name="navbar-doc-link">
+```
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `type` | `'doc'` | **Required** | Sets the type of this item to a doc link. |
-| `docId` | `string` | **Required** | The ID of the doc that this item links to. |
-| `label` | `string` | `docId` | The name to be shown for this item. |
-| `position` | <code>'left' \| 'right'</code> | `'left'` | The side of the navbar this item should appear on. |
-| `docsPluginId` | `string` | `'default'` | The ID of the docs plugin that the doc belongs to. |
+| Название       | Type                      | По-умолчанию | Описание                                           |
+| -------------- | ------------------------- | ------------ | -------------------------------------------------- |
+| `type`         | `'doc'`                   | **Required** | Sets the type of this item to a doc link.          |
+| `docId`        | `string`                  | **Required** | The ID of the doc that this item links to.         |
+| `label`        | `string`                  | `docId`      | The name to be shown for this item.                |
+| `position`     | <code>'left' \| 'right'</code> | `'left'`     | The side of the navbar this item should appear on. |
+| `docsPluginId` | `string`                  | `'default'`  | The ID of the docs plugin that the doc belongs to. |
 
+```mdx-code-block
 </APITable>
+```
 
 Example configuration:
 
@@ -406,17 +446,21 @@ You can link a navbar item to the first document link (which can be a doc link o
 
 Accepted fields:
 
+```mdx-code-block
 <APITable name="navbar-doc-sidebar">
+```
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `type` | `'docSidebar'` | **Required** | Sets the type of this navbar item to a sidebar's first document. |
-| `sidebarId` | `string` | **Required** | The ID of the sidebar that this item is linked to. |
-| `label` | `string` | First document link's sidebar label | The name to be shown for this item. |
-| `position` | <code>'left' \| 'right'</code> | `'left'` | The side of the navbar this item should appear on. |
-| `docsPluginId` | `string` | `'default'` | The ID of the docs plugin that the sidebar belongs to. |
+| Название       | Type                      | По-умолчанию                        | Описание                                                         |
+| -------------- | ------------------------- | ----------------------------------- | ---------------------------------------------------------------- |
+| `type`         | `'docSidebar'`            | **Required**                        | Sets the type of this navbar item to a sidebar's first document. |
+| `sidebarId`    | `string`                  | **Required**                        | The ID of the sidebar that this item is linked to.               |
+| `label`        | `string`                  | First document link's sidebar label | The name to be shown for this item.                              |
+| `position`     | <code>'left' \| 'right'</code> | `'left'`                            | The side of the navbar this item should appear on.               |
+| `docsPluginId` | `string`                  | `'default'`                         | The ID of the docs plugin that the sidebar belongs to.           |
 
+```mdx-code-block
 </APITable>
+```
 
 :::tip
 
@@ -469,22 +513,26 @@ module.exports = {
 
 If you use docs with versioning, this special navbar item type that will render a dropdown with all your site's available versions.
 
-The user will be able to switch from one version to another, while staying on the same doc (as long as the doc id is constant across versions).
+The user will be able to switch from one version to another, while staying on the same doc (as long as the doc ID is constant across versions).
 
 Accepted fields:
 
+```mdx-code-block
 <APITable name="navbar-docs-version-dropdown">
+```
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `type` | `'docsVersionDropdown'` | **Required** | Sets the type of this item to a docs version dropdown. |
-| `position` | <code>'left' \| 'right'</code> | `'left'` | The side of the navbar this item should appear on. |
-| `dropdownItemsBefore` | <code>[LinkLikeItem](#navbar-dropdown)[]</code> | `[]` | Add additional dropdown items at the beginning of the dropdown. |
-| `dropdownItemsAfter` | <code>[LinkLikeItem](#navbar-dropdown)[]</code> | `[]` | Add additional dropdown items at the end of the dropdown. |
-| `docsPluginId` | `string` | `'default'` | The ID of the docs plugin that the doc versioning belongs to. |
-| `dropdownActiveClassDisabled` | `boolean` | `false` | Do not add the link active class when browsing docs. |
+| Название                      | Type                       | По-умолчанию | Описание                                                        |
+| ----------------------------- | -------------------------- | ------------ | --------------------------------------------------------------- |
+| `type`                        | `'docsVersionDropdown'`    | **Required** | Sets the type of this item to a docs version dropdown.          |
+| `position`                    | <code>'left' \| 'right'</code>  | `'left'`     | The side of the navbar this item should appear on.              |
+| `dropdownItemsBefore`         | <code>[LinkLikeItem](#navbar-dropdown)[]</code> | `[]`         | Add additional dropdown items at the beginning of the dropdown. |
+| `dropdownItemsAfter`          | <code>[LinkLikeItem](#navbar-dropdown)[]</code> | `[]`         | Add additional dropdown items at the end of the dropdown.       |
+| `docsPluginId`                | `string`                   | `'default'`  | The ID of the docs plugin that the doc versioning belongs to.   |
+| `dropdownActiveClassDisabled` | `boolean`                  | `false`      | Do not add the link active class when browsing docs.            |
 
+```mdx-code-block
 </APITable>
+```
 
 Example configuration:
 
@@ -513,17 +561,21 @@ If you use docs with versioning, this special navbar item type will link to the 
 
 Accepted fields:
 
+```mdx-code-block
 <APITable name="navbar-docs-version">
+```
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `type` | `'docsVersion'` | **Required** | Sets the type of this item to a doc version link. |
-| `label` | `string` | The active/latest version label. | The name to be shown for this item. |
-| `to` | `string` | The active/latest version. | The internal link that this item points to. |
-| `position` | <code>'left' \| 'right'</code> | `'left'` | The side of the navbar this item should appear on. |
-| `docsPluginId` | `string` | `'default'` | The ID of the docs plugin that the doc versioning belongs to. |
+| Название       | Type                       | По-умолчанию                     | Описание                                                      |
+| -------------- | -------------------------- | -------------------------------- | ------------------------------------------------------------- |
+| `type`         | `'docsVersion'`            | **Required**                     | Sets the type of this item to a doc version link.             |
+| `label`        | `string`                   | The active/latest version label. | The name to be shown for this item.                           |
+| `to`           | `string`                   | The active/latest version.       | The internal link that this item points to.                   |
+| `position`     | <code>'left' \| 'right'</code> | `'left'`                         | The side of the navbar this item should appear on.            |
+| `docsPluginId` | `string`                   | `'default'`                      | The ID of the docs plugin that the doc versioning belongs to. |
 
+```mdx-code-block
 </APITable>
+```
 
 Example configuration:
 
@@ -554,16 +606,20 @@ The user will be able to switch from one locale to another, while staying on the
 
 Accepted fields:
 
+```mdx-code-block
 <APITable name="navbar-locale-dropdown">
+```
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `type` | `'localeDropdown'` | **Required** | Sets the type of this item to a locale dropdown. |
-| `position` | <code>'left' \| 'right'</code> | `'left'` | The side of the navbar this item should appear on. |
-| `dropdownItemsBefore` | <code>[LinkLikeItem](#navbar-dropdown)[]</code> | `[]` | Add additional dropdown items at the beginning of the dropdown. |
-| `dropdownItemsAfter` | <code>[LinkLikeItem](#navbar-dropdown)[]</code> | `[]` | Add additional dropdown items at the end of the dropdown. |
+| Название              | Type                       | По-умолчанию | Описание                                                        |
+| --------------------- | -------------------------- | ------------ | --------------------------------------------------------------- |
+| `type`                | `'localeDropdown'`         | **Required** | Sets the type of this item to a locale dropdown.                |
+| `position`            | <code>'left' \| 'right'</code> | `'left'`     | The side of the navbar this item should appear on.              |
+| `dropdownItemsBefore` | <code>[LinkLikeItem](#navbar-dropdown)[]</code> | `[]`         | Add additional dropdown items at the beginning of the dropdown. |
+| `dropdownItemsAfter`  | <code>[LinkLikeItem](#navbar-dropdown)[]</code> | `[]`         | Add additional dropdown items at the end of the dropdown.       |
 
+```mdx-code-block
 </APITable>
+```
 
 Example configuration:
 
@@ -596,15 +652,19 @@ If you use the [search](../../search.md), the search bar will be the rightmost e
 
 However, with this special navbar item type, you can change the default location.
 
+```mdx-code-block
 <APITable name="navbar-search">
+```
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `type` | `'search'` | **Required** | Sets the type of this item to a search bar. |
-| `position` | <code>'left' \| 'right'</code> | `'left'` | The side of the navbar this item should appear on. |
-| `className` | `string` | / | Custom CSS class for this navbar item. |
+| Название    | Type                       | По-умолчанию | Описание                                           |
+| ----------- | -------------------------- | ------------ | -------------------------------------------------- |
+| `type`      | `'search'`                 | **Required** | Sets the type of this item to a search bar.        |
+| `position`  | <code>'left' \| 'right'</code> | `'left'`     | The side of the navbar this item should appear on. |
+| `className` | `string`                   | /            | Custom CSS class for this navbar item.             |
 
+```mdx-code-block
 </APITable>
+```
 
 ```js title="docusaurus.config.js"
 module.exports = {
@@ -627,16 +687,20 @@ module.exports = {
 
 You can also render your own HTML markup inside a navbar item using this navbar item type.
 
+```mdx-code-block
 <APITable name="navbar-html">
+```
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `type` | `'html'` | **Required** | Sets the type of this item to a HTML element. |
-| `position` | <code>'left' \| 'right'</code> | `'left'` | The side of the navbar this item should appear on. |
-| `className` | `string` | `''` | Custom CSS class for this navbar item. |
-| `value` | `string` | `''` | Custom HTML to be rendered inside this navbar item. |
+| Название    | Type                       | По-умолчанию | Описание                                            |
+| ----------- | -------------------------- | ------------ | --------------------------------------------------- |
+| `type`      | `'html'`                   | **Required** | Sets the type of this item to a HTML element.       |
+| `position`  | <code>'left' \| 'right'</code> | `'left'`     | The side of the navbar this item should appear on.  |
+| `className` | `string`                   | `''`         | Custom CSS class for this navbar item.              |
+| `value`     | `string`                   | `''`         | Custom HTML to be rendered inside this navbar item. |
 
+```mdx-code-block
 </APITable>
+```
 
 ```js title="docusaurus.config.js"
 module.exports = {
@@ -694,16 +758,20 @@ Docusaurus uses [Prism React Renderer](https://github.com/FormidableLabs/prism-r
 
 Accepted fields:
 
+```mdx-code-block
 <APITable name="codeblock">
+```
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `theme` | `PrismTheme` | `palenight` | The Prism theme to use for light-theme code blocks. |
-| `darkTheme` | `PrismTheme` | `palenight` | The Prism theme to use for dark-theme code blocks. |
-| `defaultLanguage` | `string` | `undefined` | The side of the navbar this item should appear on. |
-| `magicComments` | `MagicCommentConfig[]` | _see below_ | The list of [magic comments](../../guides/markdown-features/markdown-features-code-blocks.mdx#custom-magic-comments). |
+| Название          | Type                   | По-умолчанию | Описание                                                                                                              |
+| ----------------- | ---------------------- | ------------ | --------------------------------------------------------------------------------------------------------------------- |
+| `theme`           | `PrismTheme`           | `palenight`  | The Prism theme to use for light-theme code blocks.                                                                   |
+| `darkTheme`       | `PrismTheme`           | `palenight`  | The Prism theme to use for dark-theme code blocks.                                                                    |
+| `defaultLanguage` | `string`               | `undefined`  | The side of the navbar this item should appear on.                                                                    |
+| `magicComments`   | `MagicCommentConfig[]` | _see below_  | The list of [magic comments](../../guides/markdown-features/markdown-features-code-blocks.mdx#custom-magic-comments). |
 
+```mdx-code-block
 </APITable>
+```
 
 ```ts
 type MagicCommentConfig = {
@@ -771,16 +839,20 @@ You can add logo and a copyright to the footer via `themeConfig.footer`. Logo ca
 
 Accepted fields:
 
+```mdx-code-block
 <APITable name="footer">
+```
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `logo` | `Logo` | `undefined` | Customization of the logo object. See [Navbar logo](#navbar-logo) for details. |
-| `copyright` | `string` | `undefined` | The copyright message to be displayed at the bottom. |
-| `style` | <code>'dark' \| 'light'</code> | `'light'` | The color theme of the footer component. |
-| `links` | <code>(Column \| FooterLink)[]</code> | `[]` | The link groups to be present. |
+| Название    | Type                       | По-умолчанию | Описание                                                                       |
+| ----------- | -------------------------- | ------------ | ------------------------------------------------------------------------------ |
+| `logo`      | `Logo`                     | `undefined`  | Customization of the logo object. See [Navbar logo](#navbar-logo) for details. |
+| `copyright` | `string`                   | `undefined`  | The copyright message to be displayed at the bottom.                           |
+| `style`     | <code>'dark' \| 'light'</code> | `'light'`    | The color theme of the footer component.                                       |
+| `links`     | <code>(Column \| FooterLink)[]</code> | `[]`         | The link groups to be present.                                                 |
 
+```mdx-code-block
 </APITable>
+```
 
 Example configuration:
 
@@ -790,9 +862,9 @@ module.exports = {
     // highlight-start
     footer: {
       logo: {
-        alt: 'Facebook Open Source Logo',
-        src: 'img/oss_logo.png',
-        href: 'https://opensource.facebook.com',
+        alt: 'Meta Open Source Logo',
+        src: 'img/meta_oss_logo.png',
+        href: 'https://opensource.fb.com',
         width: 160,
         height: 51,
       },
@@ -809,27 +881,35 @@ You can add links to the footer via `themeConfig.footer.links`. There are two ty
 
 Multi-column footer links have a `title` and a list of `FooterItem`s for each column.
 
+```mdx-code-block
 <APITable name="footer-links">
+```
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `title` | `string` | `undefined` | Label of the section of these links. |
-| `items` | `FooterItem[]` | `[]` | Links in this section. |
+| Название | Type           | По-умолчанию | Описание                             |
+| -------- | -------------- | ------------ | ------------------------------------ |
+| `title`  | `string`       | `undefined`  | Label of the section of these links. |
+| `items`  | `FooterItem[]` | `[]`         | Links in this section.               |
 
+```mdx-code-block
 </APITable>
+```
 
 Accepted fields of each `FooterItem`:
 
+```mdx-code-block
 <APITable name="footer-items">
+```
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `label` | `string` | **Required** | Text to be displayed for this link. |
-| `to` | `string` | **Required** | Client-side routing, used for navigating within the website. The baseUrl will be automatically prepended to this value. |
-| `href` | `string` | **Required** | A full-page navigation, used for navigating outside of the website. **Only one of `to` or `href` should be used.** |
-| `html` | `string` | `undefined` | Renders the html pass-through instead of a simple link. In case `html` is used, no other options should be provided. |
+| Название | Type     | По-умолчанию | Описание                                                                                                                |
+| -------- | -------- | ------------ | ----------------------------------------------------------------------------------------------------------------------- |
+| `label`  | `string` | **Required** | Text to be displayed for this link.                                                                                     |
+| `to`     | `string` | **Required** | Client-side routing, used for navigating within the website. The baseUrl will be automatically prepended to this value. |
+| `href`   | `string` | **Required** | A full-page navigation, used for navigating outside of the website. **Only one of `to` or `href` should be used.**      |
+| `html`   | `string` | `undefined`  | Renders the HTML pass-through instead of a simple link. In case `html` is used, no other options should be provided.    |
 
+```mdx-code-block
 </APITable>
+```
 
 Example multi-column configuration:
 
@@ -919,14 +999,18 @@ module.exports = {
 
 You can adjust the default table of contents via `themeConfig.tableOfContents`.
 
+```mdx-code-block
 <APITable>
+```
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `minHeadingLevel` | `number` | `2` | The minimum heading level shown in the table of contents. Must be between 2 and 6 and lower or equal to the max value. |
-| `maxHeadingLevel` | `number` | `3` | Max heading level displayed in the TOC. Should be an integer between 2 and 6. |
+| Название          | Type     | По-умолчанию | Описание                                                                                                               |
+| ----------------- | -------- | ------------ | ---------------------------------------------------------------------------------------------------------------------- |
+| `minHeadingLevel` | `number` | `2`          | The minimum heading level shown in the table of contents. Must be between 2 and 6 and lower or equal to the max value. |
+| `maxHeadingLevel` | `number` | `3`          | Max heading level displayed in the TOC. Should be an integer between 2 and 6.                                          |
 
+```mdx-code-block
 </APITable>
+```
 
 Example configuration:
 

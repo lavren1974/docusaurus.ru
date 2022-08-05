@@ -1,18 +1,18 @@
 ---
 sidebar_position: 5
-id: plugin-debug
-title: '📦 plugin-debug'
-slug: '/api/plugins/@docusaurus/plugin-debug'
+slug: /api/plugins/@docusaurus/plugin-debug
 ---
+
+# 📦 plugin-debug
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-<!-- The debug plugin will display useful debug information at [http://localhost:3000/\_\_docusaurus/debug](http://localhost:3000/__docusaurus/debug). -->
+Плагин отладки отображает полезную отладочную информацию на [http://localhost:3000/\_\_docusaurus/debug](http://localhost:3000/__docusaurus/debug).
 
-It is mostly useful for plugin authors, that will be able to inspect more easily the content of the `.docusaurus` folder (like the creates routes), but also be able to inspect data structures that are never written to disk, like the plugin data loaded through the `contentLoaded` lifecycle.
+Как правило, отладочная информация пригодится разработчикам плагинов, которые с лёгкостью смогут посмотреть содержимое директории `.docusaurus` (например, созданные маршруты). Кроме этого, можно будет увидеть данные, которые не записываются в файлы сборки, например, данные плагина, загруженные с помощью хука жизненного цикла `contentLoaded`.
 
 :::info
 
@@ -33,13 +33,13 @@ module.exports = {
 
 :::note
 
-If you report a bug, we will probably ask you to have this plugin turned on in the production, so that we can inspect your deployment config more easily.
+Когда вы будете сообщать об ошибках в Docusaurus, мы может быть попросим вас активировать этот плагин в продакшен-сборке вашего сайта, чтобы упростить нам изучение его конфигурации.
 
-<!-- If you don't have any sensitive information, you can keep it on in production [like we do](/__docusaurus/debug). -->
+If you don't have any sensitive information, you can keep it on in production [like we do](/__docusaurus/debug).
 
 :::
 
-## Installation {#installation}
+## Установка {#installation}
 
 ```bash npm2yarn
 npm install --save @docusaurus/plugin-debug
@@ -53,7 +53,7 @@ You can configure this plugin through the preset options.
 
 :::
 
-## Configuration {#configuration}
+## Конфигурация {#configuration}
 
 This plugin currently has no options.
 
@@ -67,8 +67,10 @@ Most Docusaurus users configure this plugin through the preset options.
 
 :::
 
-<Tabs>
-<TabItem value="Preset Options">
+```mdx-code-block
+<Tabs groupId="api-config-ex">
+<TabItem value="preset" label="Preset options">
+```
 
 If you use a preset, configure this plugin through the [preset options](../../using-plugins.md#docusauruspreset-classic):
 
@@ -86,8 +88,10 @@ module.exports = {
 };
 ```
 
+```mdx-code-block
 </TabItem>
-<TabItem value="Plugin Options">
+<TabItem value="plugin" label="Plugin Options">
+```
 
 If you are using a standalone plugin, provide options directly to the plugin:
 
@@ -98,5 +102,7 @@ module.exports = {
 };
 ```
 
+```mdx-code-block
 </TabItem>
 </Tabs>
+```

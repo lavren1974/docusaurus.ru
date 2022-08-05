@@ -1,13 +1,13 @@
 ---
 sidebar_position: 1
-id: eslint-plugin
-title: '📦 eslint-plugin'
-slug: '/api/misc/@docusaurus/eslint-plugin'
+slug: /api/misc/@docusaurus/eslint-plugin
 ---
+
+# 📦 eslint-plugin
 
 [ESLint](https://eslint.org/) is a tool that statically analyzes your code and reports problems or suggests best practices through editor hints and command line. Docusaurus provides an ESLint plugin to enforce best Docusaurus practices.
 
-## Installation
+## Установка
 
 ```bash npm2yarn
 npm install --save-dev @docusaurus/eslint-plugin
@@ -49,10 +49,10 @@ Each config contains a set of rules. For more fine-grained control, you can also
 
 ## Supported Rules
 
-| Name | Description |  |
-| --- | --- | --- |
-| [`@docusaurus/no-untranslated-text`](./no-untranslated-text.md) | Enforce text labels in JSX to be wrapped by translate calls |  |
-| [`@docusaurus/string-literal-i18n-messages`](./string-literal-i18n-messages.md) | Enforce translate APIs to be called on plain text labels | ✅ |
+| Название                                                                        | Описание                                                    |   |
+| ------------------------------------------------------------------------------- | ----------------------------------------------------------- | - |
+| [`@docusaurus/no-untranslated-text`](./no-untranslated-text.md)                 | Enforce text labels in JSX to be wrapped by translate calls |   |
+| [`@docusaurus/string-literal-i18n-messages`](./string-literal-i18n-messages.md) | Enforce translate APIs to be called on plain text labels    | ✅ |
 
 ✅ = recommended
 

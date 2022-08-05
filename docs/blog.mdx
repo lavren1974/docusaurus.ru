@@ -1,24 +1,25 @@
 ---
-id: blog
-title: Blog
+description: Быстро разверните полнофункциональный блог с Docusaurus.
 ---
+
+# Блог
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-The blog feature enables you to deploy in no time a full-featured blog.
+Функция блога позволяет быстро развернуть полнофункциональный блог.
 
 :::info
 
-Check the [Blog Plugin API Reference documentation](./api/plugins/plugin-content-blog.md) for an exhaustive list of options.
+Перейдите в [API-справочник блога](./api/plugins/plugin-content-blog.md), чтобы узнать список доступных параметров.
 
 :::
 
-## Initial setup {#initial-setup}
+## Начальная настройка {#initial-setup}
 
-To set up your site's blog, start by creating a `blog` directory.
+Чтобы настроить блог на своем сайте, начните с создания директории `blog`.
 
-Then, add an item link to your blog within `docusaurus.config.js`:
+Затем добавьте в шапку страницы ссылку на блог, используя файл с настройками `siteConfig.js`:
 
 ```js title="docusaurus.config.js"
 module.exports = {
@@ -28,31 +29,31 @@ module.exports = {
       items: [
         // ...
         // highlight-next-line
-        {to: 'blog', label: 'Blog', position: 'left'}, // or position: 'right'
+        {to: 'blog', label: 'Blog', position: 'left'}, // или position: 'right'
       ],
     },
   },
 };
 ```
 
-## Adding posts {#adding-posts}
+## Добавление постов {#adding-posts}
 
-To publish in the blog, create a Markdown file within the blog directory.
+Чтобы опубликовать в блоге пост, создайте файл Markdown в директории блога.
 
-For example, create a file at `website/blog/2019-09-05-hello-docusaurus-v2.md`:
+Например, создайте файл по адресу `website/blog/2019-09-05-hello-docusaurus-v2.md`:
 
 ```md title="website/blog/2019-09-05-hello-docusaurus-v2.md"
 ---
-title: Welcome Docusaurus v2
-description: This is my first post on Docusaurus 2.
+title: Добро пожаловать в Docusaurus v2
+description: Это мой первый пост на Docusaurus 2.
 slug: welcome-docusaurus-v2
 authors:
   - name: Joel Marcey
-    title: Co-creator of Docusaurus 1
+    title: Соавтор Docusaurus 1
     url: https://github.com/JoelMarcey
     image_url: https://github.com/JoelMarcey.png
   - name: Sébastien Lorber
-    title: Docusaurus maintainer
+    title: Docusaurus мейнтейнер
     url: https://sebastienlorber.com
     image_url: https://github.com/slorber.png
 tags: [hello, docusaurus-v2]
@@ -60,42 +61,42 @@ image: https://i.imgur.com/mErPwqL.png
 hide_table_of_contents: false
 ---
 
-Welcome to this blog. This blog is created with [**Docusaurus 2**](https://docusaurus.io/).
+Добро пожаловать в этот блог. Этот блог создан с помощью [**Docusaurus 2**](https://docusaurus.io/).
 
 <!--truncate-->
 
-This is my first post on Docusaurus 2.
+Это мой первый пост на Docusaurus 2.
 
-A whole bunch of exploration to follow.
+Еще многое нужно исследовать.
 ```
 
-The front matter is useful to add more metadata to your blog post, for example, author information, but Docusaurus will be able to infer all necessary metadata without the front matter. For all possible fields, see [the API documentation](api/plugins/plugin-content-blog.md#markdown-front-matter).
+[Front matter](./guides/markdown-features/markdown-features-intro.mdx#front-matter) полезна для добавления дополнительных метаданных в посты вашего блога, например информации об авторе. Но Docusaurus сможет вывести все необходимые метаданные и без Front matter. Обо всех доступных полях читайте в [документации по API](api/plugins/plugin-content-blog.md#markdown-front-matter).
 
-## Blog list {#blog-list}
+## Список постов {#blog-list}
 
-The blog's index page (by default, it is at `/blog`) is the _blog list page_, where all blog posts are collectively displayed.
+Главная страница блога (по умолчанию доступна по пути `/blog`) является _страницей списка блога_, на которой собраны разные посты блога.
 
-Use the `<!--truncate-->` marker in your blog post to represent what will be shown as the summary when viewing all published blog posts. Anything above `<!--truncate-->` will be part of the summary. For example:
+Используйте специальный комментарий `<!--truncate-->` в посте, чтобы ограничить часть, которая будет отображена на странице списка. Все, что размещено до `<!--truncate-->`, станет частью резюме. Например:
 
 ```md
 ---
-title: Truncation Example
+title: Пример обрезки
 ---
 
-All these will be part of the blog post summary.
+Все это будет анонсом поста.
 
-Even this.
+Даже это.
 
 <!--truncate-->
 
-But anything from here on down will not be.
+Но ничего ниже, начиная с этого предложения не будет в анонсе.
 
-Not this.
+И не это.
 
-Or this.
+Или это.
 ```
 
-By default, 10 posts are shown on each blog list page, but you can control pagination with the `postsPerPage` option in the plugin configuration. If you set `postsPerPage: 'ALL'`, pagination will be disabled and all posts will be displayed on the first page. You can also add a meta description to the blog list page for better SEO:
+По умолчанию на каждой странице списка отображается 10 постов, но при помощи опци `postsPerPage` в конфигурации плагина вы можете изменить это число. Если вы установите `postsPerPage: 'Все'`, пагинация будет отключена и все записи будут отображаться на первой странице. Вы также можете добавить meta description на страницу со списком блогов для улучшения SEO:
 
 ```js title="docusaurus.config.js"
 module.exports = {
@@ -106,8 +107,8 @@ module.exports = {
       {
         blog: {
           // highlight-start
-          blogTitle: 'Docusaurus blog!',
-          blogDescription: 'A Docusaurus powered blog!',
+          blogTitle: 'Блог Docusaurus!',
+          blogDescription: 'Блог на сайте Docusaurus!',
           postsPerPage: 'ALL',
           // highlight-end
         },
@@ -117,11 +118,11 @@ module.exports = {
 };
 ```
 
-## Blog sidebar {#blog-sidebar}
+## Боковая панель блога {#blog-sidebar}
 
-The blog sidebar displays recent blog posts. The default number of items shown is 5, but you can customize with the `blogSidebarCount` option in the plugin configuration. By setting `blogSidebarCount: 0`, the sidebar will be completely disabled, with the container removed as well. This will increase the width of the main container. Specially, if you have set `blogSidebarCount: 'ALL'`, _all_ posts will be displayed.
+На боковой панели отображаются последние записи в блоге. Количество отображаемых элементов по умолчанию равно 5, но вы можете настроить с помощью опции `blogSidebarCount` в конфигурации плагина. Если вы укажете параметр `blogSidebarCount: 0`, боковая панель будет полностью отключена, а контейнер — удален. Это увеличит ширину основного контейнера. Также если вы укажете параметр `blogSidebarCount: 'ALL'`, отобразятся _все_ записи.
 
-You can also alter the sidebar heading text with the `blogSidebarTitle` option. For example, if you have set `blogSidebarCount: 'ALL'`, instead of the default "Recent posts", you may rather make it say "All posts":
+Вы также можете изменить текст заголовка боковой панели, используя параметр `blogSidebarTitle`. Например, если вы установили `blogSidebarCount: 'ALL'`, вместо значения по умолчанию "Последние сообщения" вы можете указать "Все сообщения":
 
 ```js title="docusaurus.config.js"
 module.exports = {
@@ -141,35 +142,35 @@ module.exports = {
 };
 ```
 
-## Blog post date {#blog-post-date}
+## Дата публикации поста {#blog-post-date}
 
-Docusaurus will extract a `YYYY-MM-DD` date from a file/folder name such as `YYYY-MM-DD-my-blog-post-title.md`.
+Docusaurus извлечет дату в формате `YYYYY-MM-DD` из имени файла например `YYYY-MM-DD-my-blog-post-title.md`.
 
 <details>
-<summary>Example supported patterns</summary>
+<summary>Пример поддерживаемых шаблонов</summary>
 
-| Pattern | Example |
-| --- | --- |
-| Single file | `2021-05-28-my-blog-post-title.md` |
-| MDX file | `2021-05-28-my-blog-post-title.mdx` |
-| Single folder + `index.md` | `2021-05-28-my-blog-post-title/index.md` |
-| Folder named by date | `2021-05-28/my-blog-post-title.md` |
-| Nested folders by date | `2021/05/28/my-blog-post-title.md` |
-| Partially nested folders by date | `2021/05-28-my-blog-post-title.md` |
-| Nested folders + `index.md` | `2021/05/28/my-blog-post-title/index.md` |
-| Date in the middle of path | `category/2021/05-28-my-blog-post-title.md` |
+| Шаблон                           | Пример                                      |
+| -------------------------------- | ------------------------------------------- |
+| Отдельный файл                   | `2021-05-28-my-blog-post-title.md`          |
+| MDX файл                         | `2021-05-28-my-blog-post-title.mdx`         |
+| Отдельная папка + `index.md`     | `2021-05-28-my-blog-post-title/index.md`    |
+| Папка с датой                    | `2021-05-28/my-blog-post-title.md`          |
+| Вложенные папки с датой          | `2021/05/28/my-blog-post-title.md`          |
+| Частично вложенные папки с датой | `2021/05-28-my-blog-post-title.md`          |
+| Вложенные папки + `index.md`     | `2021/05/28/my-blog-post-title/index.md`    |
+| Дата в середине пути             | `category/2021/05-28-my-blog-post-title.md` |
 
-The date will be excised from the path and appended to the beginning of the URL slug.
+Дата будет удалена из пути и добавлена к началу URL.
 
 </details>
 
 :::tip
 
-Using a folder can be convenient to co-locate blog post images alongside the Markdown file.
+Файлы блога удобно хранить по директориям, тогда изображения постов будут рядом с соответствующими Markdown-файлами.
 
 :::
 
-This naming convention is optional, and you can also provide the date as front matter. Since the front matter follows YAML syntax where the datetime notation is supported, you can use front matter if you need more fine-grained publish dates. For example, if you have multiple posts published on the same day, you can order them according to the time of the day:
+Это соглашение об именах является необязательным, и вы также можете указать дату во front matter. Поскольку front matter следует синтаксису YAML, где поддерживается нотация даты и времени, вы можете использовать front matter если вам нужны более подробные даты публикации. Например, если у вас есть несколько постов, опубликованных в один и тот же день, вы можете упорядочить их по времени суток:
 
 ```md title="earlier-post.md"
 ---
@@ -183,65 +184,69 @@ date: 2021-09-13T18:00
 ---
 ```
 
-## Blog post authors {#blog-post-authors}
+## Авторы постов {#blog-post-authors}
 
-Use the `authors` front matter field to declare blog post authors. An author should have at least a `name` or an `image_url`. Docusaurus uses information like `url`, `email`, and `title`, but any other information is allowed.
+Используйте поле `authors`, чтобы перечислить авторов поста. У автора должно быть как минимум `name` или `image_url`. Docusaurus по умолчанию использует параметры `url`, `email` и `title`, но можно использовать любые другие параметры.
 
-### Inline authors {#inline-authors}
+### Встроенные авторы {#inline-authors}
 
-Blog post authors can be declared directly inside the front matter:
+Авторы постов в блоге могут быть перечислены непосредственно внутри front matter:
 
-````mdx-code-block
+```mdx-code-block
 <Tabs groupId="author-front-matter">
-  <TabItem value="single" label="Single author">
+<TabItem value="single" label="Single author">
+```
 
 ```md title="my-blog-post.md"
 ---
 authors:
   name: Joel Marcey
-  title: Co-creator of Docusaurus 1
+  title: Соавтор Docusaurus 1
   url: https://github.com/JoelMarcey
   image_url: https://github.com/JoelMarcey.png
   email: jimarcey@gmail.com
 ---
 ```
 
-  </TabItem>
-  <TabItem value="multiple" label="Multiple authors">
+```mdx-code-block
+</TabItem>
+<TabItem value="multiple" label="Multiple authors">
+```
 
 ```md title="my-blog-post.md"
 ---
 authors:
   - name: Joel Marcey
-    title: Co-creator of Docusaurus 1
+    title: Соавтор Docusaurus 1
     url: https://github.com/JoelMarcey
     image_url: https://github.com/JoelMarcey.png
     email: jimarcey@gmail.com
   - name: Sébastien Lorber
-    title: Docusaurus maintainer
+    title: Docusaurus мейнтейнер
     url: https://sebastienlorber.com
     image_url: https://github.com/slorber.png
 ---
 ```
 
-  </TabItem>
+```mdx-code-block
+</TabItem>
 </Tabs>
-````
+```
 
 :::tip
 
-This option works best to get started, or for casual, irregular authors.
+Этот вариант лучше всего подходит для начала или для нерегулярных авторов.
 
 :::
 
 :::info
 
-Prefer using the `authors` front matter, but the legacy `author_*` front matter remains supported:
+Предпочтительно использовать параметр `authors`, но устаревший параметр `author_*` по-прежнему поддерживается:
 
 ```md title="my-blog-post.md"
 ---
 author: Joel Marcey
-author_title: Co-creator of Docusaurus 1
+author_title: Соавтор Docusaurus 1
 author_url: https://github.com/JoelMarcey
 author_image_url: https://github.com/JoelMarcey.png
 ---
@@ -249,38 +254,39 @@ author_image_url: https://github.com/JoelMarcey.png
 
 :::
 
-### Global authors {#global-authors}
+### Глобальные авторы {#global-authors}
 
-For regular blog post authors, it can be tedious to maintain authors' information inlined in each blog post.
+Для обычных авторов постов может быть утомительно поддерживать информацию об авторах, встроенных в каждый пост.
 
-It is possible to declare those authors globally in a configuration file:
+Этих авторов можно объявить глобально в файле конфигурации:
 
 ```yml title="website/blog/authors.yml"
 jmarcey:
   name: Joel Marcey
-  title: Co-creator of Docusaurus 1
+  title: Соавтор Docusaurus 1
   url: https://github.com/JoelMarcey
   image_url: https://github.com/JoelMarcey.png
   email: jimarcey@gmail.com
 
 slorber:
   name: Sébastien Lorber
-  title: Docusaurus maintainer
+  title: Docusaurus мейнтейнер
   url: https://sebastienlorber.com
   image_url: https://github.com/slorber.png
 ```
 
 :::tip
 
-Use the `authorsMapPath` plugin option to configure the path. JSON is also supported.
+Используйте параметр `authorsMapPath` плагина для настройки пути. JSON формат также поддерживается.
 
 :::
 
-In blog posts front matter, you can reference the authors declared in the global configuration file:
+Во front matter части постов вы можете ссылаться на авторов, объявленных в глобальном файле конфигурации:
 
-````mdx-code-block
+```mdx-code-block
 <Tabs groupId="author-front-matter">
-  <TabItem value="single" label="Single author">
+<TabItem value="single" label="Single author">
+```
 
 ```md title="my-blog-post.md"
 ---
@@ -288,8 +294,10 @@ authors: jmarcey
 ---
 ```
 
-  </TabItem>
-  <TabItem value="multiple" label="Multiple authors">
+```mdx-code-block
+</TabItem>
+<TabItem value="multiple" label="Multiple authors">
+```
 
 ```md title="my-blog-post.md"
 ---
@@ -297,26 +305,27 @@ authors: [jmarcey, slorber]
 ---
 ```
 
-  </TabItem>
+```mdx-code-block
+</TabItem>
 </Tabs>
-````
+```
 
 :::info
 
-The `authors` system is very flexible and can suit more advanced use-case:
+Система `authors` очень гибкая и подходит для более продвинутых вариантов использования:
 
 <details>
-  <summary>Mix inline authors and global authors</summary>
+  <summary>Смешивание встроенных и глобальных авторов</summary>
 
-You can use global authors most of the time, and still use inline authors:
+Вы можете использовать глобальных авторов большую часть времени и по-прежнему использовать встроенных авторов:
 
 ```md title="my-blog-post.md"
 ---
 authors:
   - jmarcey
   - slorber
-  - name: Inline Author name
-    title: Inline Author Title
+  - name: Имя встроенного автора
+    title: Заголовок встроенного автора
     url: https://github.com/inlineAuthor
     image_url: https://github.com/inlineAuthor
 ---
@@ -325,26 +334,26 @@ authors:
 </details>
 
 <details>
-  <summary>Local override of global authors</summary>
+  <summary>Локальное переопределение глобальных авторов</summary>
 
-You can customize the global author's data on per-blog-post basis:
+Вы можете изменить глобальные данные автора в любом посте:
 
 ```md title="my-blog-post.md"
 ---
 authors:
   - key: jmarcey
-    title: Joel Marcey's new title
+    title: Новый заголовок для Joel Marcey
   - key: slorber
-    name: Sébastien Lorber's new name
+    name: Новое имя для Sébastien Lorber
 ---
 ```
 
 </details>
 
 <details>
-  <summary>Localize the author's configuration file</summary>
+  <summary>Локализация конфигурационного файла автора</summary>
 
-The configuration file can be localized, just create a localized copy of it at:
+Файл конфигурации можно локализовать, просто создайте его локализованную копию по адресу:
 
 ```bash
 website/i18n/[locale]/docusaurus-plugin-content-blog/authors.yml
@@ -354,15 +363,17 @@ website/i18n/[locale]/docusaurus-plugin-content-blog/authors.yml
 
 :::
 
-:::caution Feed generation
+Автор, описанный либо во front matter, либо через карту авторов, должен иметь имя или аватар, или и то, и другое. Если у всех авторов поста нет имен, Docusaurus будет компактно отображать их аватары. См. [эту тестовую публикацию](/tests/blog/2022/01/20/image-only-authors), чтобы понять, как это выглядит.
 
-[RSS feeds](#feed) require the author's email to be set for the author to appear in the feed.
+:::caution Генерация фида
+
+Для [RSS фидов](#feed) необходимо указать адрес электронной почты автора, чтобы автор отображался в фиде.
 
 :::
 
-## Reading time {#reading-time}
+## Время на прочтение {#reading-time}
 
-Docusaurus generates a reading time estimation for each blog post based on word count. We provide an option to customize this.
+Docusaurus оценивает время чтения каждого поста в блоге на основе количества слов. Мы предоставляем возможность настроить это.
 
 ```js title="docusaurus.config.js"
 module.exports = {
@@ -372,7 +383,7 @@ module.exports = {
       {
         blog: {
           // highlight-start
-          showReadingTime: true, // When set to false, the "x min read" won't be shown
+          showReadingTime: true, // Если установлено значение false, «x min read» не будет отображаться.
           readingTime: ({content, frontMatter, defaultReadingTime}) =>
             defaultReadingTime({content, options: {wordsPerMinute: 300}}),
           // highlight-end
@@ -383,19 +394,20 @@ module.exports = {
 };
 ```
 
-The `readingTime` callback receives three parameters: the blog content text as a string, front matter as a record of string keys and their values, and the default reading time function. It returns a number (reading time in minutes) or `undefined` (disable reading time for this page).
+Коллбек `readingTime` получает три параметра: текст поста в виде строки, front matter в виде строковых ключей и их значений, и дефолтную функцию времени чтения. Он возвращает число (время чтения в минутах) или `undefined` (отключить время чтения для этой страницы).
 
-The default reading time is able to accept additional options: `wordsPerMinute` as a number (default: 300), and `wordBound` as a function from string to boolean. If the string passed to `wordBound` should be a word bound (spaces, tabs, and line breaks by default), the function should return `true`.
+Время чтения по умолчанию может принимать дополнительные параметры: `wordsPerMinute` в виде числа (по умолчанию: 300) и `wordBound` в виде функции преобразования строки в логическое значение. Если строка, переданная в `wordBound`, должна быть связана со словом (пробелы, табуляция и разрывы строк по умолчанию), функция должна вернуть `true`.
 
 :::tip
 
-Use the callback for all your customization needs:
+Используйте коллбек для всех ваших потребностей настройки:
 
-````mdx-code-block
+```mdx-code-block
 <Tabs>
 <TabItem value="disable-per-post" label="Per-post disabling">
+```
 
-**Disable reading time on one page:**
+**Отключение времени чтения на одной странице:**
 
 ```js title="docusaurus.config.js"
 module.exports = {
@@ -407,7 +419,9 @@ module.exports = {
           showReadingTime: true,
           // highlight-start
           readingTime: ({content, frontMatter, defaultReadingTime}) =>
-            frontMatter.hide_reading_time ? undefined : defaultReadingTime({content}),
+            frontMatter.hide_reading_time
+              ? undefined
+              : defaultReadingTime({content}),
           // highlight-end
         },
       },
@@ -416,20 +430,22 @@ module.exports = {
 };
 ```
 
-Usage:
+Использование:
 
 ```md "my-blog-post.md"
 ---
 hide_reading_time: true
 ---
 
-This page will no longer display the reading time stats!
+На этой странице больше не будет отображаться время на прочтение!
 ```
 
+```mdx-code-block
 </TabItem>
 <TabItem value="passing-options" label="Passing options">
+```
 
-**Pass options to the default reading time function:**
+**Передача параметров дефолтной функции времени чтения:**
 
 ```js title="docusaurus.config.js"
 module.exports = {
@@ -449,10 +465,12 @@ module.exports = {
 };
 ```
 
+```mdx-code-block
 </TabItem>
 <TabItem value="using-custom-algo" label="Using custom algorithms">
+```
 
-**Use a custom implementation of reading time:**
+**Использование собственной реализации времени чтения:**
 
 ```js title="docusaurus.config.js"
 const myReadingTime = require('./myReadingTime');
@@ -472,15 +490,16 @@ module.exports = {
 };
 ```
 
+```mdx-code-block
 </TabItem>
 </Tabs>
-````
+```
 
 :::
 
-## Feed {#feed}
+## Лента новостей {#feed}
 
-You can generate RSS / Atom / JSON feed by passing `feedOptions`. By default, RSS and Atom feeds are generated. To disable feed generation, set `feedOptions.type` to `null`.
+Вы можете создать ленту RSS / Atom / JSON, передав `feedOptions`. RSS и Atom каналы генерируются по-умолчанию. Чтобы отлючить их, установите `feedOptions.type` в `null`.
 
 ```ts
 type FeedType = 'rss' | 'atom' | 'json';
@@ -491,12 +510,12 @@ type BlogOptions = {
     title?: string;
     description?: string;
     copyright: string;
-    language?: string; // possible values: http://www.w3.org/TR/REC-html40/struct/dirlang.html#langcodes
+    language?: string; // возможные значения: http://www.w3.org/TR/REC-html40/struct/dirlang.html#langcodes
   };
 };
 ```
 
-Example usage:
+Пример использования:
 
 ```js title="docusaurus.config.js"
 module.exports = {
@@ -519,7 +538,7 @@ module.exports = {
 };
 ```
 
-The feeds can be found at:
+Эти фиды можно найти здесь:
 
 <Tabs>
 <TabItem value="RSS">
@@ -545,11 +564,11 @@ https://example.com/blog/feed.json
 </TabItem>
 </Tabs>
 
-## Advanced topics {#advanced-topics}
+## Дополнительные возможности {#advanced-topics}
 
-### Blog-only mode {#blog-only-mode}
+### Режим "Только блог" {#blog-only-mode}
 
-You can run your Docusaurus 2 site without a dedicated landing page and instead have your blog's post list page as the index page. Set the `routeBasePath` to be `'/'` to serve the blog through the root route `example.com/` instead of the subroute `example.com/blog/`.
+Вы можете запустить свой сайт на Docusaurus 2 без специальной посадочной страницы и вместо этого использовать страницу списка постов блога в качестве индексной страницы. Задайте для `routeBasePath` значение `'/'`, чтобы блог отображался в корне сайта `example.com/` вместо того, чтобы находиться в папке `example.com/blog/`.
 
 ```js title="docusaurus.config.js"
 module.exports = {
@@ -559,11 +578,11 @@ module.exports = {
       '@docusaurus/preset-classic',
       {
         // highlight-next-line
-        docs: false, // Optional: disable the docs plugin
+        docs: false, // Опционально: отключить плагин документации
         blog: {
           // highlight-next-line
-          routeBasePath: '/', // Serve the blog at the site's root
-          /* other blog options */
+          routeBasePath: '/', // Показывать блог в корне сайта
+          /* остальные опция блога */
         },
       },
     ],
@@ -573,23 +592,23 @@ module.exports = {
 
 :::caution
 
-Don't forget to delete the existing homepage at `./src/pages/index.js` or else there will be two files mapping to the same route!
+Не забудьте удалить существующую домашнюю страницу по адресу `./src/pages/index.js`, иначе два файла будут сопоставлены с одним маршрутом!
 
 :::
 
 :::tip
 
-There's also a "Docs-only mode" for those who only want to use the docs. Read [Docs-only mode](./guides/docs/docs-introduction.md) for detailed instructions or a more elaborate explanation of `routeBasePath`.
+Существует также «режим только документации» для тех, кто хочет использовать только документацию. Прочтите [Режим только документации](./guides/docs/docs-introduction.md), чтобы найти подробные инструкции или более подробное объяснение `routeBasePath`.
 
 :::
 
-### Multiple blogs {#multiple-blogs}
+### Множество блогов {#multiple-blogs}
 
-By default, the classic theme assumes only one blog per website and hence includes only one instance of the blog plugin. If you would like to have multiple blogs on a single website, it's possible too! You can add another blog by specifying another blog plugin in the `plugins` option for `docusaurus.config.js`.
+По умолчанию классическая тема предполагает наличие только одного блога на веб-сайте и, следовательно, включает только один экземпляр плагина блога. Если вы хотите иметь несколько блогов на одном сайте, это тоже возможно! Вы можете добавить еще один блог, указав в параметре `plugins` другой подключаемый модуль блога для `docusaurus.config.js`.
 
-Set the `routeBasePath` to the URL route that you want your second blog to be accessed on. Note that the `routeBasePath` here has to be different from the first blog or else there could be a collision of paths! Also, set `path` to the path to the directory containing your second blog's entries.
+Задайте для `routeBasePath` URL, по которому вы хотите получить доступ к своему второму блогу. Обратите внимание, что `routeBasePath` в этом случае должен отличаться от первого блога, иначе может произойти конфликт путей! И ещё, задайте для `path` путь к каталогу, содержащему записи вашего второго блога.
 
-As documented for [multi-instance plugins](./using-plugins.md#multi-instance-plugins-and-plugin-ids), you need to assign a unique id to the plugins.
+Согласно документации для [multi-instance plugins](./using-plugins.md#multi-instance-plugins-and-plugin-ids), вам необходимо присвоить плагинам уникальный идентификатор.
 
 ```js title="docusaurus.config.js"
 module.exports = {
@@ -599,16 +618,16 @@ module.exports = {
       '@docusaurus/plugin-content-blog',
       {
         /**
-         * Required for any multi-instance plugin
+         * Требуется для всех многоэкземплярных плагинов
          */
         id: 'second-blog',
         /**
-         * URL route for the blog section of your site.
-         * *DO NOT* include a trailing slash.
+         * URL для раздела блога вашего сайта.
+         * *НЕ* используйте слэш в конце.
          */
         routeBasePath: 'my-second-blog',
         /**
-         * Path to data on filesystem relative to site dir.
+         * Путь к данным в файловой системе относительно каталога сайта.
          */
         path: './my-second-blog',
       },
@@ -617,4 +636,4 @@ module.exports = {
 };
 ```
 
-
+В качестве примера мы размещаем второй блог [здесь](/tests/blog).

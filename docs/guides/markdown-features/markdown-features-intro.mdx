@@ -1,28 +1,28 @@
 ---
 id: introduction
-title: Markdown Features
-sidebar_label: Introduction
-description: Docusaurus uses MDX. Find out more about Docusaurus-specific features when writing Markdown.
+description: Docusaurus использует MDX. Узнайте больше об особенностях Markdown в Docusaurus.
 slug: /markdown-features
 ---
 
+# Особенности Markdown
+
 import BrowserWindow from '@site/src/components/BrowserWindow';
 
-Documentation is one of your product's interfaces with your users. A well-written and well-organized set of docs helps your users understand your product quickly. Our aligned goal here is to help your users find and understand the information they need, as quickly as possible.
+Документация — это один из интерфейсов вашего продукта для пользователей. Понятно написанная и хорошо организованная документация поможет вашим пользователям быстро понять ваш продукт. Наша совместная цель — помочь вашим пользователям найти и понять необходимую им информацию как можно быстрее.
 
-Docusaurus 2 uses modern tooling to help you compose your interactive documentation with ease. You may embed React components, or build live coding blocks where your users may play with the code on the spot. Start sharing your eureka moments with the code your audience cannot walk away from. It is perhaps the most effective way of attracting potential users.
+Docusaurus 2 использует современные инструменты, которые помогают легко создавать интерактивную документацию. Вы можете встраивать React компоненты или создавать блоки кода, чтобы ваши пользователи смогли играть с кодом прямо на странице. Начните делиться своими моментами озарения в виде кода, мимо которого не сможет пройти ваша аудитория. Пожалуй, это самый эффективный способ привлечения потенциальных пользователей.
 
 :::important
 
-This section assumes you are using the official Docusaurus content plugins.
+В этом разделе предполагается, что вы используете официальные плагины Docusaurus.
 
 :::
 
-## Standard features {#standard-features}
+## Стандартные возможности {#standard-features}
 
-Markdown is a syntax that enables you to write formatted content in a readable syntax.
+Markdown — это синтаксис, который позволяет писать форматированное содержимое в удобочитаемом синтаксисе.
 
-We use [MDX](https://mdxjs.com/) as the parsing engine, which can do much more than just parsing [standard Markdown syntax](https://daringfireball.net/projects/markdown/syntax), like rendering React components inside your documents as well.
+Мы используем [MDX](https://mdxjs.com/) в качестве движка парсинга, который умеет не просто парсить [стандартный Markdown синтаксис](https://daringfireball.net/projects/markdown/syntax), а может делать гораздо больше, например, рендерить React компоненты внутри страниц документации.
 
 ```md
 ### My Doc Section
@@ -46,49 +46,65 @@ Hello world message with some **bold** text, some _italic_ text and a [link](/)
 
 <details>
 
-<summary>Markdown is declarative</summary>
+<summary>Markdown является декларативным</summary>
 
-Some may assume a 1-1 correlation between Markdown and HTML, e.g., `![Preview](/img/docusaurus.png)` will always become `<img src="/img/docusaurus.png" alt="Preview" />`, as-is. However, _that is not the case_.
+Некоторые могут предположить, что Markdown соотносится 1:1 к HTML, например, `![Preview](/img/docusaurus.png)` всегда будет выглядеть как `<img src="/img/docusaurus.png" alt="Preview" />`. Однако _это не так_.
 
-The Markdown syntax `![message](url)` only declaratively tells Docusaurus that an image needs to be inserted here, but we may do other things like transforming a [file path to URL path](./markdown-features-assets.mdx#images), so the generated markup may differ from the output of other Markdown renderers, or a naïve hand-transcription to the equivalent JSX/HTML code.
+Синтаксис Markdown `![message](url)` только декларативно сообщает Docusaurus, что здесь нужно вставить изображение, но мы можем делать и другие вещи, например преобразовывать [путь файла к URL-адресу](./markdown-features-assets.mdx#images), поэтому сгенерированная разметка может отличаться от вывода других средств визуализации Markdown или наивная ручная транскрипция эквивалентного кода JSX/HTML.
 
-In general, you should only assume the _semantics_ of the markup (` ``` ` fences become [code blocks](./markdown-features-code-blocks.mdx); `>` becomes [quotes](#quotes), etc.), but not the actual compiled output.
+Как правило, вы должны только исходить из _семантики_ разметки (` ``` ` становятся [блоками кода](./markdown-features-code-blocks.mdx); `>` становится [кавычками](#quotes) и т. д.).
 
 </details>
 
-## Quotes {#quotes}
+## Front matter {#front-matter}
 
-Markdown quotes are beautifully styled:
+Front matter используется для добавления метаданных в ваш Markdown файл. Все плагины контента имеют свою собственную схему front matter и используют ее для расширения стандартных метаданных, полученных из содержимого или другой конфигурации.
+
+Front matter находится в самом верху файла и заключена в три дефиса `---`. Содержимое парсится, как [YAML](https://yaml.org/spec/1.2.2/).
 
 ```md
-> Easy to maintain open source documentation websites.
+---
+title: Заголовок моей страницы
+more_data:
+  - Can be provided
+  - as: objects
+    or: arrays
+---
+```
+
+## Цитаты {#quotes}
+
+Markdown цитаты красиво оформлены:
+
+```md
+> Легко поддерживать веб-сайты документации с открытым исходным кодом.
 >
 > — Docusaurus
 ```
 
 <BrowserWindow>
 
-> Easy to maintain open source documentation websites.
+> Легко поддерживать веб-сайты документации с открытым исходным кодом.
 >
 > — Docusaurus
 
 </BrowserWindow>
 
-## Details {#details}
+## Раскрывающиеся блоки {#details}
 
-Markdown can embed HTML elements, and [`details`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details) HTML elements are beautifully styled:
+В Markdown можно писать HTML, и [`details`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details) HTML элементы красиво стилизованы:
 
 ```md
-### Details element example
+### Пример раскрывающегося списка
 
 <details>
-  <summary>Toggle me!</summary>
+  <summary>Раскрой меня!</summary>
   <div>
-    <div>This is the detailed content</div>
+    <div>Это внутренний контент</div>
     <br/>
     <details>
       <summary>
-        Nested toggle! Some surprise inside...
+        Вложенная раскрывашка! Какой-то сюрприз внутри...
       </summary>
       <div>
         😲😲😲😲😲
@@ -101,16 +117,16 @@ Markdown can embed HTML elements, and [`details`](https://developer.mozilla.org/
 ```mdx-code-block
 <BrowserWindow>
 
-<h3>Details element example</h3>
+<h3>Пример раскрывающегося списка</h3>
 
 <details>
-  <summary>Toggle me!</summary>
+  <summary>Раскрой меня!</summary>
   <div>
-    <div>This is the detailed content</div>
+    <div>Это внутренний контент</div>
     <br/>
     <details>
       <summary>
-        Nested toggle! Some surprise inside...
+        Вложенная раскрывашка! Какой-то сюрприз внутри...
       </summary>
       <div>
         😲😲😲😲😲
@@ -124,6 +140,6 @@ Markdown can embed HTML elements, and [`details`](https://developer.mozilla.org/
 
 :::note
 
-In practice, those are not really HTML elements, but React JSX elements, which we'll cover next!
+На практике это не HTML теги, а элементы React JSX, о которых мы поговорим далее!
 
 :::

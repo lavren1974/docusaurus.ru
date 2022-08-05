@@ -1,8 +1,9 @@
 ---
 id: git
-title: i18n - Using git
 slug: /i18n/git
 ---
+
+# i18n — Использование git
 
 A **possible translation strategy** is to **version control the translation files** with Git (or any other [VCS](https://en.wikipedia.org/wiki/Version_control)).
 
@@ -30,7 +31,7 @@ Refer to the [Docusaurus i18n RFC](https://github.com/facebook/docusaurus/issues
 
 :::
 
-## Initialization {#initialization}
+## Инициализация {#initialization}
 
 This is a walk-through of using Git to translate a newly initialized English Docusaurus website into French, and assume you already followed the [i18n tutorial](./i18n-tutorial.md).
 

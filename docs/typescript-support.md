@@ -1,45 +1,49 @@
 ---
-id: typescript-support
-title: TypeScript Support
+description: Docusaurus написан на TypeScript и обеспечивает первоклассную его поддержку.
 ---
 
-Docusaurus is written in TypeScript and provides first-class TypeScript support.
+# Поддержка TypeScript
 
-## Initialization {#initialization}
+Docusaurus написан на TypeScript и обеспечивает первоклассную его поддержку.
 
-Docusaurus supports writing and using TypeScript theme components. If the init template provides a TypeScript variant, you can directly initialize a site with full TypeScript support by using the `--typescript` flag.
+## Инициализация {#initialization}
+
+Docusaurus поддерживает написание и использование компонентов темы на TypeScript. Если выбранный вами шаблон при установке позволяет выбрать вариант с TypeScript, вы можете напрямую инициализировать сайт с полной поддержкой TypeScript, используя флаг `--typescript`.
 
 ```bash
 npx create-docusaurus@latest my-website classic --typescript
 ```
 
-Below are some guides on how to migrate an existing project to TypeScript.
+Ниже приведены несколько руководств по переводу существующего проекта на TypeScript.
 
-## Setup {#setup}
+## Настройка {#setup}
 
-To start using TypeScript, add `@docusaurus/module-type-aliases` and the base TS config to your project:
+Чтобы начать использовать TypeScript, добавьте в проект `@docusaurus/module-type-aliases` и базовую конфигурацию TS:
 
 ```bash npm2yarn
 npm install --save-dev typescript @docusaurus/module-type-aliases @tsconfig/docusaurus
 ```
 
-Then add `tsconfig.json` to your project root with the following content:
+Затем добавьте `tsconfig.json` в корень проекта со следующим содержимым:
 
 ```json title="tsconfig.json"
 {
-  "extends": "@tsconfig/docusaurus/tsconfig.json"
+  "extends": "@tsconfig/docusaurus/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "."
+  }
 }
 ```
 
-Docusaurus doesn't use this `tsconfig.json` to compile your project. It is added just for a nicer Editor experience, although you can choose to run `tsc` to type check your code for yourself or on CI.
+Docusaurus не использует `tsconfig.json` для компиляции вашего проекта. Он добавлен только для проверки типов вашим редактором кода, хотя вы можете запустить `tsc`, чтобы проверить свой код самостоятельно или в CI.
 
-Now you can start writing TypeScript theme components.
+Теперь вы можете приступить к написанию компонентов темы на TypeScript.
 
-## Typing the config file {#typing-config}
+## Типизация файла конфигурации {#typing-config}
 
-It is **not possible** to use a TypeScript config file in Docusaurus unless you compile it yourself to JavaScript.
+Docusaurus **не сможет** использовать файл конфигурации, написанный на TypeScript, пока вы самостоятельно не скомпилируете его в JavaScript.
 
-We recommend using [JSDoc type annotations](https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html):
+Мы рекомендуем использовать [аннотации типов JSDoc](https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html):
 
 ```js title="docusaurus.config.js"
 // highlight-next-line
@@ -102,26 +106,26 @@ module.exports = config;
 
 :::tip
 
-Type annotations are very useful and help your IDE understand the type of config objects!
+Аннотации типов очень полезны и помогают вашей IDE определить типы каждого параметра в конфигурации!
 
-The best IDEs (VS Code, WebStorm, IntelliJ...) will provide a nice auto-completion experience.
+Лучшие IDE (VS Code, WebStorm, IntelliJ...) будут предлагать вам удобное автозаполнение.
 
 :::
 
 :::info
 
-By default, the Docusaurus TypeScript config does not type-check JavaScript files.
+Базовая конфигурация TypeScript в Docusaurus не проверяет JavaScript-файлы.
 
-The `// @ts-check` comment ensures the config file is properly type-checked when running `npx tsc`.
+Добавив в начало файла комментарий `// @ts-check` вы включите проверку типов в этом файле при каждом запуске `npx tsc`.
 
 :::
 
-## Swizzling TypeScript theme components {#swizzling-typescript-theme-components}
+## Типизированные компоненты темы прямо из коробки {#swizzling-typescript-theme-components}
 
-For themes that support TypeScript theme components, you can add the `--typescript` flag to the end of the `swizzle` command to get TypeScript source code. For example, the following command will generate `index.tsx` and `styles.module.css` into `src/theme/Footer`.
+Для тем, у которых есть типизированные компоненты темы, вы можете добавить флаг `--typescript` в конец команды `swizzle`, чтобы получить эти компоненты написанные сразу на TypeScript. Например, следующая команда сгенерирует `index.tsx` и `styles.module.css` в `src/theme/Footer`.
 
 ```bash npm2yarn
 npm run swizzle @docusaurus/theme-classic Footer -- --typescript
 ```
 
-All official Docusaurus themes support TypeScript theme components, including [`theme-classic`](./api/themes/theme-classic.md), [`theme-live-codeblock`](./api/themes/theme-live-codeblock.md), and [`theme-search-algolia`](./api/themes/theme-search-algolia.md). If you are a Docusaurus theme package author who wants to add TypeScript support, see the [Lifecycle APIs docs](./api/plugin-methods/extend-infrastructure.md#getTypeScriptThemePath).
+Все официальные темы Docusaurus содержат типизированные компоненты. К таким темам также относятся [`theme-classic`](./api/themes/theme-classic.md), [`theme-live-codeblock`](./ api/themes/theme-live-codeblock.md) и [`theme-search-algolia`](./api/themes/theme-search-algolia.md). Если вы являетесь автором темы для Docusaurus и хотите добавить поддержку TypeScript, вам поможет [документация API жизненного цикла](./api/plugin-methods/extend-infrastructure.md#getTypeScriptThemePath).

@@ -1,42 +1,42 @@
 ---
-id: migration-automated
-title: Automated migration
 slug: /migration/automated
 ---
 
-The migration CLI automatically migrates your v1 website to a v2 website.
+# Автоматическая миграция
+
+CLI-миграция (миграция с помощью интерфейса командной строки) автоматически переносит ваш веб-сайт с версии 1 на версию 2.
 
 :::info
 
-Manual work is still required after using the migration CLI, as we can't automate a full migration
+После использования CLI-миграции по-прежнему требуются ручные действия, поскольку мы не можем автоматизировать миграцию полностью
 
 :::
 
-The migration CLI migrates:
+Миграция с помощью CLI:
 
-- Site configurations (from `siteConfig.js` to `docusaurus.config.js`)
+- Конфигурации сайта (из `siteConfig.js` в `docusaurus.config.js`)
 - `package.json`
 - `sidebars.json`
 - `/docs`
 - `/blog`
 - `/static`
-- `versioned_sidebar.json` and `/versioned_docs` if your site uses versioning
+- `/versioned_sidebar.json` и `/versioned_docs`, если на сайте используется управление версиями
 
-To use the migration CLI, follow these steps:
+Чтобы использовать миграцию с помощью CLI, выполните следующие действия:
 
-1. Before using the migration CLI, ensure that `/docs`, `/blog`, `/static`, `sidebars.json`, `siteConfig.js`, `package.json` follow the [structure](#) shown at the start of this page.
+1. Перед использованием CLI миграции убедитесь, что `/docs`, `/blog`, `/static`, `sidebars.json`, `siteConfig.js`, `package.json` соответствуют [структуре](#), показанной в начале этой страницы.
 
-2. To migrate your v1 website, run the migration CLI with the appropriate filesystem paths:
+2. Для переноса веб-сайта версии 1, запустите CLI-миграцию с соответствующими путями файловой системы:
 
 ```bash
-# migration command format
+# формат команды миграции
 npx @docusaurus/migrate migrate <v1 website directory> <desired v2 website directory>
 
-# example
+# пример
 npx @docusaurus/migrate migrate ./v1-website ./v2-website
 ```
 
-3. To view your new website locally, go into your v2 website's directory and start your development server.
+3. Чтобы просмотреть свой новый веб-сайт локально, перейдите в каталог вашего веб-сайта версии 2 и запустите режим разработки.
 
 ```bash
 cd ./v2-website
@@ -46,30 +46,30 @@ yarn start
 
 :::danger
 
-The migration CLI updates existing files. Be sure to have committed them first!
+CLI-миграция обновляет существующие файлы. Сначала обязательно зафиксируйте их!
 
 :::
 
-#### Options {#options}
+#### Параметры {#options}
 
-You can add option flags to the migration CLI to automatically migrate Markdown content and pages to v2. It is likely that you will still need to make some manual changes to achieve your desired result.
+Вы можете добавить флаги параметров в CLI миграции для автоматического переноса контента Markdown и страниц в v2. Вполне вероятно, что вам все равно придется внести некоторые ручные изменения для достижения желаемого результата.
 
-| Name     | Description                                            |
-| -------- | ------------------------------------------------------ |
-| `--mdx`  | Add this flag to convert Markdown to MDX automatically |
-| `--page` | Add this flag to migrate pages automatically           |
+| Название | Описание                                                             |
+| -------- | -------------------------------------------------------------------- |
+| `--mdx`  | Добавьте этот флаг для автоматического преобразования Markdown в MDX |
+| `--page` | Добавьте этот флаг для автоматического переноса страниц              |
 
 ```bash
-# example using options
+# пример использования параметров
 npx @docusaurus/migrate migrate --mdx --page ./v1-website ./v2-website
 ```
 
 :::danger
 
-The migration of pages and MDX is still a work in progress.
+Миграция страниц и MDX всё ещё в процессе.
 
-We recommend you to try to run the pages without these options, commit, and then try to run the migration again with the `--page` and `--mdx` options.
+Мы рекомендуем вам попробовать запустить страницы без этих параметров, зафиксировать (коммит), а затем попытаться снова запустить миграцию с параметрами `--page` и `--mdx`.
 
-This way, you'd be able to easily inspect and fix the diff.
+Таким образом, вы сможете легко проверить и исправить diff.
 
 :::

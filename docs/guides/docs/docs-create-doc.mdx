@@ -1,14 +1,15 @@
 ---
 id: create-doc
-title: Create a doc
-description: Create a Markdown Document
+description: Руководство по созданию Markdown страниц в документации
 slug: /create-doc
 ---
 
-Create a Markdown file, `greeting.md`, and place it under the `docs` directory.
+# Как создать страницу в документации
+
+Создайте Markdown-файл, `greeting.md`, в папке `docs`.
 
 ```bash
-website # root directory of your site
+website # корневая директория вашего сайта
 ├── docs
 │   └── greeting.md
 ├── src
@@ -17,103 +18,149 @@ website # root directory of your site
 ├── ...
 ```
 
-At the top of the file, specify `id` and `title` in the front matter, so that Docusaurus will pick them up correctly when generating your site.
-
 ```md
 ---
-id: greeting
-title: Hello
+description: Создание страницу документации с богатым содержанием.
 ---
 
-## Hello from Docusaurus
+# Привет от Docusaurus
 
-Are you ready to create the documentation site for your open source project?
+Готовы ли вы создать сайт документации для вашего опенсорс проекта?
 
-### Headers
+## Заголовки
 
-will show up on the table of contents on the upper right
+появятся в оглавлении в правом верхнем углу
 
-So that your users will know what this page is all about without scrolling down or even without reading too much.
+Чтобы ваши пользователи узнали, о чем эта страница, не прокручивая ее вниз и не погружаясь сильно в текст.
 
-### Only h2 and h3 will be in the TOC by default.
+## По умолчанию в оглавлении будут только h2 и h3.
 
-You can configure the TOC heading levels either per-document or in the theme configuration.
+Вы можете настроить уровни заголовков оглавления либо отдельно для каждой страницы, либо в настройках темы для всех страниц разом.
 
-The headers are well-spaced so that the hierarchy is clear.
+У заголовков есть отступы, чтобы иерархия была понятна.
 
-- lists will help you
-- present the key points
-- that you want your users to remember
-  - and you may nest them
-    - multiple times
+- списки помогут вам
+- перечислить ключевые моменты, 
+-  которые вам бы хотелось, чтобы ваши пользователи запомнили,
+  -  и вы можете вкладывать их
+    - несколько раз
 
-### Custom id headers {#custom-id}
+## Управление идентификаторами в заголовках {#custom-id}
 
-With `{#custom-id}` syntax you can set your own header id.
-```
-
-This will render in the browser as follows:
-
-```mdx-code-block
-import BrowserWindow from '@site/src/components/BrowserWindow';
-
-<BrowserWindow>
-
-<h2>Hello from Docusaurus</h2>
-
-Are you ready to create the documentation site for your open source project?
-
-<h3>Headers</h3>
-
-will show up on the table of contents on the upper right
-
-So that your users will know what this page is all about without scrolling down or even without reading too much.
-
-<h3>Only h2 and h3 will be in the TOC by default.</h3>
-
-You can configure the TOC heading levels either per document or in the theme configuration.
-
-The headers are well-spaced so that the hierarchy is clear.
-
-- lists will help you
-- present the key points
-- that you want your users to remember
-  - and you may nest them
-    - multiple times
-
-<h3 id="custom-id">Custom id headers</h3>
-
-With <code>{#custom-id}</code> syntax you can set your own header id.
-
-</BrowserWindow>
+Добавив к заголовку `{#custom-id}` вы зададите свой собственный идентификатор заголовка.
 ```
 
 :::note
 
-All files prefixed with an underscore (`_`) under the `docs` directory are treated as "partial" pages and will be ignored by default.
+Все файлы с префиксом подчёркивания (`_`) в папке `docs` рассматриваются как «фрагменты» страниц и по умолчанию игнорируются.
 
-Read more about [importing partial pages](../markdown-features/markdown-features-react.mdx#importing-markdown).
+Подробнее об [импорте фрагментов страниц](../markdown-features/markdown-features-react.mdx#importing-markdown).
 
 :::
 
-## Doc tags {#doc-tags}
+## Страничный front matter {#doc-front-matter}
 
-Optionally, you can add tags to your doc pages, which introduces another dimension of categorization in addition to the [docs sidebar](./sidebar/index.md). Tags are passed in the front matter as a list of labels:
+[front matter](../markdown-features/markdown-features-intro.mdx#front-matter) используется для предоставления дополнительных метаданных для страницы. Front matter необязателен— Docusaurus сможет вывести все необходимые метаданные и без него. Но, например, описанные далее [теги страницы](#dog-tags) можно описать только с помощью front matter. Все возможные поля см. в [руководстве по API](../../api/plugins/plugin-content-docs.md#markdown-front-matter).
+
+## Теги в страницах документации {#doc-tags}
+
+При желании вы можете добавить теги на свои страницы документации, и добавить еще один блок с категориями в дополнение к [боковой панели документов](./sidebar/index.md). Теги перечисляются в верхней части страницы в виде списка меток:
 
 ```md "your-doc-page.md"
 ---
 id: doc-with-tags
-title: A doc with tags
+title: Страница с тегами
 tags:
-  - Demo
-  - Getting started
+  - Демо
+  - Начало работы
 ---
 ```
 
 :::tip
 
-Tags can also be declared with `tags: [Demo, Getting started]`.
+Теги также можно перечислить в виде массива `tags: [Демо, Начало работы]`.
 
-Read more about all the possible [Yaml array syntaxes](https://www.w3schools.io/file/yaml-arrays/).
+Узнайте больше обо всём [синтаксисе массивов Yaml](https://www.w3schools.io/file/yaml-arrays/).
 
 :::
+
+## Организация структуры папок {#organizing-folder-structure}
+
+Расположение Markdown файлов в папке `docs` влияет на генерацию страниц Docusaurus. Однако большинство из них можно отделить от файловой структуры.
+
+### Идентификатор (ID) документа {#document-id}
+
+Каждый документ имеет уникальный `id`. По умолчанию `id` документа — это имя документа (без расширения) относительно корневого каталога документов.
+
+Например, идентификатор `greeting.md` — это `greeting`, а идентификатор `guide/hello.md` — это `guide/hello`.
+
+```bash
+website # Корневая директория вашего сайта
+└── docs
+   ├── greeting.md
+   └── guide
+      └── hello.md
+```
+
+Однако **окончание** `id` может быть определено пользователем в параметрах страницы. Например, если содержимое `guide/hello.md` определено, как показано ниже, его `id` по итогу будет `guide/part1`.
+
+```md
+---
+id: part1
+---
+
+Lorem ipsum
+```
+
+ID используется для ссылки на страницу документации при создании вручную боковых панелей или при использовании компонентов лейаута или хуков, связанных со страницами документации.
+
+### URL-адреса страниц документации {#doc-urls}
+
+По умолчанию URL-адрес документа — это путь к файлу относительно папки `docs`. Используйте параметр `slug`, чтобы изменить URL-адрес страницы.
+
+Например, предположим, что структура вашего сайта выглядит так:
+
+```bash
+website # Корневая директория вашего сайта
+└── docs
+    └── guide
+        └── hello.md
+```
+
+По умолчанию страница `hello.md` будет открываться по адресу `/docs/guide/hello`. Вы можете изменить ее URL-адрес на `/docs/bonjour`:
+
+```md
+---
+slug: /bonjour
+---
+
+Lorem ipsum
+```
+
+`slug` будет добавлен к `routeBasePath`, который по умолчанию равен `/docs`. См. руководство по [режиму "только документация"](#docs-only-mode), чтобы узнать, как удалить часть `/docs` из URL-адреса.
+
+:::note
+
+Можно использовать:
+
+- абсолютные пути: `slug: /mySlug`, `slug: /`...
+- относительные пути: `slug: mySlug`, `slug: ./../mySlug`...
+
+:::
+
+Если вы хотите, чтобы страница была доступна в корне и имела адрес вида `https://docusaurus.io/docs/`, вы можете использовать параметр slug:
+
+```md
+---
+id: my-home-doc
+slug: /
+---
+
+Lorem ipsum
+```
+
+### Боковые панели {#sidebars}
+
+При использовании [автогенерируемых боковых панелей](./sidebar/autogenerated.md) структура боковой панели будет определяться файловой структурой.
+
+Наша рекомендация по организации файловой системы: сделайте так, чтобы ваша файловая система отражала структуру боковой панели (чтобы вам не нужно было писать файл `sidebars.js` от руки) и используйте параметр `slug` во front matter для настройки URL-адреса каждой страницы.

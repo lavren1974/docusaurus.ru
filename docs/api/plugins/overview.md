@@ -1,24 +1,25 @@
 ---
 sidebar_position: 0
 id: plugins-overview
-title: 'Docusaurus plugins'
-sidebar_label: Plugins overview
-slug: '/api/plugins'
+sidebar_label: Обзор плагинов
+slug: /api/plugins
 ---
 
-We provide official Docusaurus plugins.
+# Плагины Docusaurus
 
-## Content plugins {#content-plugins}
+У нас есть собственные плагины для Docusaurus.
 
-These plugins are responsible for loading your site's content, and creating pages for your theme to render.
+## Плагины контента {#content-plugins}
+
+Эти плагины отвечают за загрузку содержимого вашего сайта и создание страниц в выбранной вами теме.
 
 - [@docusaurus/plugin-content-docs](./plugin-content-docs.md)
 - [@docusaurus/plugin-content-blog](./plugin-content-blog.md)
 - [@docusaurus/plugin-content-pages](./plugin-content-pages.md)
 
-## Behavior plugins {#behavior-plugins}
+## Плагины, расширяющие функциональность {#behavior-plugins}
 
-These plugins will add a useful behavior to your Docusaurus site.
+Эти плагины расширят возможности вашего сайта Docusaurus.
 
 - [@docusaurus/plugin-debug](./plugin-debug.md)
 - [@docusaurus/plugin-sitemap](./plugin-sitemap.md)

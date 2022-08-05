@@ -1,108 +1,47 @@
 ---
 id: introduction
-title: Docs Introduction
-sidebar_label: Introduction
+sidebar_label: Введение
 slug: /docs-introduction
 ---
 
-The docs feature provides users with a way to organize Markdown files in a hierarchical format.
+# Введение в документацию
+
+Функция документации предоставляет пользователям возможность упорядочивать файлы Markdown в иерархическом формате.
 
 :::info
 
-Check the [Docs Plugin API Reference documentation](./../../api/plugins/plugin-content-docs.md) for an exhaustive list of options.
+Полный список параметров см. в [Справочной документации по API плагина документации](./../../api/plugins/plugin-content-docs.md).
 
 :::
 
-## Document ID {#document-id}
+Документация вашего сайта организована по четырем уровням, от самого низкого до самого высокого:
 
-Every document has a unique `id`. By default, a document `id` is the name of the document (without the extension) relative to the root docs directory.
+1. Отдельные страницы;
+2. Боковые панели;
+3. Версии;
+4. Плагины.
 
-For example, `greeting.md` id is `greeting` and `guide/hello.md` id is `guide/hello`.
+В этом руководстве они описаны в следующем порядке: начиная с [как можно настроить отдельные страницы](./docs-create-doc.mdx), продолжая тем [как создать одну или несколько боковых панелей](./sidebar/index.md), потом о том [как создавать версии и управлять ими](./versioning.md), и заканчивая [как использовать несколько экземпляров плагина документации](./docs-multi-instance.mdx).
 
-```bash
-website # Root directory of your site
-└── docs
-   ├── greeting.md
-   └── guide
-      └── hello.md
-```
+## Режим "только документация" {#docs-only-mode}
 
-However, the **last part** of the `id` can be defined by the user in the front matter. For example, if `guide/hello.md`'s content is defined as below, its final `id` is `guide/part1`.
-
-```md
----
-id: part1
----
-
-Lorem ipsum
-```
-
-### Customizing doc URLs {#customizing-doc-urls}
-
-By default, a document's URL location is its file path relative to the `docs` folder. Use the `slug` front matter to change a document's URL.
-
-For example, suppose your site structure looks like this:
-
-```bash
-website # Root directory of your site
-└── docs
-    └── guide
-        └── hello.md
-```
-
-By default `hello.md` will be available at `/docs/guide/hello`. You can change its URL location to `/docs/bonjour`:
-
-```md
----
-slug: /bonjour
----
-
-Lorem ipsum
-```
-
-`slug` will be appended to the doc plugin's `routeBasePath`, which is `/docs` by default. See [Docs-only mode](#docs-only-mode) for how to remove the `/docs` part from the URL.
-
-:::note
-
-It is possible to use:
-
-- absolute slugs: `slug: /mySlug`, `slug: /`...
-- relative slugs: `slug: mySlug`, `slug: ./../mySlug`...
-
-:::
-
-## Home page docs {#home-page-docs}
-
-If you want a document to be available at the root, and have a path like `https://docusaurus.io/docs/`, you can use the slug front matter:
-
-```md
----
-id: my-home-doc
-slug: /
----
-
-Lorem ipsum
-```
-
-## Docs-only mode {#docs-only-mode}
-
-A freshly initialized Docusaurus site has the following structure:
+Только что инициализированный сайт Docusaurus имеет следующую структуру:
 
 ```
-example.com/                                -> generated from `src/pages/index.js`
+example.com/                                -> сгенерирован из `src/pages/index.js`
 
-example.com/docs/intro                      -> generated from `docs/intro.md`
-example.com/docs/tutorial-basics/...        -> generated from `docs/tutorial-basics/...`
+example.com/docs/intro                      -> сгенерирован из `docs/intro.md`
+example.com/docs/tutorial-basics/...        -> сгенерирован из `docs/tutorial-basics/...`
 ...
 
-example.com/blog/2021/08/26/welcome         -> generated from `blog/2021-08-26-welcome/index.md`
-example.com/blog/2021/08/01/mdx-blog-post   -> generated from `blog/2021-08-01-mdx-blog-post.mdx`
+example.com/blog/2021/08/26/welcome         -> сгенерирован из `blog/2021-08-26-welcome/index.md`
+example.com/blog/2021/08/01/mdx-blog-post   -> сгенерирован из `blog/2021-08-01-mdx-blog-post.mdx`
 ...
 ```
 
-All docs will be served under the subroute `docs/`. But what if **your site only has docs**, or you want to prioritize your docs by putting them at the root?
+Вся документация будет находиться по адресу `docs/`. Но что, если **на вашем сайте кроме документации больше ничего нет** или вы хотите приоритизировать свою документацию, поместив ее в корень сайта?
 
-Assume that you have the following in your configuration:
+Предположим, ваш файл конфигурации выглядит следующим образом:
 
 ```js title="docusaurus.config.js"
 module.exports = {
@@ -122,7 +61,7 @@ module.exports = {
 };
 ```
 
-To enter docs-only mode, change it to like this:
+Чтобы перевести сайт в режим только для документации, измените файл конфигурации следующим образом:
 
 ```js title="docusaurus.config.js"
 module.exports = {
@@ -132,20 +71,20 @@ module.exports = {
     {
       docs: {
         // highlight-next-line
-        routeBasePath: '/', // Serve the docs at the site's root
-        /* other docs plugin options */
+        routeBasePath: '/', // Открывать документацию в корне сайта
+        /* остальные опараметры плагина документации */
       },
       // highlight-next-line
-      blog: false, // Optional: disable the blog plugin
+      blog: false, // На ваше усмотрение: можно отключить блог
       // ...
     },
   ],
 };
 ```
 
-Note that you **don't necessarily have to give up on using the blog** or other plugins; all that `routeBasePath: '/'` does is that instead of serving the docs through `https://example.com/docs/some-doc`, they are now at the site root: `https://example.com/some-doc`. The blog, if enabled, can still be accessed through the `blog/` subroute.
+Обратите внимание, что вам **не обязательно отказываться от использования блога** или других плагинов; все, что делает `routeBasePath: '/'`, заключается в том, что вместо того, чтобы размещать документацию по адресу `https://example.com/docs/some-doc`, она теперь будет находиться в корне сайта: `https://example.com/some-doc`. Блог, если он включен, по-прежнему будет открываться по адресу `blog/`.
 
-Don't forget to put some page at the root (`https://example.com/`) through adding the front matter:
+Не забудьте положить в корень какую-нибудь страницу (`https://example.com/`), добавив параметр вверху страницы:
 
 ```md title="docs/intro.md"
 ---
@@ -153,25 +92,25 @@ Don't forget to put some page at the root (`https://example.com/`) through addin
 slug: /
 ---
 
-This page will be the home page when users visit https://example.com/.
+Эта страница будет главной, когда пользователи посетят https://example.com/.
 ```
 
 :::caution
 
-If you added `slug: /` to a doc to make it the homepage, you should delete the existing homepage at `./src/pages/index.js`, or else there will be two files mapping to the same route!
+Если вы добавили параметр `slug: /` у страницы, чтобы сделать его домашней страницей, вам следует удалить существующую домашнюю страницу по адресу `./src/pages/index.js`, иначе будет два файла, открывающихся по одному и тому же пути!
 
 :::
 
-Now, the site's structure will be like the following:
+Теперь структура сайта будет выглядеть следующим образом:
 
 ```
-example.com/                       -> generated from `docs/intro.md`
-example.com/tutorial-basics/...    -> generated from `docs/tutorial-basics/...`
+example.com/                       -> сгенерирован из `docs/intro.md`
+example.com/tutorial-basics/...    -> сгенерирован из `docs/tutorial-basics/...`
 ...
 ```
 
 :::tip
 
-There's also a "blog-only mode" for those who only want to use the blog feature of Docusaurus 2. You can use the same method detailed above. Follow the setup instructions on [Blog-only mode](../../blog.mdx#blog-only-mode).
+Также есть «режим только блога» для тех, кто хочет использовать только функцию блога Docusaurus 2. Вы можете использовать тот же метод, описанный выше. Следуйте инструкции по настройке [режима "только блог"](../../blog.mdx#blog-only-mode).
 
 :::

@@ -1,62 +1,65 @@
 ---
 id: code-blocks
-title: Code blocks
-description: Handling code blocks in Docusaurus Markdown
+description: Использование блоков с кодом в Docusaurus Markdown
 slug: /markdown-features/code-blocks
 ---
+
+# Блоки кода
 
 import BrowserWindow from '@site/src/components/BrowserWindow';
 import CodeBlock from '@theme/CodeBlock';
 
-Code blocks within documentation are super-powered 💪.
+Блоки кода в документации супер мощные 💪.
 
-## Code title {#code-title}
+## Заголовок блока с кодом {#code-title}
 
-You can add a title to the code block by adding a `title` key after the language (leave a space between them).
+Вы можете добавить заголовок к блоку с кодом, добавив ключ `title` после языка (поставьте между ними пробел).
 
 ````md
 ```jsx title="/src/components/HelloCodeTitle.js"
 function HelloCodeTitle(props) {
-  return <h1>Hello, {props.name}</h1>;
+  return <h1>Привет, {props.name}</h1>;
 }
 ```
 ````
 
+```mdx-code-block
 <BrowserWindow>
+```
 
 ```jsx title="/src/components/HelloCodeTitle.js"
 function HelloCodeTitle(props) {
-  return <h1>Hello, {props.name}</h1>;
+  return <h1>Привет, {props.name}</h1>;
 }
 ```
 
+```mdx-code-block
 </BrowserWindow>
+```
 
-## Syntax highlighting {#syntax-highlighting}
+## Подсветка синтаксиса {#syntax-highlighting}
 
-Code blocks are text blocks wrapped around by strings of 3 backticks. You may check out [this reference](https://github.com/mdx-js/specification) for the specifications of MDX.
+Блоки с кодом — это текстовые блоки, обернутые строками из 3 обратных кавычек. Пройдите по [этой ссылке](https://github.com/mdx-js/specification) для ознакомления со спецификациями MDX.
 
 ````md
 ```js
-console.log('Every repo must come with a mascot.');
+console.log('Каждый репозиторий должен иметь своего маскота.');
 ```
 ````
-
-Use the matching language meta string for your code block, and Docusaurus will pick up syntax highlighting automatically, powered by [Prism React Renderer](https://github.com/FormidableLabs/prism-react-renderer).
-
+Укажите язык программирования на котором написан ваш код, и Docusaurus автоматически подсветит синтаксис с помощью [Prism React Renderer](https://github.com/FormidableLabs/prism-react-renderer).
 <BrowserWindow>
 
 ```js
-console.log('Every repo must come with a mascot.');
+console.log('Каждый репозиторий должен иметь своего маскота.');
 ```
 
 </BrowserWindow>
 
-### Theming {#theming}
+### Тема редактора в блоке кода {#theming}
 
-By default, the Prism [syntax highlighting theme](https://github.com/FormidableLabs/prism-react-renderer#theming) we use is [Palenight](https://github.com/FormidableLabs/prism-react-renderer/blob/master/src/themes/palenight.js). You can change this to another theme by passing `theme` field in `prism` as `themeConfig` in your docusaurus.config.js.
+По умолчанию, в качестве [темы подсветки синтаксиса](https://github.com/FormidableLabs/prism-react-renderer#theming) в Prism, мы используем [Palenight](https://github.com/FormidableLabs/prism-react-renderer/blob/master/src/themes/palenight.js). Вы можете изменить ее на другую тему, указав ее в поле `themeConfig.prism.theme` в docusaurus.config.js.
 
-For example, if you prefer to use the `dracula` highlighting theme:
+Например, если вы предпочитаете использовать тему подсветки `dracula`:
 
 ```js title="docusaurus.config.js"
 module.exports = {
@@ -69,27 +72,27 @@ module.exports = {
 };
 ```
 
-Because a Prism theme is just a JS object, you can also write your own theme if you are not satisfied with the default. Docusaurus enhances the `github` and `vsDark` themes to provide richer highlight, and you can check our implementations for the [light](https://github.com/facebook/docusaurus/blob/main/website/src/utils/prismLight.mjs) and [dark](https://github.com/facebook/docusaurus/blob/main/website/src/utils/prismDark.mjs) code block themes.
+Поскольку тема Prism — это просто JS объект, вы также можете написать свою собственную тему, если вас не устраивает стандартная. Docusaurus усевершенствовал темы `github` и `vsDark`, чтобы обеспечить более богатую подсветку, а вы можете посмотреть наши реализации этих тем в [светлых](https://github.com/facebook/docusaurus/blob/main/website/src/utils/prismLight.mjs) и [темных](https://github.com/facebook/docusaurus/blob/main/website/src/utils/prismDark.mjs) тонах.
 
-### Supported Languages {#supported-languages}
+### Доступные языки {#supported-languages}
 
-By default, Docusaurus comes with a subset of [commonly used languages](https://github.com/FormidableLabs/prism-react-renderer/blob/master/src/vendor/prism/includeLangs.js).
+По умолчанию Docusaurus поставляется с коллекцией [стандартных языков](https://github.com/FormidableLabs/prism-react-renderer/blob/master/src/vendor/prism/includeLangs.js).
 
 :::caution
 
-Some popular languages like Java, C#, or PHP are not enabled by default.
+Некоторые популярные языки, такие как Java, C# или PHP, не включены по умолчанию.
 
 :::
 
-To add syntax highlighting for any of the other [Prism-supported languages](https://prismjs.com/#supported-languages), define it in an array of additional languages.
+Чтобы добавить подсветку синтаксиса для любого из других [языков, поддерживаемых Prism](https://prismjs.com/#supported-languages), определите его в массиве дополнительных языков.
 
 :::note
 
-Each additional language has to be a valid Prism component name. For example, Prism would map the _language_ `cs` to `csharp`, but only `prism-csharp.js` exists as a _component_, so you need to use `additionalLanguages: ['csharp']`. You can look into `node_modules/prismjs/components` to find all components (languages) available.
+Каждый дополнительный язык должен быть валидным именем компонента Prism. Например, Prism сопоставит _язык_ `cs` с `csharp`, но только `prism-csharp.js ` существует как _компонент_, поэтому вам необходимо использовать `additionalLanguages: ['csharp']`. Вы можете просмотреть `node_modules/prismjs/components`, чтобы найти все доступные компоненты (языки).
 
 :::
 
-For example, if you want to add highlighting for the PowerShell language:
+Например, если вы хотите добавить подсветку для языка PowerShell:
 
 ```js title="docusaurus.config.js"
 module.exports = {
@@ -104,15 +107,15 @@ module.exports = {
 };
 ```
 
-After adding `additionalLanguages`, restart Docusaurus.
+После добавления `additionalLanguages` перезапустите Docusaurus.
 
-If you want to add highlighting for languages not yet supported by Prism, you can swizzle `prism-include-languages`:
+Если вы хотите добавить подсветку языков, еще не поддерживаемых Prism, вы можете подключить `prism-include-languages`:
 
 ```bash npm2yarn
 npm run swizzle @docusaurus/theme-classic prism-include-languages
 ```
 
-It will produce `prism-include-languages.js` in your `src/theme` folder. You can add highlighting support for custom languages by editing `prism-include-languages.js`:
+Он создаст `prism-include-languages.js` в папке `src/theme`. И вы сможете добавить подсветку синтаксиса для собственных языков, отредактировав `prism-include-languages.js`:
 
 ```js title="src/theme/prism-include-languages.js"
 const prismIncludeLanguages = (Prism) => {
@@ -129,94 +132,96 @@ const prismIncludeLanguages = (Prism) => {
 };
 ```
 
-You can refer to [Prism's official language definitions](https://github.com/PrismJS/prism/tree/master/components) when you are writing your own language definitions.
+Обратитесь к [описанию подсветки официальных языков Prism](https://github.com/PrismJS/prism/tree/master/components), когда будете писать собственную подсветку языка.
 
-## Line highlighting {#line-highlighting}
+## Подсветка линий {#line-highlighting}
 
-### Highlighting with comments {#highlighting-with-comments}
+### Подсветка комментариями {#highlighting-with-comments}
 
-You can use comments with `highlight-next-line`, `highlight-start`, and `highlight-end` to select which lines are highlighted.
+Вы можете использовать комментарии с `highlight-next-line`, `highlight-start` и `highlight-end`, чтобы выбрать, какие строки нужно выделить.
 
 ````md
 ```js
 function HighlightSomeText(highlight) {
   if (highlight) {
     // highlight-next-line
-    return 'This text is highlighted!';
+    return 'Этот текст подсвечен!';
   }
 
-  return 'Nothing highlighted';
+  return 'Нечего подсвечивать';
 }
 
 function HighlightMoreText(highlight) {
   // highlight-start
   if (highlight) {
-    return 'This range is highlighted!';
+    return 'Этот диапазон строк подсвечен!';
   }
   // highlight-end
 
-  return 'Nothing highlighted';
+  return 'Нечего подсвечивать';
 }
 ```
 ````
 
-````mdx-code-block
+```mdx-code-block
 <BrowserWindow>
+```
 
 ```js
 function HighlightSomeText(highlight) {
   if (highlight) {
     // highlight-next-line
-    return 'This text is highlighted!';
+    return 'Этот текст подсвечен!';
   }
 
-  return 'Nothing highlighted';
+  return 'Нечего подсвечивать';
 }
 
 function HighlightMoreText(highlight) {
   // highlight-start
   if (highlight) {
-    return 'This range is highlighted!';
+    return 'Этот диапазон строк подсвечен!';
   }
   // highlight-end
 
-  return 'Nothing highlighted';
+  return 'Нечего подсвечивать';
 }
 ```
 
+```mdx-code-block
 </BrowserWindow>
-````
+```
 
-Supported commenting syntax:
+Поддерживаемый синтаксис комментариев:
 
-| Style      | Syntax                   |
-| ---------- | ------------------------ |
-| C-style    | `/* ... */` and `// ...` |
-| JSX-style  | `{/* ... */}`            |
-| Bash-style | `# ...`                  |
-| HTML-style | `<!-- ... -->`           |
+| Стиль      | Синтаксис              |
+| ---------- | ---------------------- |
+| C-стиль    | `/* ... */` и `// ...` |
+| JSX-стиль  | `{/* ... */}`          |
+| Bash-стиль | `# ...`                |
+| HTML-стиль | `<!-- ... -->`   |
 
-We will do our best to infer which set of comment styles to use based on the language, and default to allowing _all_ comment styles. If there's a comment style that is not currently supported, we are open to adding them! Pull requests welcome. Note that different comment styles have no semantic difference, only their content does.
+Мы сделаем все возможное, чтобы определить, какой набор стилей комментариев следует использовать в зависимости от языка, и по умолчанию разрешаем _все стили комментариев_. Если есть стиль комментариев, который в настоящее время не поддерживается, мы открыты для его добавления! Пулл-реквесты приветствуются! Обратите внимание, что разные стили комментариев не имеют семантической разницы, важно только их содержание.
 
-You can set your own background color for highlighted code line in your `src/css/custom.css` which will better fit to your selected syntax highlighting theme. The color given below works for the default highlighting theme (Palenight), so if you are using another theme, you will have to tweak the color accordingly.
+Вы можете установить свой собственный цвет фона для выделенной строки кода в вашем `src/css/custom.css`, который будет лучше соответствовать выбранной вами теме подсветки синтаксиса. Приведенный ниже цвет работает для темы выделения по умолчанию (Palenight), поэтому, если вы используете другую тему, вам придется соответствующим образом настроить цвет.
 
 ```css title="/src/css/custom.css"
 :root {
   --docusaurus-highlighted-code-line-bg: rgb(72, 77, 91);
 }
 
-/* If you have a different syntax highlighting theme for dark mode. */
+/* Если у вас есть другая тема подсветки синтаксиса для темного режима. */
 [data-theme='dark'] {
-  /* Color which works with dark mode syntax highlighting theme */
+  /* Цвет для темной темы */
   --docusaurus-highlighted-code-line-bg: rgb(100, 100, 100);
 }
 ```
 
-If you also need to style the highlighted code line in some other way, you can target on `theme-code-block-highlighted-line` CSS class.
+Если вам также нужно каким-то другим образом оформить выделенную строку кода, вы можете настроить таргетинг на класс CSS `theme-code-block-highlighted-line`.
 
-### Highlighting with metadata string {#highlighting-with-metadata-string}
+### Выделение строкой метаданных {#highlighting-with-metadata-string}
 
-You can also specify highlighted line ranges within the language meta string (leave a space after the language). To highlight multiple lines, separate the line numbers by commas or use the range syntax to select a chunk of lines. This feature uses the `parse-number-range` library and you can find [more syntax](https://www.npmjs.com/package/parse-numeric-range) on their project details.
+Вы также можете указать выделенные диапазоны строк в метастроке языка (оставьте пробел после языка). Чтобы выделить несколько строк, разделите номера строк запятыми или используйте синтаксис диапазона для выбора фрагмента строк. Эта функция использует библиотеку `parse-number-range`, и вы можете найти [больше разного синтаксиса](https://www.npmjs.com/package/parse-numeric-range) в описании проекта.
 
 ````md
 ```jsx {1,4-6,11}
@@ -234,8 +239,9 @@ export default MyComponent;
 ```
 ````
 
-````mdx-code-block
+```mdx-code-block
 <BrowserWindow>
+```
 
 ```jsx {1,4-6,11}
 import React from 'react';
@@ -251,12 +257,13 @@ function MyComponent(props) {
 export default MyComponent;
 ```
 
+```mdx-code-block
 </BrowserWindow>
-````
+```
 
-:::tip prefer comments
+:::tip комментарии предпочтительнее
 
-Prefer highlighting with comments where you can. By inlining highlight in the code, you don't have to manually count the lines if your code block becomes long. If you add/remove lines, you also don't have to offset your line ranges.
+Предпочтительнее выделение комментариями, где это возможно. Встраивая выделение в код, вам не нужно вручную подсчитывать строки, если ваш блок кода становится длинным. Если вы добавляете/удаляете строки, вам также не нужно смещать диапазоны строк.
 
 ````diff
 - ```jsx {3}
@@ -264,23 +271,18 @@ Prefer highlighting with comments where you can. By inlining highlight in the co
   function HighlightSomeText(highlight) {
     if (highlight) {
 +     console.log('Highlighted text found');
-      return 'This text is highlighted!';
+      return 'Этот текст подсвечен!';
     }
 
-    return 'Nothing highlighted';
+    return 'Нечего подсвечивать';
   }
   ```
 ````
-
-Below, we will introduce how the magic comment system can be extended to define custom directives and their functionalities. The magic comments would only be parsed if a highlight metastring is not present.
-
+Ниже мы расскажем, как можно расширить систему магических комментариев для определения пользовательских директив и их функций. Магические комментарии будут парситься только в том случае, если отсутствует метастрока выделения.
 :::
-
-### Custom magic comments {#custom-magic-comments}
-
-`// highlight-next-line` and `// highlight-start` etc. are called "magic comments", because they will be parsed and removed, and their purposes are to add metadata to the next line, or the section that the pair of start- and end-comments enclose.
-
-You can declare custom magic comments through theme config. For example, you can register another magic comment that adds a `code-block-error-line` class name:
+### Собственные магические комментарии {#custom-magic-comments}
+`// highlight-next-line` и `// highlight-start` и т. д. называются "магическими комментариями", потому что они распрасены и удалены, и их цель - добавить метаданные к следующей строке или секции, которая обернута этими комментариями.
+Вы можете объявить пользовательские магические комментарии в настройках темы. Например, вы можете зарегистрировать другой волшебный комментарий, который добавляет `code-block-error-line` имя класса:
 
 ```mdx-code-block
 <Tabs>
@@ -292,7 +294,7 @@ module.exports = {
   themeConfig: {
     prism: {
       magicComments: [
-        // Remember to extend the default highlight class name as well!
+        // Не забудьте также расширить имя класса выделения по умолчанию!
         {
           className: 'theme-code-block-highlighted-line',
           line: 'highlight-next-line',
@@ -331,11 +333,11 @@ module.exports = {
 ```
 
 ````md
-In JavaScript, trying to access properties on `null` will error.
+В JavaScript попытка получить доступ к свойствам у `null` приведет к ошибке.
 
 ```js
 const name = null;
-// This will error
+// Здесь будет ошибка
 console.log(name.toUpperCase());
 // Uncaught TypeError: Cannot read properties of null (reading 'toUpperCase')
 ```
@@ -346,38 +348,40 @@ console.log(name.toUpperCase());
 </Tabs>
 ```
 
-````mdx-code-block
+```mdx-code-block
 <BrowserWindow>
+```
 
-In JavaScript, trying to access properties on `null` will error.
+В JavaScript попытка получить доступ к свойствам у `null` приведет к ошибке.
 
 ```js
 const name = null;
-// This will error
+// Здесь будет ошибка
 console.log(name.toUpperCase());
 // Uncaught TypeError: Cannot read properties of null (reading 'toUpperCase')
 ```
 
+```mdx-code-block
 </BrowserWindow>
-````
+```
 
-If you use number ranges in metastring (the `{1,3-4}` syntax), Docusaurus will apply the **first `magicComments` entry**'s class name. This, by default, is `theme-code-block-highlighted-line`, but if you change the `magicComments` config and use a different entry as the first one, the meaning of the metastring range will change as well.
+Если вы используете числовые диапазоны в мета-строке (синтаксис `{1,3-4}`), Docusaurus применит **к первой записи `magicComments`** имя класса. По умолчанию это `theme-code-block-highlighted-line`, но если вы измените конфигурацию `magicComments` и используете другую запись в качестве первой, значение диапазона метастроки также изменится.
 
-You can disable the default line highlighting comments with `magicComments: []`. If there's no magic comment config, but Docusaurus encounters a code block containing a metastring range, it will error because there will be no class name to apply—the highlighting class name, after all, is just a magic comment entry.
+Вы можете отключить выделение строк комментариями по умолчанию с помощью `magicComments: []`. Если нет конфигурации магических комментариев, но Docusaurus обнаруживает блок кода, содержащий диапазон строк, он выдаст ошибку, потому что не будет имени класса для применения — в конце концов, имя класса выделения - это просто запись магического комментария.
 
-Every magic comment entry will contain three keys: `className` (required), `line`, which applies to the directly next line, or `block` (containing `start` and `end`), which applies to the entire block enclosed by the two comments.
+Каждая запись магического комментария будет содержать три ключа: `className` (обязательно), `line`, который применяется непосредственно к следующей строке, или `block` (содержащий `start` и `end`), которые применяются ко всему блоку, заключенному в два комментария.
 
-Using CSS to target the class can already do a lot, but you can unlock the full potential of this feature through [swizzling](../../swizzling.md).
+Использование CSS для выбора класса уже может многое сделать, но вы можете раскрыть весь потенциал этой функции с помощью [swizzling](../../swizzling.md).
 
 ```bash npm2yarn
 npm run swizzle @docusaurus/theme-classic CodeBlock/Line
 ```
 
-The `Line` component will receive the list of class names, based on which you can conditionally render different markup.
+Компонент `Line` получит список имен классов, на основе которых можно условно отображать различную верстку.
 
-## Line numbering {#line-numbering}
+## Нумерация строк {#line-numbering}
 
-You can enable line numbering for your code block by using `showLineNumbers` key within the language meta string (don't forget to add space directly before the key).
+Вы можете включить нумерацию строк в блоке с кодом, используя ключ `showLineNumbers` в метастроке языка (не забудьте добавить пробел непосредственно перед ключом).
 
 ````md
 ```jsx {1,4-6,11} showLineNumbers
@@ -395,8 +399,9 @@ export default MyComponent;
 ```
 ````
 
-````mdx-code-block
+```mdx-code-block
 <BrowserWindow>
+```
 
 ```jsx {1,4-6,11} showLineNumbers
 import React from 'react';
@@ -412,20 +417,21 @@ function MyComponent(props) {
 export default MyComponent;
 ```
 
+```mdx-code-block
 </BrowserWindow>
-````
+```
 
-## Interactive code editor {#interactive-code-editor}
+## Интерактивный редактор кода {#interactive-code-editor}
 
-(Powered by [React Live](https://github.com/FormidableLabs/react-live))
+(Работает на [React Live](https://github.com/FormidableLabs/react-live))
 
-You can create an interactive coding editor with the `@docusaurus/theme-live-codeblock` plugin. First, add the plugin to your package.
+Вы можете создать интерактивный редактор кода с помощью плагина `@docusaurus/theme-live-codeblock`. Сначала добавьте плагин в ваши зависимости.
 
 ```bash npm2yarn
 npm install --save @docusaurus/theme-live-codeblock
 ```
 
-You will also need to add the plugin to your `docusaurus.config.js`.
+Далее, подключите плагин в `docusaurus.config.js`.
 
 ```js {3}
 module.exports = {
@@ -435,14 +441,14 @@ module.exports = {
 };
 ```
 
-To use the plugin, create a code block with `live` attached to the language meta string.
+Чтобы использовать плагин, создайте блок кода с `live`, прикрепленным к метастроке языка.
 
 ````md
 ```jsx live
 function Clock(props) {
   const [date, setDate] = useState(new Date());
   useEffect(() => {
-    var timerID = setInterval(() => tick(), 1000);
+    const timerID = setInterval(() => tick(), 1000);
 
     return function cleanup() {
       clearInterval(timerID);
@@ -461,17 +467,17 @@ function Clock(props) {
 }
 ```
 ````
+Блок кода будет отображаться как интерактивный редактор. Изменения в коде отразятся на панели результатов в реальном времени.
 
-The code block will be rendered as an interactive editor. Changes to the code will reflect on the result panel live.
-
-````mdx-code-block
+```mdx-code-block
 <BrowserWindow>
+```
 
 ```jsx live
 function Clock(props) {
   const [date, setDate] = useState(new Date());
   useEffect(() => {
-    var timerID = setInterval(() => tick(), 1000);
+    const timerID = setInterval(() => tick(), 1000);
 
     return function cleanup() {
       clearInterval(timerID);
@@ -490,21 +496,22 @@ function Clock(props) {
 }
 ```
 
+```mdx-code-block
 </BrowserWindow>
-````
+```
 
-### Imports {#imports}
+### Импорты {#imports}
 
-:::caution react-live and imports
+:::caution react-live и импорты
 
-It is not possible to import components directly from the react-live code editor, you have to define available imports upfront.
+Невозможно импортировать компоненты напрямую из редактора кода на react-live, вы должны определить доступные импорты заранее.
 
 :::
 
-By default, all React imports are available. If you need more imports available, swizzle the react-live scope:
+По умолчанию доступны все React импорты. Если вам нужно больше доступных импортов, свиззлите react-live scpoe:
 
 ```bash npm2yarn
-npm run swizzle @docusaurus/theme-live-codeblock ReactLiveScope
+npm run swizzle @docusaurus/theme-live-codeblock ReactLiveScope -- --eject
 ```
 
 ```jsx title="src/theme/ReactLiveScope/index.js"
@@ -538,31 +545,65 @@ const ReactLiveScope = {
 export default ReactLiveScope;
 ```
 
-The `ButtonExample` component is now available to use:
+Компонент `ButtonExample` теперь доступен для использования:
 
-````mdx-code-block
+```mdx-code-block
 <BrowserWindow>
+```
 
 ```jsx live
 function MyPlayground(props) {
   return (
     <div>
-      <ButtonExample onClick={() => alert('hey!')}>Click me</ButtonExample>
+      <ButtonExample onClick={() => alert('Привет!')}>Нажми на меня</ButtonExample>
     </div>
   );
 }
 ```
 
+```mdx-code-block
+</BrowserWindow>
+```
+
+### Императивный рендеринг (noInline)
+
+Параметр `noInline` следует использовать, чтобы избежать ошибок, когда ваш код охватывает несколько компонентов или переменных.
+
+````md
+```jsx live noInline
+const project = 'Docusaurus';
+
+const Greeting = () => <p>Привет {project}!</p>;
+
+render(<Greeting />);
+```
+````
+В отличие от обычного интерактивного блока кода, при использовании `noInline` React Live не будет оборачивать ваш код встроенной функцией для его рендеринга.
+Вам нужно будет явно вызвать `render()` в конце вашего кода, чтобы отобразить вывод.
+
+````mdx-code-block
+<BrowserWindow>
+
+```jsx live noInline
+const project = "Docusaurus";
+
+const Greeting = () => (
+  <p>Привет {project}!</p>
+);
+
+render(
+  <Greeting />
+);
+```
+
 </BrowserWindow>
 ````
-
-## Using JSX markup in code blocks {#using-jsx-markup}
-
-Code block in Markdown always preserves its content as plain text, meaning you can't do something like:
+## Использование JSX в блоках кода {#using-jsx-markup}
+Блок кода в Markdown всегда сохраняет свое содержимое в виде простого текста, то есть вы не можете сделать что-то вроде:
 
 ```ts
 type EditUrlFunction = (params: {
-  // This doesn't turn into a link (for good reason!)
+  // Это не превращается в ссылку (по уважительной причине!)
   version: <a href="/docs/versioning">Version</a>;
   versionDocsDirPath: string;
   docPath: string;
@@ -571,41 +612,41 @@ type EditUrlFunction = (params: {
 }) => string | undefined;
 ```
 
-If you want to embed HTML markup such as anchor links or bold type, you can use the `<pre>` tag, `<code>` tag, or `<CodeBlock>` component.
+Если вы хотите внедрить HTML-разметку, такую как якорные ссылки или полужирный шрифт, вы можете использовать тег `<pre>`, тег `<code>` или компонент `<CodeBlock>`.
 
 ```jsx
 <pre>
-  <b>Input: </b>1 2 3 4{'\n'}
-  <b>Output: </b>"366300745"{'\n'}
+  <b>Ввод: </b>1 2 3 4{'\n'}
+  <b>Вывод: </b>"366300745"{'\n'}
 </pre>
 ```
 
 <BrowserWindow>
   <pre>
-    <b>Input: </b>1 2 3 4{'\n'}
-    <b>Output: </b>"366300745"{'\n'}
+    <b>Ввод: </b>1 2 3 4{'\n'}
+    <b>Вывод: </b>"366300745"{'\n'}
   </pre>
 </BrowserWindow>
 
-:::caution MDX is whitespace insensitive
+:::caution MDX нечувствителен к пробелам
 
-MDX is in line with JSX behavior: line break characters, even when inside `<pre>`, are turned into spaces. You have to explicitly write the new line character for it to be printed out.
+MDX соответствует поведению JSX: символы разрыва строки, даже находящиеся внутри `<pre>`, превращаются в пробелы. Вы должны явно написать символ новой строки, чтобы он был выведен.
 
 :::
 
 :::caution
 
-Syntax highlighting only works on plain strings. Docusaurus will not attempt to parse code block content containing JSX children.
+Подсветка синтаксиса работает только с простыми строками. Docusaurus не будет пытаться парсить содержимое блока кода, с дочерними элементами JSX внутри.
 
 :::
 
-## Multi-language support code blocks {#multi-language-support-code-blocks}
+## Поддержка нескольких языков в блоках {#multi-language-support-code-blocks}
 
-With MDX, you can easily create interactive components within your documentation, for example, to display code in multiple programming languages and switch between them using a tabs component.
+С помощью MDX вы можете легко создавать интерактивные компоненты в своей документации, например, для отображения кода на нескольких языках программирования и переключения между ними с помощью компонента вкладок.
 
-Instead of implementing a dedicated component for multi-language support code blocks, we've implemented a general-purpose [`<Tabs>`](./markdown-features-tabs.mdx) component in the classic theme so that you can use it for other non-code scenarios as well.
+Вместо реализации отдельного компонента для блоков кода многоязычной поддержки мы реализовали универсальный [`<Tabs>`](./markdown-features-tabs.mdx) в классической теме, чтобы вы могли использовать его и в других сценариях, не связанных с кодом.
 
-The following example is how you can have multi-language code tabs in your docs. Note that the empty lines above and below each language block are **intentional**. This is a [current limitation of MDX](./markdown-features-react.mdx#markdown-and-jsx-interoperability): you have to leave empty lines around Markdown syntax for the MDX parser to know that it's Markdown syntax and not JSX.
+В следующем примере показано, как вы можете использовать многоязычные вкладки кода в своей документации. Обратите внимание, что пустые строки над и под каждым языковым блоком добавлены **преднамеренно**. Это [текущее ограничение MDX](./markdown-features-react.mdx#markdown-and-jsx-interoperability): вы должны оставлять пустые строки вокруг синтаксиса Markdown, чтобы MDX парсер знал, что это синтаксис Markdown, а не JSX.
 
 ````jsx
 import Tabs from '@theme/Tabs';
@@ -616,7 +657,7 @@ import TabItem from '@theme/TabItem';
 
 ```js
 function helloWorld() {
-  console.log('Hello, world!');
+  console.log('Привет, мир!');
 }
 ```
 
@@ -625,7 +666,7 @@ function helloWorld() {
 
 ```py
 def hello_world():
-  print("Hello, world!")
+  print("Привет, мир!")
 ```
 
 </TabItem>
@@ -634,7 +675,7 @@ def hello_world():
 ```java
 class HelloWorld {
   public static void main(String args[]) {
-    System.out.println("Hello, World");
+    System.out.println("Привет, Мир");
   }
 }
 ```
@@ -642,55 +683,60 @@ class HelloWorld {
 </TabItem>
 </Tabs>
 ````
+И вы получите следующее:
 
-And you will get the following:
-
-````mdx-code-block
+```mdx-code-block
 <BrowserWindow>
 <Tabs>
 <TabItem value="js" label="JavaScript">
+```
 
 ```js
 function helloWorld() {
-  console.log('Hello, world!');
+  console.log('Привет, мир!');
 }
 ```
 
+```mdx-code-block
 </TabItem>
 <TabItem value="py" label="Python">
+```
 
 ```py
 def hello_world():
-  print("Hello, world!")
+  print("Привет, мир!")
 ```
 
+```mdx-code-block
 </TabItem>
 <TabItem value="java" label="Java">
+```
 
 ```java
 class HelloWorld {
   public static void main(String args[]) {
-    System.out.println("Hello, World");
+    System.out.println("Привет, Мир");
   }
 }
 ```
 
+```mdx-code-block
 </TabItem>
 </Tabs>
 </BrowserWindow>
-````
+```
 
-If you have multiple of these multi-language code tabs, and you want to sync the selection across the tab instances, refer to the [Syncing tab choices section](markdown-features-tabs.mdx#syncing-tab-choices).
+Если у вас есть несколько таких многоязычных вкладок кода и вы хотите синхронизировать выбор между экземплярами вкладок, см. раздел [Синхронизация выбранных вкладок](markdown-features-tabs.mdx#syncing-tab-choices).
 
-### Docusaurus npm2yarn remark plugin {#npm2yarn-remark-plugin}
+### Docusaurus npm2yarn remark плагин {#npm2yarn-remark-plugin}
 
-Displaying CLI commands in both npm and Yarn is a very common need, for example:
+Отображение команд CLI как в npm, так и в Yarn — очень распространенная потребность, например:
 
 ```bash npm2yarn
 npm install @docusaurus/remark-plugin-npm2yarn
 ```
 
-Docusaurus provides such a utility out of the box, freeing you from using the `Tabs` component every time. To enable this feature, first install the `@docusaurus/remark-plugin-npm2yarn` package as above, and then in `docusaurus.config.js`, for the plugins where you need this feature (doc, blog, pages, etc.), register it in the `remarkPlugins` option. (See [Docs configuration](../../api/plugins/plugin-content-docs.md#ex-config) for more details on configuration format)
+Docusaurus предоставляет такую утилиту из коробки, освобождая вас от необходимости каждый раз использовать компонент `Tabs`. Чтобы включить эту функцию, сначала установите пакет `@docusaurus/remark-plugin-npm2yarn`, как указано выше, а затем в `docusaurus.config.js` в плагины, для которых это необходимо (doc, blog, pages, т. д.), зарегистрируйте ее в опции `remarkPlugins`. (Подробнее о формате конфигурации см. в [конфигурации плагина Docs](../../api/plugins/plugin-content-docs.md#ex-config))
 
 ```js title="docusaurus.config.js"
 module.exports = {
@@ -719,19 +765,16 @@ module.exports = {
 };
 ```
 
-And then use it by adding the `npm2yarn` key to the code block:
+А затем используйте его, добавив ключ `npm2yarn` в блок кода:
 
 ````md
 ```bash npm2yarn
 npm install @docusaurus/remark-plugin-npm2yarn
 ```
 ````
-
-Using the `{sync: true}` option would make all tab choices synced. Because the choice is stored under the same namespace `npm2yarn`, different `npm2yarn` plugin instances would also sync their choices.
-
-## Usage in JSX {#usage-in-jsx}
-
-Outside of Markdown, you can use the `@theme/CodeBlock` component to get the same output.
+Использование параметра `{sync: true}` синхронизирует все вкладки. Поскольку выбор хранится в одном и том же пространстве имен `npm2yarn`, разные экземпляры подключаемого модуля `npm2yarn` также будут синхронизировать свои варианты.
+## Использование в JSX {#usage-in-jsx}
+Вне Markdown вы можете использовать компонент `@theme/CodeBlock`, чтобы получить тот же результат.
 
 ```jsx
 import CodeBlock from '@theme/CodeBlock';
@@ -745,7 +788,7 @@ export default function MyReactPage() {
         title="/src/components/HelloCodeTitle.js"
         showLineNumbers>
         {`function HelloCodeTitle(props) {
-  return <h1>Hello, {props.name}</h1>;
+  return <h1>Привет, {props.name}</h1>;
 }`}
       </CodeBlock>
       {/* highlight-end */}
@@ -754,19 +797,21 @@ export default function MyReactPage() {
 }
 ```
 
+```mdx-code-block
 <BrowserWindow>
   <CodeBlock
     language="jsx"
     title="/src/components/HelloCodeTitle.js"
     showLineNumbers>
     {`function HelloCodeTitle(props) {
-  return <h1>Hello, {props.name}</h1>;
+  return <h1>Привет, {props.name}</h1>;
 }`}
   </CodeBlock>
 </BrowserWindow>
+```
 
-The props accepted are `language`, `title` and `showLineNumbers`, in the same way as you write Markdown code blocks.
+Доступные свойства: `language`, `title` и `showLineNumbers`, точно такие же, как в Markdown.
 
-Although discouraged, you can also pass in a `metastring` prop like `metastring='{1-2} title="/src/components/HelloCodeTitle.js" showLineNumbers'`, which is how Markdown code blocks are handled under the hood. However, we recommend you [use comments for highlighting lines](#highlighting-with-comments).
+Хотя это и не рекомендуется, вы также можете передать свойство `metastring`, например `metastring='{1-2} title="/src/components/HelloCodeTitle.js" showLineNumbers'`, это то, как блоки кода в Markdown обрабатываются под капотом. Однако мы рекомендуем вам [использовать комментарии для выделения строк](#highlighting-with-comments).
 
-As [previously stated](#using-jsx-markup), syntax highlighting is only applied when the children is a simple string.
+Как [указывалось ранее](#using-jsx-markup), подсветка синтаксиса применяется только в том случае, если дочерним элементом является простая строка.

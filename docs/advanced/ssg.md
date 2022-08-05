@@ -8,11 +8,13 @@ description: Docusaurus statically renders your React code into HTML, allowing f
 In [architecture](architecture.md), we mentioned that the theme is run in Webpack. But beware: that doesn't mean it always has access to browser globals! The theme is built twice:
 
 - During **server-side rendering**, the theme is compiled in a sandbox called [React DOM Server](https://reactjs.org/docs/react-dom-server.html). You can see this as a "headless browser", where there is no `window` or `document`, only React. SSR produces static HTML pages.
-- During **client-side rendering**, the theme is compiled with standard React DOM, and has access to browser variables. CSR produces dynamic JavaScript.
+- During **client-side rendering**, the theme is compiled to JavaScript that gets eventually executed in the browser, so it has access to browser variables.
 
 :::info SSR or SSG?
 
 _Server-side rendering_ and _static site generation_ can be different concepts, but we use them interchangeably.
+
+Strictly speaking, Docusaurus is a static site generator, because there's no server-side runtime—we statically render to HTML files that are deployed on a CDN, instead of dynamically pre-rendering on each request. This differs from the working model of [Next.js](https://nextjs.org/).
 
 :::
 
@@ -34,9 +36,10 @@ ReferenceError: window is not defined
 
 This is because during server-side rendering, the Docusaurus app isn't actually run in browser, and it doesn't know what `window` is.
 
+```mdx-code-block
 <details id="node-env">
-
 <summary>What about <code>process.env.NODE_ENV</code>?</summary>
+```
 
 One exception to the "no Node globals" rule is `process.env.NODE_ENV`. In fact, you can use it in React, because Webpack injects this variable as a global:
 
@@ -56,8 +59,10 @@ During Webpack build, the `process.env.NODE_ENV` will be replaced with the value
 
 import Tabs from '@theme/Tabs'; import TabItem from '@theme/TabItem';
 
+```mdx-code-block
 <Tabs>
 <TabItem value="Development">
+```
 
 ```diff
 import React from 'react';
@@ -72,8 +77,10 @@ export default function expensiveComp() {
 }
 ```
 
+```mdx-code-block
 </TabItem>
 <TabItem value="Production">
+```
 
 ```diff
 import React from 'react';
@@ -88,9 +95,11 @@ export default function expensiveComp() {
 }
 ```
 
+```mdx-code-block
 </TabItem>
 </Tabs>
 </details>
+```
 
 ## Understanding SSR {#understanding-ssr}
 

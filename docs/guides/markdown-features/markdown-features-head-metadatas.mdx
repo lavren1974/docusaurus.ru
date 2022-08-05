@@ -1,0 +1,61 @@
+---
+id: head-metadatas
+title: Метаданные в head
+description: Объявление специфичных для страницы метаданных в теге head с помощью MDX
+slug: /markdown-features/head-metadatas
+---
+
+# Метаданные в head
+
+Docusaurus автоматически устанавливает полезные метаданные страницы в `<html>`, `<head>` и `<body>` за вас.
+
+Можно добавить дополнительные метаданные (или переопределить существующие) с помощью тега `<head>` в файлах Markdown:
+
+```md title="markdown-features-head-metadatas.mdx"
+---
+id: head-metadatas
+title: Head Metadatas
+---
+
+<!-- highlight-start -->
+<head>
+  <html className="some-extra-html-class" />
+  <body className="other-extra-body-class" />
+  <title>Head Metadatas customized title!</title>
+  <meta charSet="utf-8" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="canonical" href="https://docusaurus.io/docs/markdown-features/head-metadatas" />
+</head>
+<!-- highlight-end -->
+
+# Head Metadatas
+
+My text
+```
+
+```mdx-code-block
+<head>
+  <html className="some-extra-html-class" />
+  <body className="other-extra-body-class" />
+  <title>Head Metadatas customized title!</title>
+  <meta charSet="utf-8" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="canonical" href="https://docusaurus.io/docs/markdown-features/head-metadatas" />
+</head>
+```
+
+:::tip
+
+Эти метаданные в `<head>` были добавлены в текущую страницу в качестве демонстрации.
+
+Откройте инструменты разработчика в браузере и проверьте, как изменились метаданные этой страницы.
+
+:::
+
+:::note
+
+Эта функциональность построена на основе компонента Docusaurus [`<Head>`](./../../docusaurus-core.md#head).
+
+Обратитесь к [react-helmet](https://github.com/nfl/react-helmet) для получения исчерпывающей документации.
+
+:::

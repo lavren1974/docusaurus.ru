@@ -1,15 +1,15 @@
 ---
 sidebar_position: 3
-id: plugin-content-pages
-title: '📦 plugin-content-pages'
-slug: '/api/plugins/@docusaurus/plugin-content-pages'
+slug: /api/plugins/@docusaurus/plugin-content-pages
 ---
 
-import APITable from '@site/src/components/APITable';
+# 📦 plugin-content-pages
+
+импортировать APITable из '@site/src/components/APITable';
 
 The default pages plugin for Docusaurus. The classic template ships with this plugin with default configurations. This plugin provides [creating pages](guides/creating-pages.md) functionality.
 
-## Installation {#installation}
+## Установка {#installation}
 
 ```bash npm2yarn
 npm install --save @docusaurus/plugin-content-pages
@@ -23,25 +23,29 @@ You can configure this plugin through the preset options.
 
 :::
 
-## Configuration {#configuration}
+## Файл конфигурации {#configuration}
 
 Accepted fields:
 
+```mdx-code-block
 <APITable>
+```
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `path` | `string` | `'src/pages'` | Path to data on filesystem relative to site dir. Components in this directory will be automatically converted to pages. |
-| `routeBasePath` | `string` | `'/'` | URL route for the pages section of your site. **DO NOT** include a trailing slash. |
-| `include` | `string[]` | `['**/*.{js,jsx,ts,tsx,md,mdx}']` | Matching files will be included and processed. |
-| `exclude` | `string[]` | _See example configuration_ | No route will be created for matching files. |
-| `mdxPageComponent` | `string` | `'@theme/MDXPage'` | Component used by each MDX page. |
-| `remarkPlugins` | `[]` | `any[]` | Remark plugins passed to MDX. |
-| `rehypePlugins` | `[]` | `any[]` | Rehype plugins passed to MDX. |
-| `beforeDefaultRemarkPlugins` | `any[]` | `[]` | Custom Remark plugins passed to MDX before the default Docusaurus Remark plugins. |
-| `beforeDefaultRehypePlugins` | `any[]` | `[]` | Custom Rehype plugins passed to MDX before the default Docusaurus Rehype plugins. |
+| Название                     | Type       | По-умолчанию                      | Описание                                                                                                                |
+| ---------------------------- | ---------- | --------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `path`                       | `string`   | `'src/pages'`                     | Path to data on filesystem relative to site dir. Components in this directory will be automatically converted to pages. |
+| `routeBasePath`              | `string`   | `'/'`                             | URL route for the pages section of your site. **DO NOT** include a trailing slash.                                      |
+| `include`                    | `string[]` | `['**/*.{js,jsx,ts,tsx,md,mdx}']` | Matching files will be included and processed.                                                                          |
+| `exclude`                    | `string[]` | _See example configuration_       | No route will be created for matching files.                                                                            |
+| `mdxPageComponent`           | `string`   | `'@theme/MDXPage'`                | Component used by each MDX page.                                                                                        |
+| `remarkPlugins`              | `[]`       | `any[]`                           | Remark plugins passed to MDX.                                                                                           |
+| `rehypePlugins`              | `[]`       | `any[]`                           | Rehype plugins passed to MDX.                                                                                           |
+| `beforeDefaultRemarkPlugins` | `any[]`    | `[]`                              | Custom Remark plugins passed to MDX before the default Docusaurus Remark plugins.                                       |
+| `beforeDefaultRehypePlugins` | `any[]`    | `[]`                              | Custom Rehype plugins passed to MDX before the default Docusaurus Rehype plugins.                                       |
 
+```mdx-code-block
 </APITable>
+```
 
 ### Example configuration {#ex-config}
 

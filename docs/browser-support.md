@@ -1,7 +1,8 @@
 ---
-id: browser-support
-title: Browser support
+description: How to keep a reasonable bundle size while ensuring sufficient browser support.
 ---
+
+# Поддержка браузеров
 
 Docusaurus allows sites to define the list of supported browsers through a [browserslist configuration](https://github.com/browserslist/browserslist).
 
@@ -70,7 +71,7 @@ And browsers used in development are:
 
 - The latest version of Chrome _or_ Firefox _or_ Safari.
 
-You can "evaluate" any config with the `browserslist` cli to obtain the actual list:
+You can "evaluate" any config with the `browserslist` CLI to obtain the actual list:
 
 ```bash
 npx browserslist --env="production"

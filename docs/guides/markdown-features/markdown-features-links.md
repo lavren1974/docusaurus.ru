@@ -20,11 +20,11 @@ If you want to reference another Markdown file **included by the same plugin**, 
 For example, if you are in `docs/folder/doc1.md` and you want to reference `docs/folder/doc2.md`, `docs/folder/subfolder/doc3.md` and `docs/otherFolder/doc4.md`:
 
 ```md title="docs/folder/doc1.md"
-I am referencing a [document](doc2.md).
+Я ссылаюсь на [страницу](doc2.md).
 
-Reference to another [document in a subfolder](subfolder/doc3.md).
+Ссылка на другую [страницу в подпапке](subfolder/doc3.md).
 
-[Relative document](../otherFolder/doc4.md) referencing works as well.
+[Относительная ссылка на страницу](../otherFolder/doc4.md) тоже работает.
 ```
 
 Relative file paths are resolved against the current file's directory. Absolute file paths, on the other hand, are resolved relative to the **content root**, usually `docs/`, `blog/`, or [localized ones](../../i18n/i18n-tutorial.md) like `i18n/zh-Hans/plugin-content-docs/current`.
@@ -37,7 +37,7 @@ You can write [links](/otherFolder/doc4.md) relative to the content root (`/docs
 You can also write [links](/docs/otherFolder/doc4.md) relative to the site directory, but it's not recommended.
 ```
 
-Using relative _file_ paths (with `.md` extensions) instead of relative _URL_ links provides the following benefits:
+Использование относительных путей _файлов_ (с расширениями `.md`) вместо относительных ссылок _URL_ дает следующие преимущества:
 
 - Links will keep working on the GitHub interface and many Markdown editors
 - You can customize the files' slugs without having to update all the links

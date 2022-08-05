@@ -1,12 +1,12 @@
 ---
-id: cli
+description: Docusaurus предоставляет набор скриптов, которые помогут вам создавать, обслуживать и развертывать ваш сайт.
 ---
 
-# CLI
+# Интерфейс командной строки (CLI)
 
-Docusaurus provides a set of scripts to help you generate, serve, and deploy your website.
+Docusaurus предоставляет набор скриптов, которые помогут вам создавать, обслуживать и развертывать ваш сайт.
 
-Once your website is bootstrapped, the website source will contain the Docusaurus scripts that you can invoke with your package manager:
+Как только ваш сайт будет преднастроен, исходный код веб-сайта будет содержать скрипты Docusaurus, которые вы можете вызвать с помощью менеджера пакетов:
 
 ```json title="package.json"
 {
@@ -25,29 +25,29 @@ Once your website is bootstrapped, the website source will contain the Docusauru
 }
 ```
 
-## Docusaurus CLI commands {#docusaurus-cli-commands}
+## CLI команды Docusaurus {#docusaurus-cli-commands}
 
-Below is a list of Docusaurus CLI commands and their usages:
+Ниже приведен список команд CLI Docusaurus и их использования:
 
 ### `docusaurus start [siteDir]` {#docusaurus-start-sitedir}
 
-Builds and serves a preview of your site locally with [Webpack Dev Server](https://webpack.js.org/configuration/dev-server).
+Строит и предоставляет сервер для предварительного просмотра вашего сайта локально с помощью [Webpack Dev Server](https://webpack.js.org/configuration/dev-server).
 
-#### Options {#options}
+#### Параметры {#options}
 
-| Name | Default | Description |
-| --- | --- | --- |
-| `--port` | `3000` | Specifies the port of the dev server. |
-| `--host` | `localhost` | Specify a host to use. For example, if you want your server to be accessible externally, you can use `--host 0.0.0.0`. |
-| `--hot-only` | `false` | Enables Hot Module Replacement without page refresh as a fallback in case of build failures. More information [here](https://webpack.js.org/configuration/dev-server/#devserverhotonly). |
-| `--no-open` | `false` | Do not open automatically the page in the browser. |
-| `--config` | `undefined` | Path to docusaurus config file, default to `[siteDir]/docusaurus.config.js` |
-| `--poll [optionalIntervalMs]` | `false` | Use polling of files rather than watching for live reload as a fallback in environments where watching doesn't work. More information [here](https://webpack.js.org/configuration/watch/#watchoptionspoll). |
-| `--no-minify` | `false` | Build website without minimizing JS/CSS bundles. |
+| Название                      | По-умолчанию | Описание                                                                                                                                                                                                                                               |
+| ----------------------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `--port`                      | `3000`       | Задает порт dev-сервера.                                                                                                                                                                                                                               |
+| `--host`                      | `localhost`  | Задает используемый хост. Например, если ваш сервер должен быть доступен не только с локальной машины, используйте --host 0.0.0.0.                                                                                                                     |
+| `--hot-only`                  | `false`      | Включает обновление «на горячую» без обновления страницы в качестве запасного варианта в случае сбоя сборки. Дополнительная информация [здесь](https://webpack.js.org/configuration/dev-server/#devserverhotonly).                                     |
+| `--no-open`                   | `false`      | Не открывать страницу в браузере автоматически.                                                                                                                                                                                                        |
+| `--config`                    | `undefined`  | Path to Docusaurus config file, default to `[siteDir]/docusaurus.config.js`                                                                                                                                                                            |
+| `--poll [optionalIntervalMs]` | `false`      | Использовать поллинг файлов, а не следить за ними для перезагрузки в режиме реального времени. Запасной вариант, когда следить за файлами невозможно. Дополнительная информация [здесь](https://webpack.js.org/configuration/watch/#watchoptionspoll). |
+| `--no-minify`                 | `false`      | Собрать сайт без минификации JS/CSS бандлов.                                                                                                                                                                                                           |
 
 :::important
 
-Please note that some functionality (for example, anchor links) will not work in development. The functionality will work as expected in production.
+Пожалуйста, обратите внимание, что некоторая функциональнсть (например, якорные ссылки) не будет работать в режиме разработки. Эта функциональность будет работать как ожидается в боевом окружении.
 
 :::
 
@@ -61,38 +61,40 @@ npm run start -- --host 0.0.0.0
 
 :::
 
-#### Enabling HTTPS {#enabling-https}
+#### Включение HTTPS {#enabling-https}
 
-There are multiple ways to obtain a certificate. We will use [mkcert](https://github.com/FiloSottile/mkcert) as an example.
+Есть несколько способов получить сертификат. В качестве примера мы будем использовать [mkcert](https://github.com/FiloSottile/mkcert).
 
-1. Run `mkcert localhost` to generate `localhost.pem` + `localhost-key.pem`
+1. Запустите `mkcert localhost` для генерации `localhost.pem` + `localhost-key.pem`
 
-2. Run `mkcert -install` to install the cert in your trust store, and restart your browser
+2. Запустите `mkcert -install` для установки сертификата в хранилище сертификатов и перезапустите ваш браузер
 
-3. Start the app with Docusaurus HTTPS env variables:
+3. Запустите приложение Docusaurus, указав следующие HTTPS пременные окружения:
 
 ```bash
 HTTPS=true SSL_CRT_FILE=localhost.pem SSL_KEY_FILE=localhost-key.pem yarn start
 ```
 
-4. Open `https://localhost:3000/`
+4. Откройте `https://localhost:3000/`
 
 ### `docusaurus build [siteDir]` {#docusaurus-build-sitedir}
 
-Compiles your site for production.
+Компилирует ваш сайт для продуктивного окружения.
 
-#### Options {#options-1}
+#### Параметры {#options-1}
 
-| Name | Default | Description |
-| --- | --- | --- |
-| `--bundle-analyzer` | `false` | Analyze your bundle with the [webpack bundle analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer). |
-| `--out-dir` | `build` | The full path for the new output directory, relative to the current workspace. |
-| `--config` | `undefined` | Path to docusaurus config file, default to `[siteDir]/docusaurus.config.js` |
-| `--no-minify` | `false` | Build website without minimizing JS/CSS bundles. |
+| Название            | По-умолчанию | Описание                                                                                                                        |
+| ------------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------- |
+| `--bundle-analyzer` | `false`      | Анализирует сборку с помощью анализатора [webpack bundle analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer). |
+| `--out-dir`         | `build`      | Полный относительный путь к каталогу для результатов сборки.                                                                    |
+| `--config`          | `undefined`  | Path to Docusaurus config file, default to `[siteDir]/docusaurus.config.js`                                                     |
+| `--no-minify`       | `false`      | Собрать сайт без минификации JS/CSS бандлов.                                                                                    |
 
 :::info
 
-For advanced minification of CSS bundle, we use the [advanced cssnano preset](https://github.com/cssnano/cssnano/tree/master/packages/cssnano-preset-advanced) (along with additional several PostCSS plugins) and [level 2 optimization of clean-css](https://github.com/jakubpawlowicz/clean-css#level-2-optimizations). If as a result of this advanced CSS minification you find broken CSS, build your website with the environment variable `USE_SIMPLE_CSS_MINIFIER=true` to minify CSS with the [default cssnano preset](https://github.com/cssnano/cssnano/tree/master/packages/cssnano-preset-default). **Please [fill out an issue](https://github.com/facebook/docusaurus/issues/new?labels=bug%2C+needs+triage&template=bug.md) if you experience CSS minification bugs.**
+Для расширенной минификации CSS-набора, мы используем расширенный шаблон [cssnano](https://github.com/cssnano/cssnano/tree/master/packages/cssnano-preset-advanced) (вместе с дополнительными плагинами PostCSS) и [уровень 2 оптимизации clean-css](https://github.com/jakubpawlowicz/clean-css#level-2-optimizations). Если дополнительная минификация CSS приводит к поломкам CSS, постройте сайт с помощью переменной окружения `USE_SIMPLE_CSS_MINIFIER=true`, чтобы минифицировать CSS с помощью шаблона [по умолчанию cssnano](https://github.com/cssnano/cssnano/tree/master/packages/cssnano-preset-default). **Пожалуйста, [создайте тикет с описанием проблемы](https://github.com/facebook/docusaurus/issues/new?labels=bug%2C+needs+triage&template=bug.md) если вы столкнулись с ошибками минификации CSS.**
+
+You can skip the HTML minification with the environment variable `SKIP_HTML_MINIFICATION=true`.
 
 :::
 
@@ -109,9 +111,9 @@ npm run swizzle @docusaurus/theme-classic Footer -- --eject
 
 The swizzle CLI is interactive and will guide you through the whole [swizzle process](./swizzling.md).
 
-#### Options {#options-swizzle}
+#### Параметры {#options-swizzle}
 
-| Name            | Description                                          |
+| Название        | Описание                                             |
 | --------------- | ---------------------------------------------------- |
 | `themeName`     | The name of the theme to swizzle from.               |
 | `componentName` | The name of the theme component to swizzle.          |
@@ -131,25 +133,26 @@ Unsafe components have a higher risk of breaking changes due to internal refacto
 
 Deploys your site with [GitHub Pages](https://pages.github.com/). Check out the docs on [deployment](deployment.mdx#deploying-to-github-pages) for more details.
 
-#### Options {#options-3}
+#### Параметры {#options-3}
 
-| Name | Default | Description |
-| --- | --- | --- |
-| `--out-dir` | `build` | The full path for the new output directory, relative to the current workspace. |
-| `--skip-build` | `false` | Deploy website without building it. This may be useful when using a custom deploy script. |
-| `--config` | `undefined` | Path to docusaurus config file, default to `[siteDir]/docusaurus.config.js` |
+| Название       | По-умолчанию | Описание                                                                                                     |
+| -------------- | ------------ | ------------------------------------------------------------------------------------------------------------ |
+| `--out-dir`    | `build`      | Полный относительный путь к каталогу для результатов сборки.                                                 |
+| `--skip-build` | `false`      | Разверните сайт без построения. Это может быть полезно при использовании собственного скрипта развертывания. |
+| `--config`     | `undefined`  | Path to Docusaurus config file, default to `[siteDir]/docusaurus.config.js`                                  |
 
 ### `docusaurus serve [siteDir]` {#docusaurus-serve-sitedir}
 
 Serve your built website locally.
 
-| Name | Default | Description |
-| --- | --- | --- |
-| `--port` | `3000` | Use specified port |
-| `--dir` | `build` | The full path for the output directory, relative to the current workspace |
-| `--build` | `false` | Build website before serving |
-| `--config` | `undefined` | Path to docusaurus config file, default to `[siteDir]/docusaurus.config.js` |
-| `--host` | `localhost` | Specify a host to use. For example, if you want your server to be accessible externally, you can use `--host 0.0.0.0`. |
+| Название    | По-умолчанию                  | Описание                                                                                                                           |
+| ----------- | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `--port`    | `3000`                        | Использовать указанный порт                                                                                                        |
+| `--dir`     | `build`                       | Полный путь для выходной директории относительно текущего проекта                                                                  |
+| `--build`   | `false`                       | Постройте сайт перед раздачей сервером                                                                                             |
+| `--config`  | `undefined`                   | Path to Docusaurus config file, default to `[siteDir]/docusaurus.config.js`                                                        |
+| `--host`    | `localhost`                   | Задает используемый хост. Например, если ваш сервер должен быть доступен не только с локальной машины, используйте --host 0.0.0.0. |
+| `--no-open` | `false` locally, `true` in CI | Do not open a browser window to the server location.                                                                               |
 
 ### `docusaurus clear [siteDir]` {#docusaurus-clear-sitedir}
 
@@ -163,19 +166,19 @@ Write the JSON translation files that you will have to translate.
 
 By default, the files are written in `website/i18n/<defaultLocale>/...`.
 
-| Name | Default | Description |
-| --- | --- | --- |
-| `--locale` | `<defaultLocale>` | Define which locale folder you want to write translations the JSON files in |
-| `--override` | `false` | Override existing translation messages |
-| `--config` | `undefined` | Path to docusaurus config file, default to `[siteDir]/docusaurus.config.js` |
-| `--messagePrefix` | `''` | Allows adding a prefix to each translation message, to help you highlight untranslated strings |
+| Название          | По-умолчанию            | Описание                                                                                         |
+| ----------------- | ----------------------- | ------------------------------------------------------------------------------------------------ |
+| `--locale`        | `<defaultLocale>` | Определите папку, в которую вы хотите записывать переводы JSON-файлов                            |
+| `--override`      | `false`                 | Переопределяет существующие сообщения перевода                                                   |
+| `--config`        | `undefined`             | Path to Docusaurus config file, default to `[siteDir]/docusaurus.config.js`                      |
+| `--messagePrefix` | `''`                    | Позволяет добавлять префикс к каждому сообщению перевода, чтобы подсветить непереведенные строки |
 
 ### `docusaurus write-heading-ids [siteDir] [files]` {#docusaurus-write-heading-ids-sitedir}
 
-Add [explicit heading ids](./guides/markdown-features/markdown-features-toc.mdx#explicit-ids) to the Markdown documents of your site.
+Add [explicit heading IDs](./guides/markdown-features/markdown-features-toc.mdx#explicit-ids) to the Markdown documents of your site.
 
-| Name | Default | Description |
-| --- | --- | --- |
-| `files` | All MD files used by plugins | The files that you want heading IDs to be written to. |
-| `--maintain-case` | `false` | Keep the headings' casing, otherwise make all lowercase. |
-| `--overwrite` | `false` | Overwrite existing heading IDs. |
+| Название          | По-умолчанию                         | Описание                                                      |
+| ----------------- | ------------------------------------ | ------------------------------------------------------------- |
+| `files`           | Все файлы MD, используемые плагинами | Файлы, в которые вы хотите записать идентификаторы заголовка. |
+| `--maintain-case` | `false`                              | Сохранить регистр заголовоков, иначе сделать буквы строчными. |
+| `--overwrite`     | `false`                              | Перезаписать существующие идентификаторы заголовка.           |

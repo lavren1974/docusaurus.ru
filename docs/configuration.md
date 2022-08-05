@@ -1,41 +1,42 @@
 ---
-id: configuration
-title: Configuration
+description: Настройка поведения вашего сайта и много другого с помощью docusaurus.config.js.
 ---
+
+# Файл конфигурации
 
 import TOCInline from '@theme/TOCInline';
 
-Docusaurus has a unique take on configurations. We encourage you to congregate information about your site into one place. We guard the fields of this file and facilitate making this data object accessible across your site.
+У Docusaurus уникальный подход к конфигурации сайта. Мы предлагаем держать всю информацию о вашем сайте в одном месте. Мы бережно относимся к данным в этом файле и предоставляем доступ на чтение объекта с этими данными в любом месте сайта.
 
-Keeping a well-maintained `docusaurus.config.js` helps you, your collaborators, and your open source contributors to be able to focus on documentation while still being able to customize the site.
+Поддержание в хорошем состоянии `docusaurus.config.js` поможет вам, вашим соавторам и контрибьюторам в ваш проект сосредоточиться на документации, сохраняя при этом возможность гибкой настройки сайта.
 
-## What goes into a `docusaurus.config.js`? {#what-goes-into-a-docusaurusconfigjs}
+## Что входит в `docusaurus.config.js`? {#what-goes-into-a-docusaurusconfigjs}
 
-You should not have to write your `docusaurus.config.js` from scratch even if you are developing your site. All templates come with a `docusaurus.config.js` that includes defaults for the common options.
+Вам не придется писать с нуля `docusaurus.config.js`, даже в начале разработки собственного сайта. Все шаблоны содержат файл `docusaurus.config.js`, где указаны значения по умолчанию для общих параметров.
 
-However, it can be helpful if you have a high-level understanding of how the configurations are designed and implemented.
+Тем не менее мы хотели бы, чтобы у вас было общее представление о том, как устроена конфигурация сайта.
 
-The high-level overview of Docusaurus configuration can be categorized into:
+Ниже мы подготовили общий обзор всех параметров Docusaurus разделив их на несколько категорий.
 
 <TOCInline toc={toc} minHeadingLevel={3} maxHeadingLevel={3} />
 
-For exact reference to each of the configurable fields, you may refer to [**`docusaurus.config.js` API reference**](api/docusaurus.config.js.md).
+Для получения подробной информации по каждому полю перейдите по ссылке [**`docusaurus.config.js` API reference**](api/docusaurus.config.js.md).
 
-### Site metadata {#site-metadata}
+### Метаданные сайта {#site-metadata}
 
-Site metadata contains the essential global metadata such as `title`, `url`, `baseUrl`, and `favicon`.
+Здесь содержатся важные глобальные настройки метаданных сайта, такие как `title`, `url`, `baseUrl` и `favicon`.
 
-They are used in several places such as your site's title and headings, browser tab icon, social sharing (Facebook, Twitter) information or even to generate the correct path to serve your static files.
+Эти параметры используются в нескольких местах по всему сайту, таких как title и заголовки вашего сайта, значок вкладки браузера, информация о социальных сетях (Facebook, Twitter), а также для генерации правильного пути, по которому будут находиться ваши статические файлы.
 
-### Deployment configurations {#deployment-configurations}
+### Настройки деплоя приложения {#deployment-configurations}
 
-Deployment configurations such as `projectName`, `organizationName`, and optionally `deploymentBranch` are used when you deploy your site with the `deploy` command.
+Параметры деплоя, такие как `projectName`, `organizationName` и, при необходимости, `deploymentBranch`, используются при деплое сайта с помощью команды `deploy`.
 
-It is recommended to check the [deployment docs](deployment.mdx) for more information.
+Для получения дополнительной информации рекомендуем почитать [документацию по деплою](deployment.mdx).
 
-### Theme, plugin, and preset configurations {#theme-plugin-and-preset-configurations}
+### Тема, плагины и пресеты {#theme-plugin-and-preset-configurations}
 
-List the [themes](./using-plugins.md#using-themes), [plugins](./using-plugins.md), and [presets](./using-plugins.md#using-presets) for your site in the `themes`, `plugins`, and `presets` fields, respectively. These are typically npm packages:
+Параметры [темы](./using-plugins.md#using-themes), [плагинов](./using-plugins.md), and [пресетов](./using-plugins.md#using-presets) вашего сайта указываются в полях `themes`, `plugins`, и `presets`, соответственно. Обычно это npm-пакеты:
 
 ```js title="docusaurus.config.js"
 module.exports = {
@@ -50,7 +51,7 @@ module.exports = {
 
 :::tip
 
-Docusaurus supports [**module shorthands**](./using-plugins.md#module-shorthands), allowing you to simplify the above configuration as:
+Docusaurus поддерживает [**сокращенное именование модулей**](./using-plugins.md#module-shorthands), что позволяет упростить приведенную выше конфигурацию следующим образом:
 
 ```js title="docusaurus.config.js"
 module.exports = {
@@ -62,7 +63,7 @@ module.exports = {
 
 :::
 
-They can also be loaded from local directories:
+Модули также могут быть загружены из локальных директорий:
 
 ```js title="docusaurus.config.js"
 const path = require('path');
@@ -73,7 +74,7 @@ module.exports = {
 };
 ```
 
-To specify options for a plugin or theme, replace the name of the plugin or theme in the config file with an array containing the name and an options object:
+Чтобы указать параметры для плагина или темы, замените имя плагина или темы в файле конфигурации на массив, содержащий имя и объект параметров:
 
 ```js title="docusaurus.config.js"
 module.exports = {
@@ -93,7 +94,7 @@ module.exports = {
 };
 ```
 
-To specify options for a plugin or theme that is bundled in a preset, pass the options through the `presets` field. In this example, `docs` refers to `@docusaurus/plugin-content-docs` and `theme` refers to `@docusaurus/theme-classic`.
+Параметры для плагинов или темы, подключающихся в пресетах, нужно указывать в поле `presets`. В примере ниже `docs` относится к `@docusaurus/plugin-content-docs`, а `theme` относится к `@docusaurus/theme-classic`.
 
 ```js title="docusaurus.config.js"
 module.exports = {
@@ -116,17 +117,17 @@ module.exports = {
 
 :::tip
 
-The `presets: [['classic', {...}]]` shorthand works as well.
+Точно также работает сокращенное написание `presets: [['classic', {...}]]`.
 
 :::
 
-For further help configuring themes, plugins, and presets, see [Using Plugins](./using-plugins.md).
+Дополнительные сведения о настройке тем, подключаемых модулей и предустановок смотрите в разделе [Использование плагинов](./using-plugins.md).
 
-### Custom configurations {#custom-configurations}
+### Собственные поля {#custom-configurations}
 
-Docusaurus guards `docusaurus.config.js` from unknown fields. To add custom fields, define them in `customFields`.
+Docusaurus защищает `docusaurus.config.js` от неизвестных полей. Собственные уникальные поля добавляйте в `customFields`.
 
-Example:
+Пример:
 
 ```js title="docusaurus.config.js"
 module.exports = {
@@ -141,11 +142,11 @@ module.exports = {
 };
 ```
 
-## Accessing configuration from components {#accessing-configuration-from-components}
+## Доступ к параметрам из компонентов {#accessing-configuration-from-components}
 
-Your configuration object will be made available to all the components of your site. And you may access them via React context as `siteConfig`.
+Объект с настройками сайта доступен для всех ваших компонентов. Получить к нему доступ можно через React-контекст, как `siteConfig`.
 
-Basic example:
+Простой пример:
 
 ```jsx
 import React from 'react';
@@ -164,13 +165,13 @@ const Hello = () => {
 
 :::tip
 
-If you just want to use those fields on the client side, you could create your own JS files and import them as ES6 modules, there is no need to put them in `docusaurus.config.js`.
+Если же вам нужно просто иметь поля, к которым вы сможете достучаться со стороны клиента, то лучше создайте отдельные JS-файлы и импортируйте их как ES6-модули. Необязательно помещать эти данные в `docusaurus.config.js`.
 
 :::
 
-## Customizing Babel Configuration {#customizing-babel-configuration}
+## Настройка Babel {#customizing-babel-configuration}
 
-For new Docusaurus projects, we automatically generated a `babel.config.js` in the project root.
+Для новых проектов на Docusaurus мы автоматически создаем `babel.config.js` в корне проекта.
 
 ```js title="babel.config.js"
 module.exports = {
@@ -178,4 +179,4 @@ module.exports = {
 };
 ```
 
-Most of the time, this configuration will work just fine. If you want to customize your babel configuration (e.g. to add support for Flow), you can directly edit this file. For your changes to take effect, you need to restart the Docusaurus dev server.
+В большинстве случаев настроек по умолчанию будет достаточно. Если вы хотите по-своему настроить babel (например, добавить поддержку Flow), вы можете напрямую отредактировать этот файл. Чтобы ваши изменения вступили в силу, вам нужно будет перезапустить дев-сервер Docusaurus.

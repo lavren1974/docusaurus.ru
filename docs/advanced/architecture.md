@@ -1,8 +1,8 @@
 ---
-description: How Docusaurus works to build your app
+description: Как Docusaurus собирает ваше приложение
 ---
 
-# Architecture
+# Архитектура
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -12,17 +12,17 @@ import Zoom from '@site/src/components/Zoom';
 
 <Zoom>
 
-![Architecture overview](/img/architecture.png)
+![Общее представление архитектуры](/img/architecture.png)
 
 </Zoom>
 
-This diagram shows how Docusaurus works to build your app. Plugins each collect their content and emit JSON data; themes provide layout components which receive the JSON data as route modules. The bundler bundles all the components and emits a server bundle and a client bundle.
+Эта диаграмма показывает, как устроена сборка приложения на Docusaurus. Каждый из плагинов собирает свои данные и прокидывает их дальше в JSON формате; темы предоставляют компоненты интерфейса, которые получают данные в JSON формате в качестве роут-модулей. Сборщик собирает все эти компоненты и генерирует два бандла: серверный и клиентский.
 
-Although you (either plugin authors or site creators) are writing JavaScript all the time, bear in mind that the JS is actually run in different environments:
+Хотя вы (авторы плагинов и разработчики сайтов) постоянно пишете на JavaScript, имейте в виду, что код приложения на самом деле выполняется в разных средах:
 
-- All plugin lifecycle methods are run in Node. Therefore, until we support ES Modules in our codebase, plugin source code must be provided as CommonJS that can be `require`'d.
-- The theme code is built with Webpack. They can be provided as ESM—following React conventions.
+- Все плагины жизненного цикла запускаются в Node. Поэтому, пока мы не начнем поддерживать ES-модули, исходный код плагина должен экспортироваться как CommonJS-модуль, который будет подключаться через `require`.
+- Компоненты интерфейса же собирает Webpack. Они могут быть предоставлены как ES-модули — в соответствии с правилами импорта компонентов в React.
 
-Plugin code and theme code never directly import each other: they only communicate through protocols (in our case, through JSON temp files and calls to `addRoute`). A useful mental model is to imagine that the plugins are not written in JavaScript, but in another language like Rust. The only way to interact with plugins for the user is through `docusaurus.config.js`, which itself is run in Node (hence you can use `require` and pass callbacks as plugin options).
+Плагины никогда не пересекаются с компонентами интерфейса напрямую в коде: они общаются только через протоколы (в нашем случае, через временные JSON-файлы и вызовы `addRoute`). Для лучшего понимания процесса сборки попробуйте представить, будто плагины написаны не на JavaScript, а на другом языке, наподобие Rust. Для пользователя единственный способ взаимодействия с плагинами - через `docusaurus.config.js`, который запускается в Node (следовательно, вы можете использовать `require` и передавать коллбеки в качестве опций плагина).
 
-During bundling, the config file itself is serialized and bundled, allowing the theme to access config options like `themeConfig` or `baseUrl` through [`useDocusaurusContext()`](../docusaurus-core.md#useDocusaurusContext). However, the `siteConfig` object only contains **serializable values** (values that are preserved after `JSON.stringify()`). Functions, regexes, etc. would be lost on the client side. The `themeConfig` is designed to be entirely serializable.
+Во время сборки конфигурационный файл сериализуется и попадает в бандл, благодаря этому у компонентов интерфейса есть доступ к опциям конфига, например `themeConfig` или `baseUrl` через [`useDocusaurusaurusContext()`](../docusaurus-core.md#useDocusaurusContext). Несмотря на это, объект `siteConfig` содержит только **сериализованные значения** (значения, которые сохраняются после `JSON.stringify()`). Функции, регулярные выражения и т.д. будут потеряны на клиентской стороне. `themeConfig` специально разработан для того, чтобы быть полностью сериализуемым.

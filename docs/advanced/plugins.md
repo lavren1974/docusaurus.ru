@@ -69,7 +69,7 @@ module.exports = async function myPlugin(context, options) {
 
 ---
 
-<!-- You can view all plugins installed in your site using the [debug plugin's metadata panel](/__docusaurus/debug/metadata). -->
+You can view all plugins installed in your site using the [debug plugin's metadata panel](/__docusaurus/debug/metadata).
 
 Plugins come as several types:
 

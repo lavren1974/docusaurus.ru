@@ -1,15 +1,14 @@
 ---
 id: head-metadata
-title: Head Metadata
-description: Declaring page-specific head metadata through MDX
+description: Объявление метаданных страницы в теге head с помощью MDX
 slug: /markdown-features/head-metadata
 ---
 
-# Head metadata
+# Метаданные в head
 
-## Customizing head metadata {#customizing-head-metadata}
+## Настройка метаданных {#customizing-head-metadata}
 
-Docusaurus automatically sets useful page metadata in `<html>`, `<head>` and `<body>` for you. It is possible to add extra metadata (or override existing ones) with the `<head>` tag in Markdown files:
+Docusaurus автоматически устанавливает полезные метаданные страницы в `<html>`, `<head>` и `<body>` за вас. Можно добавить дополнительные метаданные (или переопределить существующие) с помощью тега `<head>` в файлах Markdown:
 
 ```md title="markdown-features-head-metadata.mdx"
 ---
@@ -44,40 +43,40 @@ My text
 </head>
 ```
 
-This `<head>` declaration has been added to the current Markdown doc as a demo. Open your browser DevTools and check how this page's metadata has been affected.
+Тег `<head>` был добавлен в текущую страницу в качестве демонстрации. Откройте инструменты разработчика в браузере и проверьте, как изменились метаданные этой страницы.
 
 :::note
 
-This feature is built on top of the Docusaurus [`<Head>`](./../../docusaurus-core.md#head) component. Refer to [react-helmet](https://github.com/nfl/react-helmet) for exhaustive documentation.
+Эта функциональность построена на основе компонента Docusaurus [`<Head>`](./../../docusaurus-core.md#head). Обратитесь к [react-helmet](https://github.com/nfl/react-helmet) для получения исчерпывающей документации.
 
 :::
 
-:::tip You don't need this for regular SEO
+:::tip Для обычного SEO вам это не нужно
 
-Content plugins (e.g. docs and blog) provide front matter options like `description`, `keywords`, and `image`, which will be automatically applied to both `description` and `og:description`, while you would have to manually declare two metadata tags when using the `<head>` tag.
+Контентные плагины (например, docs и blog) предоставляют параметры во front matter, такие как `description`, `keywords` и `image`, которые будут автоматически применяться как к `description` и `og:description`, тогда как при использовании тега `<head>` вам придется вручную объявить два тега метаданных.
 
 :::
 
-## Markdown page description {#markdown-page-description}
+## Description страницы {#markdown-page-description}
 
-The Markdown pages' description metadata may be used in more places than the head metadata. For example, the docs plugin's [generated category index](../docs/sidebar/items.md#generated-index-page) uses the description metadata for the doc cards.
+Метаданные из description используются в большем количестве мест, чем метаданные из head. Например, [генератор индексной страницы категории](../docs/sidebar/items.md#generated-index-page) из плагина docs использует метаданные из description для создания карточек внутренних страниц.
 
-By default, the description is the first content-ful line, with some efforts to convert it to plain text. For example, the following file...
+По умолчанию description является первой строкой содержания, которая может быть преобразована в обычный текст страницы. Например, следующий файл...
 
 ```md
-# Title
+# Заголовок
 
-Main content... May contain some [links](./file.md) or **emphasis**.
+Основной контент... Может содержать некоторые [ссылки](./file.md) или **выделение**.
 ```
 
-...will have the default description "Main content... May contain some links or emphasis". However, **it's not designed to be fully functional**. Where it fails to produce reasonable descriptions, you can explicitly provide one through front matter:
+...по умолчанию будет иметь description "Основное содержание... Может содержать некоторые ссылки или выделение". Однако **такой подход не особо функционален**. Если первая строка не подходит в качестве description, всегда можно явно указать description во front matter страницы:
 
 ```md
 ---
-description: This description will override the default.
+description: Это описание переопределит значение по умолчанию.
 ---
 
-# Title
+# Заголовок
 
-Main content... May contain some [links](./file.md) or **emphasis**.
+Основной контент... Может содержать некоторые [ссылки](./file.md) или **выделение**.
 ```

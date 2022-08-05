@@ -1,8 +1,10 @@
 ---
-slug: '/api/misc/@docusaurus/eslint-plugin/no-untranslated-text'
+slug: /api/misc/@docusaurus/eslint-plugin/no-untranslated-text
 ---
 
 # no-untranslated-text
+
+импортировать APITable из '@site/src/components/APITable';
 
 Enforce text labels in JSX to be wrapped by translate calls.
 
@@ -30,13 +32,17 @@ Examples of **correct** code for this rule:
 
 Accepted fields:
 
+```mdx-code-block
 <APITable>
+```
 
-| Option | Type | Default | Description |
-| --- | --- | --- | --- |
-| `ignoredStrings` | `string[]` | `[]` | Text labels that only contain strings in this list will not be reported. |
+| Option           | Type       | По-умолчанию | Описание                                                                 |
+| ---------------- | ---------- | ------------ | ------------------------------------------------------------------------ |
+| `ignoredStrings` | `string[]` | `[]`         | Text labels that only contain strings in this list will not be reported. |
 
+```mdx-code-block
 </APITable>
+```
 
 ## When Not To Use It {#when-not-to-use}
 

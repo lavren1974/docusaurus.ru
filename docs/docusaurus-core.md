@@ -1,8 +1,8 @@
 ---
-id: docusaurus-core
-title: Docusaurus Client API
 sidebar_label: Client API
 ---
+
+# Docusaurus Client API
 
 Docusaurus provides some APIs on the clients that can be helpful to you when building your site.
 
@@ -55,7 +55,13 @@ This component doesn't catch build-time errors and only protects against client-
 
 #### Props {#errorboundary-props}
 
-- `fallback`: a React component. The error boundary will render the component with two props: `error`, the error that was caught, and `tryAgain`, a function (`() => void`) callback to reset the error in the component and try rendering it again.
+- `fallback`: an optional render callback returning a JSX element. It will receive an object with 2 attributes: `error`, the error that was caught, and `tryAgain`, a function (`() => void`) callback to reset the error in the component and try rendering it again. If not present, `@theme/Error` will be rendered instead. `@theme/Error` is used for the error boundaries wrapping the site, above the layout.
+
+:::caution
+
+The `fallback` prop is a callback, and **not a React functional component**. You can't use React hooks inside this callback.
+
+:::
 
 ### `<Head/>` {#head}
 
@@ -155,7 +161,7 @@ Prefer this component to vanilla `<a>` tags because Docusaurus does a lot of opt
 
 Rendering a `<Redirect>` will navigate to a new location. The new location will override the current location in the history stack like server-side redirects (HTTP 3xx) do. You can refer to [React Router's Redirect documentation](https://reacttraining.com/react-router/web/api/Redirect) for more info on available props.
 
-Example usage:
+Пример использования:
 
 ```jsx
 import React from 'react';
@@ -391,7 +397,7 @@ const MyComponent = () => {
 
 :::note
 
-The `siteConfig` object only contains **serializable values** (values that are preserved after `JSON.stringify()`). Functions, regexes, etc. would be lost on the client side.
+The `siteConfig` object only contains **serializable values** (values that are preserved after `JSON.stringify()`). Функции, регулярные выражения и т.д. будут потеряны на клиентской стороне.
 
 :::
 
@@ -436,7 +442,7 @@ The `/baseUrl/` prefix is automatically added to all **absolute paths** by defau
 
 :::
 
-#### Options {#options}
+#### Параметры {#options}
 
 ```ts
 type BaseUrlOptions = {
@@ -445,7 +451,7 @@ type BaseUrlOptions = {
 };
 ```
 
-#### Example usage: {#example-usage}
+#### Пример использования: {#example-usage}
 
 ```jsx
 import React from 'react';
@@ -473,7 +479,7 @@ Prefer a `require()` call for [assets](./guides/markdown-features/markdown-featu
 
 ### `useBaseUrlUtils` {#useBaseUrlUtils}
 
-Sometimes `useBaseUrl` is not good enough. This hook return additional utils related to your site's base url.
+Sometimes `useBaseUrl` is not good enough. This hook return additional utils related to your site's base URL.
 
 - `withBaseUrl`: useful if you need to add base URLs to multiple URLs at once.
 
@@ -701,12 +707,12 @@ if (ExecutionEnvironment.canUseDOM) {
 }
 ```
 
-| Field | Description |
-| --- | --- |
-| `ExecutionEnvironment.canUseDOM` | `true` if on client/browser, `false` on Node.js/prerendering. |
-| `ExecutionEnvironment.canUseEventListeners` | `true` if on client and has `window.addEventListener`. |
-| `ExecutionEnvironment.canUseIntersectionObserver` | `true` if on client and has `IntersectionObserver`. |
-| `ExecutionEnvironment.canUseViewport` | `true` if on client and has `window.screen`. |
+| Field                                             | Описание                                                      |
+| ------------------------------------------------- | ------------------------------------------------------------- |
+| `ExecutionEnvironment.canUseDOM`                  | `true` if on client/browser, `false` on Node.js/prerendering. |
+| `ExecutionEnvironment.canUseEventListeners`       | `true` if on client and has `window.addEventListener`.        |
+| `ExecutionEnvironment.canUseIntersectionObserver` | `true` if on client and has `IntersectionObserver`.           |
+| `ExecutionEnvironment.canUseViewport`             | `true` if on client and has `window.screen`.                  |
 
 ### `constants` {#constants}
 

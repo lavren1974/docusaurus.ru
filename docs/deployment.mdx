@@ -1,7 +1,8 @@
 ---
-id: deployment
-title: Deployment
+description: Deploy your Docusaurus app for production on a range of static site hosting services.
 ---
+
+# Deployment
 
 To build the static files of your website for production, run:
 
@@ -23,13 +24,13 @@ You can deploy your site to static site hosting services such as [Vercel](https:
 
 A Docusaurus site is statically rendered, and it can generally work without JavaScript!
 
-## Configuration {#configuration}
+## Файл конфигурации {#configuration}
 
 The following parameters are required in `docusaurus.config.js` to optimize routing and serve files from the correct location:
 
-| Name | Description |
-| --- | --- |
-| `url` | URL for your site. For a site deployed at `https://my-org.com/my-project/`, `url` is `https://my-org.com/`. |
+| Название  | Описание                                                                                                                                |
+| --------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| `url`     | URL for your site. For a site deployed at `https://my-org.com/my-project/`, `url` is `https://my-org.com/`.                             |
 | `baseUrl` | Base URL for your project, with a trailing slash. For a site deployed at `https://my-org.com/my-project/`, `baseUrl` is `/my-project/`. |
 
 ## Testing your Build Locally {#testing-build-locally}
@@ -170,9 +171,9 @@ Then, [create your site with Netlify](https://app.netlify.com/start).
 While you set up the site, specify the build commands and directories as follows:
 
 - build command: `npm run build`
-- build directory: `build`
+- publish directory: `build`
 
-If you did not configure these build options, you may still go to "Site settings" -> "Build and deploy" after your site is created.
+If you did not configure these build options, you may still go to "Site settings" -> "Build & deploy" after your site is created.
 
 Once properly configured with the above options, your site should deploy and automatically redeploy upon merging to your deploy branch, which defaults to `main`.
 
@@ -182,8 +183,8 @@ Some Docusaurus sites put the `docs` folder outside of `website` (most likely fo
 
 ```bash
 repo           # git root
-├── docs       # md files
-└── website    # docusaurus root
+├── docs       # MD files
+└── website    # Docusaurus root
 ```
 
 If you decide to use the `website` folder as Netlify's base directory, Netlify will not trigger builds when you update the `docs` folder, and you need to configure a [custom `ignore` command](https://docs.netlify.com/configure-builds/common-configurations/ignore-builds/):
@@ -245,10 +246,10 @@ We provide a `docusaurus deploy` command that helps you deploy your site from th
 
 First, modify your `docusaurus.config.js` and add the following params:
 
-| Name | Description |
-| --- | --- |
-| `organizationName` | The GitHub user or organization that owns the deployment repository. |
-| `projectName` | The name of the deployment repository. |
+| Название           | Описание                                                                                                                                                                                                                    |
+| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `organizationName` | The GitHub user or organization that owns the deployment repository.                                                                                                                                                        |
+| `projectName`      | The name of the deployment repository.                                                                                                                                                                                      |
 | `deploymentBranch` | The name of deployment branch. Defaults to `'gh-pages'` for non-organization GitHub Pages repos (`projectName` not ending in `.github.io`). Otherwise, this needs to be explicit as a config field or environment variable. |
 
 These fields also have their environment variable counterparts, which have a higher priority: `ORGANIZATION_NAME`, `PROJECT_NAME`, and `DEPLOYMENT_BRANCH`.
@@ -283,16 +284,16 @@ By default, GitHub Pages runs published files through [Jekyll](https://jekyllrb.
 
 ### Environment settings {#environment-settings}
 
-| Name | Description |
-| --- | --- |
-| `USE_SSH` | Set to `true` to use SSH instead of the default HTTPS for the connection to the GitHub repo. If the source repo URL is an SSH URL (e.g. `git@github.com:facebook/docusaurus.git`), `USE_SSH` is inferred to be `true`. |
-| `GIT_USER` | The username for a GitHub account that **has push access to the deployment repo**. For your own repositories, this will usually be your GitHub username. Required if not using SSH, and ignored otherwise. |
-| `GIT_PASS` | Personal access token of the git user (specified by `GIT_USER`), to facilitate non-interactive deployment (e.g. continuous deployment) |
+| Название         | Описание                                                                                                                                                                                                                                  |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `USE_SSH`        | Set to `true` to use SSH instead of the default HTTPS for the connection to the GitHub repo. If the source repo URL is an SSH URL (e.g. `git@github.com:facebook/docusaurus.git`), `USE_SSH` is inferred to be `true`.                    |
+| `GIT_USER`       | The username for a GitHub account that **has push access to the deployment repo**. For your own repositories, this will usually be your GitHub username. Required if not using SSH, and ignored otherwise.                                |
+| `GIT_PASS`       | Personal access token of the git user (specified by `GIT_USER`), to facilitate non-interactive deployment (e.g. continuous deployment)                                                                                                    |
 | `CURRENT_BRANCH` | The source branch. Usually, the branch will be `main` or `master`, but it could be any branch except for `gh-pages`. If nothing is set for this variable, then the current branch from which `docusaurus deploy` is invoked will be used. |
 
 GitHub enterprise installations should work in the same manner as github.com; you only need to set the organization's GitHub Enterprise host as an environment variable:
 
-| Name          | Description                                     |
+| Название      | Описание                                        |
 | ------------- | ----------------------------------------------- |
 | `GITHUB_HOST` | The domain name of your GitHub enterprise site. |
 | `GITHUB_PORT` | The port of your GitHub enterprise site.        |
@@ -301,31 +302,37 @@ GitHub enterprise installations should work in the same manner as github.com; yo
 
 Finally, to deploy your site to GitHub Pages, run:
 
-````mdx-code-block
+```mdx-code-block
 <Tabs>
 <TabItem value="bash" label="Bash">
+```
 
 ```bash
 GIT_USER=<GITHUB_USERNAME> yarn deploy
 ```
 
+```mdx-code-block
 </TabItem>
 <TabItem value="windows" label="Windows">
+```
 
 ```batch
 cmd /C "set "GIT_USER=<GITHUB_USERNAME>" && yarn deploy"
 ```
 
+```mdx-code-block
 </TabItem>
 <TabItem value="powershell" label="PowerShell">
+```
 
 ```powershell
 cmd /C 'set "GIT_USER=<GITHUB_USERNAME>" && yarn deploy'
 ```
 
+```mdx-code-block
 </TabItem>
 </Tabs>
-````
+```
 
 :::caution
 
@@ -351,23 +358,23 @@ Here are two approaches to deploying your docs with GitHub Actions. Based on the
 - Source repo and deployment repo are the **same** repository.
 - The deployment repo is a **remote** repository, different from the source.
 
-````mdx-code-block
+```mdx-code-block
 <Tabs>
 <TabItem value="same" label="Same">
+```
 
 While you can have both jobs defined in the same workflow file, the original `deploy` workflow will always be listed as skipped in the PR check suite status, which is not communicative of the actual status and provides no value to the review process. We therefore propose to manage them as separate workflows instead.
 
 We will use a popular third-party deployment action: [peaceiris/actions-gh-pages](https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-docusaurus).
 
 <details>
-
 <summary>GitHub action files</summary>
 
 Add these two workflow files:
 
 :::warning Tweak the parameters for your setup
 
-These files assume you are using yarn. If you use npm, change `cache: yarn`, `yarn install --frozen-lockfile`, `yarn build` to `cache: npm`, `npm ci`, `npm run build` accordingly.
+These files assume you are using Yarn. If you use npm, change `cache: yarn`, `yarn install --frozen-lockfile`, `yarn build` to `cache: npm`, `npm ci`, `npm run build` accordingly.
 
 If your Docusaurus project is not at the root of your repo, you may need to configure a [default working directory](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#example-set-the-default-shell-and-working-directory), and adjust the paths accordingly.
 
@@ -391,7 +398,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 18
           cache: yarn
 
       - name: Install dependencies
@@ -434,7 +441,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 18
           cache: yarn
 
       - name: Install dependencies
@@ -445,17 +452,20 @@ jobs:
 
 </details>
 
+```mdx-code-block
 </TabItem>
 <TabItem value="remote" label="Remote">
+```
 
 A cross-repo publish is more difficult to set up, because you need to push to another repo with permission checks. We will be using SSH to do the authentication.
 
-1. Generate a new [SSH key](https://help.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent).
+1. Generate a new [SSH key](https://help.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent). Since this SSH key will be used in CI, make sure to not enter any passphrase.
 2. By default, your public key should have been created in `~/.ssh/id_rsa.pub`; otherwise, use the name you've provided in the previous step to add your key to [GitHub deploy keys](https://developer.github.com/v3/guides/managing-deploy-keys/).
-3. Copy the key to clipboard with `xclip -sel clip < ~/.ssh/id_rsa.pub` and paste it as a [deploy key](https://developer.github.com/v3/guides/managing-deploy-keys/#deploy-keys) in your repository. Copy the file content if the command line doesn't work for you. Check the box for `Allow write access` before saving your deployment key.
+3. Copy the key to clipboard with `pbcopy < ~/.ssh/id_rsa.pub` and paste it as a [deploy key](https://developer.github.com/v3/guides/managing-deploy-keys/#deploy-keys) in the deployment repository. Copy the file content if the command line doesn't work for you. Check the box for `Allow write access` before saving your deployment key.
 4. You'll need your private key as a [GitHub secret](https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets) to allow Docusaurus to run the deployment for you.
-5. Copy your private key with `xclip -sel clip < ~/.ssh/id_rsa` and paste a GitHub secret with the name `GH_PAGES_DEPLOY`. Copy the file content if the command line doesn't work for you. Save your secret.
+5. Copy your private key with `pbcopy < ~/.ssh/id_rsa` and paste a GitHub secret with the name `GH_PAGES_DEPLOY` on your source repository. Copy the file content if the command line doesn't work for you. Save your secret.
 6. Create your [documentation workflow file](https://help.github.com/en/actions/configuring-and-managing-workflows/configuring-a-workflow#creating-a-workflow-file) in `.github/workflows/`. In this example it's `deploy.yml`.
+7. You should have essentially: the source repo with the GitHub workflow set with the private SSH key as GitHub Secret and your deployment repo set with the public SSH key in GitHub Deploy Keys.
 
 <details>
 
@@ -465,7 +475,7 @@ A cross-repo publish is more difficult to set up, because you need to push to an
 
 Please make sure that you replace `actions@github.com` with your GitHub email and `gh-actions` with your name.
 
-This file assumes you are using yarn. If you use npm, change `cache: yarn`, `yarn install --frozen-lockfile`, `yarn build` to `cache: npm`, `npm ci`, `npm run build` accordingly.
+This file assumes you are using Yarn. If you use npm, change `cache: yarn`, `yarn install --frozen-lockfile`, `yarn build` to `cache: npm`, `npm ci`, `npm run build` accordingly.
 
 :::
 
@@ -486,7 +496,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 18
           cache: yarn
       - name: Install dependencies
         run: yarn install --frozen-lockfile
@@ -499,7 +509,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 18
           cache: yarn
       - uses: webfactory/ssh-agent@v0.5.0
         with:
@@ -516,9 +526,24 @@ jobs:
 
 </details>
 
+```mdx-code-block
 </TabItem>
 </Tabs>
-````
+```
+
+<details>
+
+<summary>Site not deployed properly?</summary>
+
+After pushing to main, if you don't see your site published at the desired location (for example, it says "There isn't a GitHub Pages site here", or it's showing your repo's README.md file), check the following:
+
+- It may take a few minutes for GitHub pages to pick up the new files, so wait for about 3 minutes and refresh before concluding it isn't working.
+- On your repo's landing page, you should see a little green tick next to the last commit's title, indicating the CI has passed. If you see a cross, it means the build or deployment failed, and you should check the log for more debugging information.
+- Click on the tick and make sure your see a "Deploy to GitHub Pages" workflow. Names like "pages build and deployment / deploy" are GitHub's default workflows, indicating your custom deployment workflow failed to be triggered at all. Make sure the YAML files are put under the `.github/workflows` folder, and the trigger condition is set correctly (for example, if your default branch is "master" instead of "main", you need to change the `on.push` property).
+- We are using `gh-pages` as the deployment branch. Under your repo's Settings > Pages, make sure the "Source" (which is the source for the _deployment_ files, not "source" as in our terminology) is set to "gh-pages" + "/ (root)".
+- If you are using a custom domain, make sure the DNS record is pointing to the GitHub pages servers' IP.
+
+</details>
 
 ### Triggering deployment with Travis CI {#triggering-deployment-with-travis-ci}
 
@@ -533,7 +558,7 @@ Continuous integration (CI) services are typically used to perform routine tasks
 ```yml title=".travis.yml"
 language: node_js
 node_js:
-  - '14.15.0'
+  - 18
 branches:
   only:
     - main
@@ -575,9 +600,9 @@ After creating this simple pipeline, each new commit pushed to the branch you se
 ### Using Azure Pipelines {#using-azure-pipelines}
 
 1. Sign Up at [Azure Pipelines](https://azure.microsoft.com/en-us/services/devops/pipelines/) if you haven't already.
-2. Create an organization and within the organization create a project and connect your repository from GitHub.
+2. Create an organization. Within the organization, create a project and connect your repository from GitHub.
 3. Go to https://github.com/settings/tokens and generate a new [personal access token](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/) with the `repo` scope.
-4. In the project page (which looks like `https://dev.azure.com/ORG_NAME/REPO_NAME/_build` create a new pipeline with the following text. Also, click on edit and add a new environment variable named `GH_TOKEN` with your newly generated token as its value, then `GH_EMAIL` (your email address) and `GH_NAME` (your GitHub username). Make sure to mark them as secret. Alternatively, you can also add a file named `azure-pipelines.yml` at your repository root.
+4. In the project page (which looks like `https://dev.azure.com/ORG_NAME/REPO_NAME/_build`), create a new pipeline with the following text. Also, click on edit and add a new environment variable named `GH_TOKEN` with your newly generated token as its value, then `GH_EMAIL` (your email address) and `GH_NAME` (your GitHub username). Make sure to mark them as secret. Alternatively, you can also add a file named `azure-pipelines.yml` at your repository root.
 
 ```yml title="azure-pipelines.yml"
 trigger:
@@ -592,7 +617,7 @@ steps:
 
   - task: NodeTool@0
     inputs:
-      versionSpec: 14.x
+      versionSpec: '18'
     displayName: Install Node.js
 
   - script: |
@@ -611,8 +636,8 @@ steps:
 
 ### Using Drone {#using-drone}
 
-1. Create a new ssh key that will be the [deploy key](https://docs.github.com/en/free-pro-team@latest/developers/overview/managing-deploy-keys#deploy-keys) for your project.
-2. Name your private and public keys to be specific and so that it does not overwrite your other [ssh keys](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent).
+1. Create a new SSH key that will be the [deploy key](https://docs.github.com/en/free-pro-team@latest/developers/overview/managing-deploy-keys#deploy-keys) for your project.
+2. Name your private and public keys to be specific and so that it does not overwrite your other [SSH keys](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent).
 3. Go to `https://github.com/USERNAME/REPO/settings/keys` and add a new deploy key by pasting in the public key you just generated.
 4. Open your Drone.io dashboard and log in. The URL looks like `https://cloud.drone.io/USERNAME/REPO`.
 5. Click on the repository, click on activate repository, and add a secret called `git_deploy_private_key` with your private key value that you just generated.

@@ -1,8 +1,9 @@
 ---
 sidebar_position: 0
-title: '📦 create-docusaurus'
-slug: '/api/misc/create-docusaurus'
+slug: /api/misc/create-docusaurus
 ---
+
+# 📦 create-docusaurus
 
 A scaffolding utility to help you instantly set up a functional Docusaurus app.
 
@@ -29,7 +30,7 @@ This command should be preferably used in an interactive shell so all features a
 
 :::
 
-## Options {#options}
+## Параметры {#options}
 
 ### `-t, --typescript` {#typescript}
 

@@ -1,11 +1,11 @@
 ---
 sidebar_position: 6
-id: plugin-google-analytics
-title: '📦 plugin-google-analytics'
-slug: '/api/plugins/@docusaurus/plugin-google-analytics'
+slug: /api/plugins/@docusaurus/plugin-google-analytics
 ---
 
-import APITable from '@site/src/components/APITable';
+# 📦 plugin-google-analytics
+
+импортировать APITable из '@site/src/components/APITable';
 
 The default [Google Analytics](https://developers.google.com/analytics/devguides/collection/analyticsjs/) plugin. It is a JavaScript library for measuring how users interact with your website **in the production build**. If you are using Google Analytics 4 you might need to consider using [plugin-google-gtag](./plugin-google-gtag.md) instead.
 
@@ -15,7 +15,7 @@ This plugin is always inactive in development and **only active in production** 
 
 :::
 
-## Installation {#installation}
+## Установка {#installation}
 
 ```bash npm2yarn
 npm install --save @docusaurus/plugin-google-analytics
@@ -29,18 +29,22 @@ You can configure this plugin through the preset options.
 
 :::
 
-## Configuration {#configuration}
+## Файл конфигурации {#configuration}
 
 Accepted fields:
 
+```mdx-code-block
 <APITable>
+```
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `trackingID` | `string` | **Required** | The tracking ID of your analytics service. |
-| `anonymizeIP` | `boolean` | `false` | Whether the IP should be anonymized when sending requests. |
+| Название      | Type      | По-умолчанию | Описание                                                   |
+| ------------- | --------- | ------------ | ---------------------------------------------------------- |
+| `trackingID`  | `string`  | **Required** | The tracking ID of your analytics service.                 |
+| `anonymizeIP` | `boolean` | `false`      | Whether the IP should be anonymized when sending requests. |
 
+```mdx-code-block
 </APITable>
+```
 
 ### Example configuration {#ex-config}
 
