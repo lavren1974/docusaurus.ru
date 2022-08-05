@@ -20,8 +20,7 @@ const Playgrounds = [
     url: 'https://docusaurus.new/codesandbox',
     description: (
       <Translate id="playground.codesandbox.description">
-        CodeSandbox is a popular playground solution. Runs Docusaurus in a
-        remote Docker container.
+        CodeSandbox — популярное решение для игровых площадок. Запускает Docusaurus в удаленном контейнере Docker.
       </Translate>
     ),
   },
@@ -40,7 +39,7 @@ const Playgrounds = [
           ),
         }}>
         {
-          'StackBlitz uses a novel {webContainersLink} technology to run Docusaurus directly in your browser.'
+          'StackBlitz использует новую технологию {webContainersLink} для запуска Docusaurus прямо в вашем браузере.'
         }
       </Translate>
     ),
@@ -70,7 +69,7 @@ function PlaygroundCard({name, image, url, description}: Props) {
         <div className="card__footer">
           <div className="button-group button-group--block">
             <Link className="button button--secondary" to={url}>
-              <Translate id="playground.tryItButton">Try it now!</Translate>
+              <Translate id="playground.tryItButton">Попробуй это сейчас!</Translate>
             </Link>
           </div>
         </div>

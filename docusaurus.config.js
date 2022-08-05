@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Docusaurus по русски',
-  tagline: 'Российские динозавры',
+  tagline: 'Русскоязычная поддержка Docusaurus',
   url: 'https://docusaurus.ru',
   baseUrl: '/',
   onBrokenLinks: 'ignore',
