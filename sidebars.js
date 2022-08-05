@@ -96,7 +96,7 @@ const sidebars = {
         {
           type: 'category',
           label: 'Internationalization',
-          link: { type: 'doc', id: 'i18n/introduction' },
+          link: {type: 'doc', id: 'i18n/introduction'},
           items: [
             {
               type: 'doc',
@@ -121,7 +121,7 @@ const sidebars = {
     {
       type: 'category',
       label: 'Advanced Guides',
-      link: { type: 'doc', id: 'advanced/index' },
+      link: {type: 'doc', id: 'advanced/index'},
       items: [
         'advanced/architecture',
         'advanced/plugins',

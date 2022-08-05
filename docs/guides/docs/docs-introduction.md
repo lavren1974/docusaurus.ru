@@ -1,6 +1,6 @@
 ---
 id: introduction
-sidebar_label: Введение
+sidebar_label: Introduction
 slug: /docs-introduction
 ---
 

@@ -7,149 +7,58 @@
 
 /* eslint-disable global-require */
 
+import {translate} from '@docusaurus/Translate';
 import {sortBy} from '@site/src/utils/jsUtils';
 
 /*
- * ADD YOUR SITE TO THE DOCUSAURUS SHOWCASE:
+ * ADD YOUR SITE TO THE DOCUSAURUS SHOWCASE
  *
- * Requirements for adding your site to our showcase:
- * - It is a production-ready site with real content and decent customizations
- * (different from the init templates)
- * - It is NOT a work-in-progress with empty pages
- * - It has a stable domain (a Netlify/Vercel deploy preview is not allowed)
+ * Please don't submit a PR yourself: use the Github Discussion instead:
+ * https://github.com/facebook/docusaurus/discussions/7826
  *
- * Instructions:
- * - Add your site in the json array below
- * - `title` is your project's name (no need for the "Docs" suffix)
- * - A short (≤120 characters) description of your project
- * - Use relevant tags to categorize your site (read the tag descriptions below)
- * - Add a local image preview (decent screenshot of your Docusaurus site)
+ * Instructions for maintainers:
+ * - Add the site in the json array below
+ * - `title` is the project's name (no need for the "Docs" suffix)
+ * - A short (≤120 characters) description of the project
+ * - Use relevant tags to categorize the site (read the tag descriptions on the
+ *   https://docusaurus.io/showcase page and some further clarifications below)
+ * - Add a local image preview (decent screenshot of the Docusaurus site)
  * - The image MUST be added to the GitHub repository, and use `require("img")`
  * - The image has to have minimum width 640 and an aspect of no wider than 2:1
- * - If your website is open-source, add your source link. The link should open
+ * - If a website is open-source, add a source link. The link should open
  *   to a directory containing the `docusaurus.config.js` file
+ * - Resize images: node admin/scripts/resizeImage.js
+ * - Run optimizt manually (see resize image script comment)
  * - Open a PR and check for reported CI errors
  *
- * Example PR: https://github.com/facebook/docusaurus/pull/3976
- *
- * If you edit this file through the GitHub interface, you can:
- * - Submit first your users.tsx edit PR
- * - This will create a branch on your Docusaurus fork (usually "patch-1")
- * - Go to https://github.com/<username>/docusaurus/tree/<branch>/website/src/data/showcase
- * - Drag-and-drop an image here to add it to your existing PR
- *
- * Please help us maintain this showcase page data:
- * - Update sites with wrong data
- * - Ensure site tags remain correct over time
- * - Remove sites not using Docusaurus anymore
- * - Add missing Docusaurus sites (if the site owner agreed)
+ * Example PR: https://github.com/facebook/docusaurus/pull/7620
  */
 
-export type Tag = {
-  label: string;
-  description: string;
-  color: string;
-};
-
+// LIST OF AVAILABLE TAGS
+// Available tags to assign to a showcase site
+// Please choose all tags that you think might apply.
+// We'll remove inappropriate tags, but it's less likely that we add tags.
 export type TagType =
+  // DO NOT USE THIS TAG: we choose sites to add to favorites
   | 'favorite'
+  // For open-source sites, a link to the source code is required.
+  // The source should be the *website's* source, not the project's source!
   | 'opensource'
   | 'product'
+  // Feel free to add the 'design' tag as long as there's _some_ level of
+  // CSS/swizzling.
   | 'design'
+  // Site must have more than one locale.
   | 'i18n'
   | 'versioning'
+  // Large sites are defined as those with > 200 pages, excluding versions.
   | 'large'
   | 'meta'
   | 'personal'
+  // Right-to-left direction.
   | 'rtl';
 
-export type User = {
-  title: string;
-  description: string;
-  preview: string;
-  website: string;
-  source: string | null;
-  tags: TagType[];
-};
-
-// LIST OF AVAILABLE TAGS
-// Available tags to assign to your site
-// Please choose all tags that you think might apply.
-// We'll remove inappropriate tags, but it's less likely that we add tags.
-export const Tags: {[type in TagType]: Tag} = {
-  // DO NOT USE THIS TAG: we choose sites to add to favorites
-  favorite: {
-    label: 'Favorite',
-    description:
-      'Our favorite Docusaurus sites that you must absolutely check-out!',
-    color: '#e9669e',
-  },
-
-  // For open-source sites, a link to the source code is required
-  // The source should be your *website's* source, not your project's source!
-  opensource: {
-    label: 'Open-Source',
-    description: 'Open-Source Docusaurus sites can be useful for inspiration!',
-    color: '#39ca30',
-  },
-
-  product: {
-    label: 'Product',
-    description: 'Docusaurus sites associated to a commercial product!',
-    color: '#dfd545',
-  },
-
-  design: {
-    label: 'Design',
-    description:
-      'Beautiful Docusaurus sites, polished and standing out from the initial template!',
-    color: '#a44fb7',
-  },
-
-  i18n: {
-    label: 'I18n',
-    description:
-      'Translated Docusaurus sites using the internationalization support with more than 1 locale.',
-    color: '#127f82',
-  },
-
-  versioning: {
-    label: 'Versioning',
-    description:
-      'Docusaurus sites using the versioning feature of the docs plugin to manage multiple versions.',
-    color: '#fe6829',
-  },
-
-  // Large sites, with a lot of content (> 200 pages, excluding versions)
-  large: {
-    label: 'Large',
-    description:
-      'Very large Docusaurus sites, including many more pages than the average!',
-    color: '#8c2f00',
-  },
-
-  meta: {
-    label: 'Meta',
-    description: 'Docusaurus sites of Meta (formerly Facebook) projects',
-    color: '#4267b2', // Facebook blue
-  },
-
-  personal: {
-    label: 'Personal',
-    description:
-      'Personal websites, blogs and digital gardens built with Docusaurus',
-    color: '#14cfc3',
-  },
-
-  rtl: {
-    label: 'RTL Direction',
-    description:
-      'Docusaurus sites using the right-to-left reading direction support.',
-    color: '#ffcfc3',
-  },
-};
-
-// Add your site to this list
+// Add sites to this list
 // prettier-ignore
 const Users: User[] = [
   {
@@ -186,12 +95,13 @@ const Users: User[] = [
     tags: ['opensource', 'personal'],
   },
   {
-    title: 'Algolia Docsearch',
+    title: 'Algolia DocSearch',
     description:
       'The best search experience for docs, integrates in minutes, for free',
     preview: require('./showcase/algolia.png'),
     website: 'https://docsearch.algolia.com/',
-    source: 'https://github.com/algolia/docsearch-website',
+    source:
+      'https://github.com/algolia/docsearch/tree/main/packages/website',
     tags: ['favorite', 'opensource', 'product'],
   },
   {
@@ -331,6 +241,22 @@ const Users: User[] = [
     tags: ['opensource'],
   },
   {
+    title: 'Brainboard IDE',
+    description: 'The new way to operate & manage your Cloud: visually.',
+    preview: require('./showcase/brainboard.png'),
+    website: 'https://docs.brainboard.co/start/cloud-use-cases',
+    source: null,
+    tags: ['product', 'design'],
+  },
+  {
+    title: "Bruce's Wiki",
+    description: 'A personal wiki by Bruce Song',
+    preview: require('./showcase/bruce-wiki.png'),
+    website: 'https://wiki.bruceworld.top/',
+    source: 'https://github.com/recallwei/wiki',
+    tags: ['opensource', 'design', 'personal'],
+  },
+  {
     title: 'Build Tracker',
     description:
       'Track performance budgets & prevent unexpected bloat in your app',
@@ -354,6 +280,14 @@ const Users: User[] = [
     website: 'https://chaos-mesh.org',
     source: 'https://github.com/chaos-mesh/website',
     tags: ['opensource', 'product', 'i18n'],
+  },
+  {
+    title: 'Charles Ancheta',
+    description: "Charles Ancheta's Blog and Portfolio Website",
+    preview: require('./showcase/charles-ancheta.png'),
+    website: 'https://charlesancheta.com',
+    source: 'https://github.com/cbebe/my-website',
+    tags: ['opensource', 'personal'],
   },
   {
     title: 'ChatKitty',
@@ -396,6 +330,14 @@ const Users: User[] = [
     website: 'https://syllabus.codeyourfuture.io/',
     source: 'https://github.com/CodeYourFuture/syllabus',
     tags: ['opensource', 'product'],
+  },
+  {
+    title: 'Comp Labs',
+    description: 'Tech-based Blog, Enterprise-Grade Solutions and more...',
+    preview: require('./showcase/comp-labs.png'),
+    website: 'https://complabs.in/',
+    source: 'https://github.com/Comp-Labs/comp-labs-website',
+    tags: ['opensource'],
   },
   {
     title: 'Component Kit',
@@ -500,6 +442,14 @@ const Users: User[] = [
     website: 'https://devspace.sh/cli/docs/',
     source: 'https://github.com/loft-sh/devspace/tree/master/docs',
     tags: ['opensource'],
+  },
+  {
+    title: 'difranca | Tech-Notes',
+    description: 'This documentation aims to comprise my learning notes on various tech subjects.',
+    preview: require('./showcase/difranca-technotes.png'),
+    website: 'https://difranca.github.io/',
+    source: 'https://github.com/difranca/difranca.github.io',
+    tags: ['opensource', 'personal'],
   },
   {
     title: 'Dime.Scheduler',
@@ -647,6 +597,14 @@ const Users: User[] = [
     website: 'https://eta.js.org/',
     source: 'https://github.com/eta-dev/eta-docs',
     tags: ['opensource'],
+  },
+  {
+    title: 'EverShop',
+    description: 'An open-source e-commerce platform with Node and React',
+    preview: require('./showcase/evershop.png'),
+    website: 'https://evershop.io/',
+    source: 'https://github.com/evershopcommerce/docs',
+    tags: ['opensource', 'product'],
   },
   {
     title: 'FAST',
@@ -887,6 +845,14 @@ const Users: User[] = [
     tags: ['opensource'],
   },
   {
+    title: 'I am Massoud',
+    description: 'The portfolio of Massoud Maboudi, Full Stack Developer',
+    preview: require('./showcase/iammassoud.png'),
+    website: 'https://iammassoud.ir/',
+    source: null,
+    tags: ['personal', 'rtl'],
+  },
+  {
     title: 'icodex',
     description: 'Front end engineer personal website',
     preview: require('./showcase/icodex.png'),
@@ -976,6 +942,14 @@ const Users: User[] = [
     preview: require('./showcase/joelpo.png'),
     website: 'https://joelpo.github.io',
     source: 'https://github.com/Joelpo/joelpo.github.io',
+    tags: ['personal', 'opensource'],
+  },
+  {
+    title: 'Junjie',
+    description: 'A personal website',
+    preview: require('./showcase/junjie.png'),
+    website: 'https://junjieweb.github.io',
+    source: 'https://github.com/junjieweb/junjieweb.github.io',
     tags: ['personal', 'opensource'],
   },
   {
@@ -1072,6 +1046,15 @@ const Users: User[] = [
     tags: ['opensource', 'versioning', 'i18n'],
   },
   {
+    title: 'Lerna',
+    description:
+      'A fast modern build system for managing and publishing multiple JavaScript/TypeScript packages from the same repository.',
+    preview: require('./showcase/lerna.png'),
+    website: 'https://lerna.js.org',
+    source: 'https://github.com/lerna/lerna/tree/main/website',
+    tags: ['opensource'],
+  },
+  {
     title: 'Liqvid',
     description: 'Interactive videos in React',
     preview: require('./showcase/liqvid.png'),
@@ -1157,6 +1140,15 @@ const Users: User[] = [
     tags: ['opensource', 'personal'],
   },
   {
+    title: 'Metalyoung Blog',
+    description:
+      'A personal blog to record open source community contributions and open source projects',
+    preview: require('./showcase/metalyoung.png'),
+    website: 'https://www.metalyoung.com',
+    source: null,
+    tags: ['personal'],
+  },
+  {
     title: 'Metro',
     description: 'The JavaScript bundler for React Native',
     preview: require('./showcase/metro.png'),
@@ -1190,6 +1182,15 @@ const Users: User[] = [
     website: 'https://mintmetrics.io/',
     source: null,
     tags: ['design'],
+  },
+  {
+    title: 'Mixcore CMS',
+    description:
+      'Fully Open Source ASP.Net Core / Dotnet Core CMS UI Toolkit',
+    preview: require('./showcase/mixcore.png'),
+    website: 'https://docs.mixcore.org/',
+    source: 'https://github.com/mixcore/docs/tree/master/website',
+    tags: ['opensource'],
   },
   {
     title: 'moja global',
@@ -1261,6 +1262,22 @@ const Users: User[] = [
     tags: ['opensource', 'design'],
   },
   {
+    title: 'Nhost',
+    description: 'The Open Source Firebase Alternative with GraphQL',
+    preview: require('./showcase/nhost.png'),
+    website: 'https://docs.nhost.io',
+    source: 'https://github.com/nhost/nhost/tree/main/docs',
+    tags: ['opensource', 'product', 'design'],
+  },
+  {
+    title: 'Novu',
+    description: 'The open-source notification infrastructure for developers',
+    preview: require('./showcase/novu-docs.png'),
+    website: 'https://docs.novu.co/',
+    source: 'https://github.com/novuhq/novu',
+    tags: ['opensource', 'product', 'design'],
+  },
+  {
     title: 'Nocalhost',
     description:
       'An open-source toolsets help to build cloud-native applications easier and faster.',
@@ -1319,6 +1336,15 @@ const Users: User[] = [
     website: 'https://ossinsight.io',
     source: 'https://github.com/pingcap/ossinsight',
     tags: ['opensource', 'design'],
+  },
+  {
+    title: 'Outerbounds',
+    description:
+      'Resources for data scientists and engineers, authored in jupyter notebooks using nbdoc and docusaurus.',
+    preview: require('./showcase/outerbounds.png'),
+    website: 'https://outerbounds.com',
+    source: null,
+    tags: ['favorite', 'product', 'design'],
   },
   {
     title: 'Oxidizer',
@@ -1382,6 +1408,15 @@ const Users: User[] = [
     tags: ['opensource', 'design', 'product'],
   },
   {
+    title: 'Peradaban',
+    description:
+      'Peradaban is a Discord Server Bots made with NAFF designed only for Warung International Discord Server',
+    preview: require('./showcase/peradaban.png'),
+    website: 'https://docs.warunginternational.eu.org/',
+    source: 'https://github.com/warung-international/docs',
+    tags: ['opensource'],
+  },
+  {
     title: 'Pglet',
     description:
       'Build internal web apps quickly in the language you already know',
@@ -1397,6 +1432,14 @@ const Users: User[] = [
     website: 'https://developers.atinternet-solutions.com/piano-analytics/',
     source: null,
     tags: ['favorite', 'product', 'design'],
+  },
+  {
+    title: "pincman's website",
+    description: 'A very good full stack development teaching website',
+    preview: require('./showcase/pincman.png'),
+    website: 'https://pincman.com/',
+    source: 'https://github.com/rowfishjs/rowfish',
+    tags: ['opensource', 'design', 'personal'],
   },
   {
     title: 'Pipeline UI',
@@ -1545,6 +1588,14 @@ const Users: User[] = [
     tags: ['opensource', 'design', 'product'],
   },
   {
+    title: 'react-chat-elements',
+    description: 'Chat UI package for React',
+    preview: require('./showcase/react-chat-elements.png'),
+    website: 'https://detaysoft.github.io/docs-react-chat-elements/',
+    source: 'https://github.com/Detaysoft/react-chat-elements',
+    tags: ['opensource'],
+  },
+  {
     title: 'React Complex Tree',
     description:
       'Unopinionated Accessible React Tree Component with Multi-Select and Drag-And-Drop',
@@ -1677,6 +1728,14 @@ const Users: User[] = [
     website: 'https://arifszn.github.io/reddit-image-fetcher',
     source: null,
     tags: [],
+  },
+  {
+    title: 'RedGradient',
+    description: 'CSS Gradient Editor',
+    preview: require('./showcase/red-gradient.png'),
+    website: 'https://doc.red-gradient.com/',
+    source: 'https://github.com/redcamel/RedGradientDoc',
+    tags: ['opensource'],
   },
   {
     title: 'Redis Labs Developer Site',
@@ -1864,6 +1923,24 @@ const Users: User[] = [
     tags: ['opensource', 'versioning'],
   },
   {
+    title: 'SeaQL - Building data intensive applications in Rust',
+    description:
+      'We help developers in building data intensive applications in Rust, such as web services, command line tools or apps.',
+    preview: require('./showcase/SeaQL-blog.png'),
+    website: 'https://www.sea-ql.org/blog/',
+    source: 'https://github.com/SeaQL/seaql.github.io/tree/master/Blog',
+    tags: ['opensource'],
+  },
+  {
+    title: 'Sequence',
+    description:
+      'Automation toolkit for creating repeatable, predictable, and defensible end-to-end forensic and ediscovery workflows.',
+    preview: require('./showcase/sequence.png'),
+    website: 'https://sequence.sh/',
+    source: 'https://gitlab.com/reductech/sequence/sequence-docs',
+    tags: ['large', 'opensource', 'versioning'],
+  },
+  {
     title: 'Seven-innovation-base official website',
     description: 'About seven-innovation-base',
     preview: require('./showcase/seven-innovation-base.png'),
@@ -2002,6 +2079,24 @@ const Users: User[] = [
     tags: ['product'],
   },
   {
+    title: 'StackQL Provider Registry',
+    description:
+      'Cloud infra and SaaS provider documentation for StackQL providers.',
+    preview: require('./showcase/registry.stackql.io.png'),
+    website: 'https://registry.stackql.io/',
+    source: 'https://github.com/stackql/registry.stackql.io',
+    tags: ['opensource', 'product', 'large'],
+  },
+  {
+    title: 'StarfishQL - ✴️ A graph database and query engine',
+    description:
+      'StarfishQL is experimental graph database and query engine to enable graph analysis and visualization on the web.',
+    preview: require('./showcase/StarfishQL.png'),
+    website: 'https://www.sea-ql.org/StarfishQL/',
+    source: 'https://github.com/SeaQL/seaql.github.io/tree/master/StarfishQL',
+    tags: ['opensource'],
+  },
+  {
     title: 'Stryker Mutator',
     description: 'Mutation testing for JavaScript, .NET and JVM',
     preview: require('./showcase/stryker-mutator.png'),
@@ -2034,6 +2129,15 @@ const Users: User[] = [
     tags: ['opensource', 'product'],
   },
   {
+    title: 'SweetCode',
+    description:
+      'SweetCode company website and documentation for the Pixel Manager for WooCommerce',
+    preview: require('./showcase/sweetcode.png'),
+    website: 'https://sweetcode.com/',
+    source: null,
+    tags: ['product'],
+  },
+  {
     title: 'Synergies',
     description:
       'A performant and distributed state library for creating reusable React state logic by synergyzing atomar context pieces',
@@ -2041,6 +2145,14 @@ const Users: User[] = [
     website: 'https://synergies.js.org',
     source: 'https://github.com/lukasbach/synergies/tree/main/packages/docs',
     tags: ['opensource', 'design'],
+  },
+  {
+    title: 'Sado0823',
+    description: "Sado0823's Blog and Portfolio Website",
+    preview: require('./showcase/sado0823.png'),
+    website: 'https://sado0823.github.io',
+    source: 'https://github.com/sado0823/sado0823.github.io',
+    tags: ['opensource', 'personal'],
   },
   {
     title: 'T-Regx',
@@ -2075,6 +2187,15 @@ const Users: User[] = [
     website: 'https://docs.tasit.io/',
     source: 'https://github.com/tasitlabs/tasit-sdk/tree/develop/packages/docs',
     tags: ['opensource'],
+  },
+  {
+    title: 'Tauri',
+    description:
+      'Build an optimized, secure, and frontend-independent application for multi-platform deployment.',
+    preview: require('./showcase/tauri.png'),
+    website: 'https://tauri.app/',
+    source: 'https://github.com/tauri-apps/tauri-docs',
+    tags: ['opensource', 'i18n', 'product', 'design']
   },
   {
     title: 'TechHarvesting',
@@ -2284,8 +2405,8 @@ const Users: User[] = [
       'A fully Chinese Discord bot with epic features that makes Discord more than just chatting platform.',
     website: 'https://yeecord.com/',
     preview: require('./showcase/yeecord.png'),
-    tags: ['product', 'personal'],
-    source: null
+    tags: ['product', 'personal', 'opensource'],
+    source: 'https://github.com/yeecord/docs',
   },
   {
     title: 'Zowe',
@@ -2304,11 +2425,133 @@ const Users: User[] = [
     source: 'https://github.com/HiChen404/MyWikiSite',
     tags: ['opensource', 'personal'],
   },
+  {
+    title: "7Wate's Wiki",
+    description: 'Developer Wiki and Blog',
+    preview: require('./showcase/7wate-wiki.png'),
+    website: 'https://wiki.7wate.com/',
+    source: 'https://github.com/7Wate/wiki',
+    tags: ['opensource', 'personal'],
+  },
   /*
   Pro Tip: add your site in alphabetical order.
   Appending your site here (at the end) is more likely to produce Git conflicts.
    */
 ];
+
+export type User = {
+  title: string;
+  description: string;
+  preview: string;
+  website: string;
+  source: string | null;
+  tags: TagType[];
+};
+
+export type Tag = {
+  label: string;
+  description: string;
+  color: string;
+};
+
+export const Tags: {[type in TagType]: Tag} = {
+  favorite: {
+    label: translate({message: 'Favorite'}),
+    description: translate({
+      message:
+        'Our favorite Docusaurus sites that you must absolutely check out!',
+      id: 'showcase.tag.favorite.description',
+    }),
+    color: '#e9669e',
+  },
+
+  opensource: {
+    label: translate({message: 'Open-Source'}),
+    description: translate({
+      message: 'Open-Source Docusaurus sites can be useful for inspiration!',
+      id: 'showcase.tag.opensource.description',
+    }),
+    color: '#39ca30',
+  },
+
+  product: {
+    label: translate({message: 'Product'}),
+    description: translate({
+      message: 'Docusaurus sites associated to a commercial product!',
+      id: 'showcase.tag.product.description',
+    }),
+    color: '#dfd545',
+  },
+
+  design: {
+    label: translate({message: 'Design'}),
+    description: translate({
+      message:
+        'Beautiful Docusaurus sites, polished and standing out from the initial template!',
+      id: 'showcase.tag.design.description',
+    }),
+    color: '#a44fb7',
+  },
+
+  i18n: {
+    label: translate({message: 'I18n'}),
+    description: translate({
+      message:
+        'Translated Docusaurus sites using the internationalization support with more than 1 locale.',
+      id: 'showcase.tag.i18n.description',
+    }),
+    color: '#127f82',
+  },
+
+  versioning: {
+    label: translate({message: 'Versioning'}),
+    description: translate({
+      message:
+        'Docusaurus sites using the versioning feature of the docs plugin to manage multiple versions.',
+      id: 'showcase.tag.versioning.description',
+    }),
+    color: '#fe6829',
+  },
+
+  large: {
+    label: translate({message: 'Large'}),
+    description: translate({
+      message:
+        'Very large Docusaurus sites, including many more pages than the average!',
+      id: 'showcase.tag.large.description',
+    }),
+    color: '#8c2f00',
+  },
+
+  meta: {
+    label: translate({message: 'Meta'}),
+    description: translate({
+      message: 'Docusaurus sites of Meta (formerly Facebook) projects',
+      id: 'showcase.tag.meta.description',
+    }),
+    color: '#4267b2', // Facebook blue
+  },
+
+  personal: {
+    label: translate({message: 'Personal'}),
+    description: translate({
+      message:
+        'Personal websites, blogs and digital gardens built with Docusaurus',
+      id: 'showcase.tag.personal.description',
+    }),
+    color: '#14cfc3',
+  },
+
+  rtl: {
+    label: translate({message: 'RTL Direction'}),
+    description: translate({
+      message:
+        'Docusaurus sites using the right-to-left reading direction support.',
+      id: 'showcase.tag.rtl.description',
+    }),
+    color: '#ffcfc3',
+  },
+};
 
 export const TagList = Object.keys(Tags) as TagType[];
 function sortUsers() {

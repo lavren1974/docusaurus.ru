@@ -86,12 +86,14 @@ const config = {
             label: 'Docs',
           },
           {
-            type: 'doc',
-            docId: 'intro',
+            type: 'docSidebar',
             position: 'left',
-            label: 'Tutorial',
+            sidebarId: 'api',
+            label: 'API',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+          {to: 'blog', label: 'Blog', position: 'left'},
+          {to: 'showcase', label: 'Showcase', position: 'left'},
+
           {
             href: 'https://github.com/lavren1974/docusaurus.ru',
             label: 'GitHub',
