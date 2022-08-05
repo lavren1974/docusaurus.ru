@@ -10,7 +10,7 @@ const config = {
   tagline: 'Российские динозавры',
   url: 'https://docusaurus.ru',
   baseUrl: '/',
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'ignore',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
 
