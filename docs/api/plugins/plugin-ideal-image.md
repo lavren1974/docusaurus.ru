@@ -9,7 +9,7 @@ slug: /api/plugins/@docusaurus/plugin-ideal-image
 
 Docusaurus Plugin to generate an almost ideal image (responsive, lazy-loading, and low quality placeholder).
 
-:::info
+:::info информация
 
 By default, the plugin is **inactive in development** so you could always view full-scale images. If you want to debug the ideal image behavior, you could set the [`disableInDev`](#disableInDev) option to `false`.
 

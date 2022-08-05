@@ -6,7 +6,7 @@ slug: /migration/versioned-sites
 
 Read up https://docusaurus.io/blog/2018/09/11/Towards-Docusaurus-2#versioning first for problems in v1's approach.
 
-:::note
+:::note примечание
 
 The versioned docs should normally be migrated correctly by the [migration CLI](./migration-automated.md)
 

@@ -8,7 +8,7 @@ wrapperClassName: docusaurus-markdown-example
 
 This is a page generated from markdown to illustrate the Markdown page feature and test some edge cases.
 
-:::info
+:::info информация
 
 Useful information.
 

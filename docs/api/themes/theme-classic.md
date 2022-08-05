@@ -13,7 +13,7 @@ You can refer to the [theme configuration page](theme-configuration.md) for more
 npm install --save @docusaurus/theme-classic
 ```
 
-:::tip
+:::tip совет
 
 If you have installed `@docusaurus/preset-classic`, you don't need to install it as a dependency.
 
@@ -35,7 +35,7 @@ Accepted fields:
 </APITable>
 ```
 
-:::note
+:::note примечание
 
 Most configuration for the theme is done in `themeConfig`, which can be found in [theme configuration](./theme-configuration.md).
 
@@ -45,7 +45,7 @@ Most configuration for the theme is done in `themeConfig`, which can be found in
 
 You can configure this theme through preset options or plugin options.
 
-:::tip
+:::tip совет
 
 Most Docusaurus users configure this plugin through the preset options.
 

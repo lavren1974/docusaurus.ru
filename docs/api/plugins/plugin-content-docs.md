@@ -15,7 +15,7 @@ Provides the [Docs](../../guides/docs/docs-introduction.md) functionality and is
 npm install --save @docusaurus/plugin-content-docs
 ```
 
-:::tip
+:::tip совет
 
 If you use the preset `@docusaurus/preset-classic`, you don't need to install this plugin as a dependency.
 
@@ -165,7 +165,7 @@ type VersionsConfig = {
 
 You can configure this plugin through preset options or plugin options.
 
-:::tip
+:::tip совет
 
 Most Docusaurus users configure this plugin through the preset options.
 

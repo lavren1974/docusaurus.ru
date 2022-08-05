@@ -46,7 +46,7 @@ import Translate from '@docusaurus/Translate';
 </h2>;
 ```
 
-:::note
+:::note примечание
 
 The `write-translations` CLI still works to extract translations from your code.
 
@@ -70,7 +70,7 @@ This section will help you figure out how to **keep your existing v1 translation
 
 There are **multiple possible strategies** to migrate a Docusaurus v1 site using Crowdin, with different tradeoffs.
 
-:::caution
+:::caution осторожно
 
 This documentation is a best-effort to help you migrate, please help us improve it if you find a better way!
 
@@ -92,7 +92,7 @@ Don't try to migrate without understanding both Crowdin and Docusaurus v2 i18n.
 
 To avoid any **risk of breaking your v1 site in production**, one possible strategy is to duplicate the original v1 Crowdin project.
 
-:::info
+:::info информация
 
 This strategy was used to [upgrade the Jest website](https://jestjs.io/blog/2021/03/09/jest-website-upgrade).
 
@@ -122,13 +122,13 @@ There is no ultimate guide we could write to fix these errors, but common errors
 
 You might want to repeat this pre-translation process, eventually trying the "Perfect" option and limiting pre-translation only some languages/files.
 
-:::tip
+:::tip совет
 
 Use [`mdx-code-block`](../i18n/i18n-crowdin.mdx#mdx-solutions) around problematic Markdown elements: Crowdin is less likely mess things up with code blocks.
 
 :::
 
-:::note
+:::note примечание
 
 You will likely notice that some things were translated on your old project, but are now untranslated in your new project.
 
@@ -150,7 +150,7 @@ Crowdin has an "upload translations" feature, but in our experience it does not 
 
 If you don't mind modifying your existing Crowdin project and risking to mess things up, it may be possible to use the Crowdin branch system.
 
-:::caution
+:::caution осторожно
 
 This workflow has not been tested in practice, please report us how good it is.
 

@@ -35,19 +35,19 @@ const SafeComponent = () => (
 import ErrorBoundaryTestButton from "@site/src/components/ErrorBoundaryTestButton"
 ```
 
-:::tip
+:::tip совет
 
 To see it in action, click here: <ErrorBoundaryTestButton/>
 
 :::
 
-:::info
+:::info информация
 
 Docusaurus uses this component to catch errors within the theme's layout, and also within the entire app.
 
 :::
 
-:::note
+:::note примечание
 
 This component doesn't catch build-time errors and only protects against client-side render errors that can happen when using stateful React components.
 
@@ -57,7 +57,7 @@ This component doesn't catch build-time errors and only protects against client-
 
 - `fallback`: an optional render callback returning a JSX element. It will receive an object with 2 attributes: `error`, the error that was caught, and `tryAgain`, a function (`() => void`) callback to reset the error in the component and try rendering it again. If not present, `@theme/Error` will be rendered instead. `@theme/Error` is used for the error boundaries wrapping the site, above the layout.
 
-:::caution
+:::caution осторожно
 
 The `fallback` prop is a callback, and **not a React functional component**. You can't use React hooks inside this callback.
 
@@ -151,7 +151,7 @@ The target location to navigate to. Example: `/docs/introduction`.
 <Link to="/courses" />
 ```
 
-:::tip
+:::tip совет
 
 Prefer this component to vanilla `<a>` tags because Docusaurus does a lot of optimizations (e.g. broken path detection, prefetching, applying base URL...) if you use `<Link>`.
 
@@ -174,7 +174,7 @@ const Home = () => {
 };
 ```
 
-:::note
+:::note примечание
 
 `@docusaurus/router` implements [React Router](https://reacttraining.com/react-router/web/guides/quick-start) and supports its features.
 
@@ -184,7 +184,7 @@ const Home = () => {
 
 The `<BrowserOnly>` component permits to render React components only in the browser after the React app has hydrated.
 
-:::tip
+:::tip совет
 
 Use it for integrating with code that can't run in Node.js, because the `window` or `document` objects are being accessed.
 
@@ -275,7 +275,7 @@ When [localizing your site](./i18n/i18n-introduction.md), the `<Translate/>` com
 
 The translation strings will statically extracted from your code with the [`docusaurus write-translations`](./cli.md#docusaurus-write-translations-sitedir) CLI and a `code.json` translation file will be created in `website/i18n/[locale]`.
 
-:::note
+:::note примечание
 
 The `<Translate/>` props **must be hardcoded strings**.
 
@@ -324,7 +324,7 @@ export default function Home() {
 }
 ```
 
-:::note
+:::note примечание
 
 You can even omit the children prop and specify a translation string in your `code.json` file manually after running the `docusaurus write-translations` CLI command.
 
@@ -395,7 +395,7 @@ const MyComponent = () => {
 };
 ```
 
-:::note
+:::note примечание
 
 The `siteConfig` object only contains **serializable values** (values that are preserved after `JSON.stringify()`). Функции, регулярные выражения и т.д. будут потеряны на клиентской стороне.
 
@@ -405,7 +405,7 @@ The `siteConfig` object only contains **serializable values** (values that are p
 
 Returns `true` when the React app has successfully hydrated in the browser.
 
-:::caution
+:::caution осторожно
 
 Use this hook instead of `typeof windows !== 'undefined'` in React rendering logic.
 
@@ -431,7 +431,7 @@ const MyComponent = () => {
 
 React hook to prepend your site `baseUrl` to a string.
 
-:::caution
+:::caution осторожно
 
 **Don't use it for regular links!**
 
@@ -465,7 +465,7 @@ const SomeImage = () => {
 };
 ```
 
-:::tip
+:::tip совет
 
 In most cases, you don't need `useBaseUrl`.
 
@@ -503,7 +503,7 @@ React hook to access Docusaurus global data created by all the plugins.
 
 Global data is namespaced by plugin name then by plugin ID.
 
-:::info
+:::info информация
 
 Plugin ID is only useful when a plugin is used multiple times on the same site. Each plugin instance is able to create its own global data.
 
@@ -535,7 +535,7 @@ const MyComponent = () => {
 };
 ```
 
-:::tip
+:::tip совет
 
 Inspect your site's global data at `./docusaurus/globalData.json`
 
@@ -631,7 +631,7 @@ const message = interpolate('Welcome {firstName}', {firstName: 'Sébastien'});
 
 The imperative counterpart of the [`<Translate>`](#translate) component. Also supporting [placeholders interpolation](#interpolate).
 
-:::tip
+:::tip совет
 
 Use the imperative API for the **rare cases** where a **component cannot be used**, such as:
 
@@ -691,7 +691,7 @@ export default function Home() {
 
 A module that exposes a few boolean variables to check the current rendering environment.
 
-:::caution
+:::caution осторожно
 
 For React rendering logic, use [`useIsBrowser()`](#useIsBrowser) or [`<BrowserOnly>`](#browseronly) instead.
 

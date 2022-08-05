@@ -20,7 +20,7 @@ It permits you to **test new unreleased features** as soon as the pull requests 
 
 It is a good way to **give feedback to maintainers**, ensuring the newly implemented feature works as intended.
 
-:::note
+:::note примечание
 
 Using a canary release in production might seem risky, but in practice, it's not.
 
@@ -32,7 +32,7 @@ A canary release passes all automated tests and is used in production by the Doc
 <InsertIfCanaryVersionUnknown>
 ```
 
-:::caution
+:::caution осторожно
 
 The canary version shown below **may not be up-to-date**. Please go to the [npm page](https://www.npmjs.com/package/@docusaurus/core?activeTab=versions) to find the actual version name.
 
@@ -43,7 +43,7 @@ The canary version shown below **may not be up-to-date**. Please go to the [npm 
 <InsertIfCanaryVersionKnown>
 ```
 
-:::tip
+:::tip совет
 
 The canary version shown below is directly fetched from npm and **is up-to-date**. You can directly use these numbers in your package.json.
 
@@ -62,13 +62,13 @@ You can see on [npm](https://www.npmjs.com/package/@docusaurus/core?activeTab=ve
 - `latest`: stable releases (Current: <StableVersion />)
 - `canary`: canary releases (<CanaryVersion />)
 
-:::tip
+:::tip совет
 
 Make sure to use the latest canary release and check the publication date (sometimes the publish process fails). <PublishTime />
 
 :::
 
-:::note
+:::note примечание
 
 Canary versions follow the naming convention `0.0.0-commitNumber`.
 
@@ -97,7 +97,7 @@ You can also upgrade the `@docusaurus/*` packages with command line:
 npm install --save-exact @docusaurus/core@canary @docusaurus/preset-classic@canary
 ```
 
-:::caution
+:::caution осторожно
 
 Make sure to include all the `@docusaurus/*` packages.
 

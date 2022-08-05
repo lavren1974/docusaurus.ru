@@ -262,7 +262,7 @@ If you put some HTML pages under the `static` folder, they will be copied to the
 
 </BrowserWindow>
 
-:::tip
+:::tip совет
 
 The first link will **not** trigger a "broken links detected" check during the production build, because the respective file actually exists. Nevertheless, when you click on the link, a "page not found" will be displayed until you refresh.
 

@@ -13,7 +13,7 @@ npm install --save @docusaurus/theme-search-algolia
 
 This theme also adds search page available at `/search` (as swizzlable `SearchPage` component) path with OpenSearch support. You can change this default path via `themeConfig.algolia.searchPagePath`. Use `false` to disable search page.
 
-:::tip
+:::tip совет
 
 If you have installed `@docusaurus/preset-classic`, you don't need to install it as a dependency.
 

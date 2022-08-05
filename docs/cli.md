@@ -51,7 +51,7 @@ Docusaurus предоставляет набор скриптов, которы�
 
 :::
 
-:::info Development over network
+:::info информация Development over network
 
 When forwarding port 3000 from a remote server or VM (e.g. GitHub Codespaces), you can run the dev server on `0.0.0.0` to make it listen on the local IP.
 
@@ -90,7 +90,7 @@ HTTPS=true SSL_CRT_FILE=localhost.pem SSL_KEY_FILE=localhost-key.pem yarn start
 | `--config`          | `undefined`  | Path to Docusaurus config file, default to `[siteDir]/docusaurus.config.js`                                                     |
 | `--no-minify`       | `false`      | Собрать сайт без минификации JS/CSS бандлов.                                                                                    |
 
-:::info
+:::info информация
 
 Для расширенной минификации CSS-набора, мы используем расширенный шаблон [cssnano](https://github.com/cssnano/cssnano/tree/master/packages/cssnano-preset-advanced) (вместе с дополнительными плагинами PostCSS) и [уровень 2 оптимизации clean-css](https://github.com/jakubpawlowicz/clean-css#level-2-optimizations). Если дополнительная минификация CSS приводит к поломкам CSS, постройте сайт с помощью переменной окружения `USE_SIMPLE_CSS_MINIFIER=true`, чтобы минифицировать CSS с помощью шаблона [по умолчанию cssnano](https://github.com/cssnano/cssnano/tree/master/packages/cssnano-preset-default). **Пожалуйста, [создайте тикет с описанием проблемы](https://github.com/facebook/docusaurus/issues/new?labels=bug%2C+needs+triage&template=bug.md) если вы столкнулись с ошибками минификации CSS.**
 
@@ -123,7 +123,7 @@ The swizzle CLI is interactive and will guide you through the whole [swizzle pro
 | `--danger`      | Allow immediate swizzling of unsafe components       |
 | `--typescript`  | Swizzle the TypeScript variant component             |
 
-:::caution
+:::caution осторожно
 
 Unsafe components have a higher risk of breaking changes due to internal refactorings.
 

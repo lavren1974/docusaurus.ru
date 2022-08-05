@@ -56,7 +56,7 @@ keywords: [keywords, describing, the main topics]
 
 When creating your React page, adding these fields in `Layout` would also improve SEO.
 
-:::tip
+:::tip совет
 
 Prefer to use front matter for fields like `description` and `keywords`: Docusaurus will automatically apply this to both `description` and `og:description`, while you would have to manually declare two metadata tags when using the `<head>` tag.
 
@@ -81,7 +81,7 @@ export default function page() {
 }
 ```
 
-:::tip
+:::tip совет
 
 For convenience, the default theme `<Layout>` component accept `title` and `description` as props.
 
@@ -122,7 +122,7 @@ Disallow:
 
 Read more about the robots file in [the Google documentation](https://developers.google.com/search/docs/advanced/robots/intro).
 
-:::caution
+:::caution осторожно
 
 **Important**: the `robots.txt` file does **not** prevent HTML pages from being indexed. Use `<meta name="robots" content="noindex">` as [page metadata](#single-page-metadata) to prevent it from appearing in search results entirely.
 

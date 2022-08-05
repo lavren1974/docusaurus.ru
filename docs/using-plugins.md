@@ -106,7 +106,7 @@ module.exports = {
 };
 ```
 
-:::note
+:::note примечание
 
 At most one plugin instance can be the "default plugin instance", by omitting the `id` attribute, or using `id: 'default'`.
 
@@ -116,7 +116,7 @@ At most one plugin instance can be the "default plugin instance", by omitting th
 
 Themes are loaded in the exact same way as plugins. From the consumer perspective, the `themes` and `plugins` entries are interchangeable when installing and configuring a plugin. The only nuance is that themes are loaded after plugins, and it's possible for [a theme to override a plugin's default theme components](./swizzling.md#theme-aliases).
 
-:::tip
+:::tip совет
 
 The `themes` and `plugins` options lead to different [shorthand resolutions](#module-shorthands), so if you want to take advantage of shorthands, be sure to use the right entry!
 

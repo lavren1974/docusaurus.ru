@@ -100,7 +100,7 @@ Each locale and plugin has its own `i18n` subfolder:
 website/i18n/[locale]/[pluginName]/...
 ```
 
-:::note
+:::note примечание
 
 For multi-instance plugins, the path is `website/i18n/[locale]/[pluginName]-[pluginId]/...`.
 

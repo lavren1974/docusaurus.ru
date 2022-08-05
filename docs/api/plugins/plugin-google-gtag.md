@@ -9,13 +9,13 @@ slug: /api/plugins/@docusaurus/plugin-google-gtag
 
 The default [Global Site Tag (gtag.js)](https://developers.google.com/analytics/devguides/collection/gtagjs/) plugin. It is a JavaScript tagging framework and API that allows you to send event data to Google Analytics, Google Ads, and Google Marketing Platform. This section describes how to configure a Docusaurus site to enable global site tag for Google Analytics.
 
-:::tip
+:::tip совет
 
 You can use [Google's Tag Assistant](https://tagassistant.google.com/) tool to check if your gtag is set up correctly!
 
 :::
 
-:::caution production only
+:::caution осторожно production only
 
 This plugin is always inactive in development and **only active in production** to avoid polluting the analytics statistics.
 
@@ -27,7 +27,7 @@ This plugin is always inactive in development and **only active in production** 
 npm install --save @docusaurus/plugin-google-gtag
 ```
 
-:::tip
+:::tip совет
 
 If you use the preset `@docusaurus/preset-classic`, you don't need to install this plugin as a dependency.
 
@@ -56,7 +56,7 @@ Accepted fields:
 
 You can configure this plugin through preset options or plugin options.
 
-:::tip
+:::tip совет
 
 Most Docusaurus users configure this plugin through the preset options.
 

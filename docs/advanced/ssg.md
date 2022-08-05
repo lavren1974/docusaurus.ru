@@ -10,7 +10,7 @@ In [architecture](architecture.md), we mentioned that the theme is run in Webpac
 - During **server-side rendering**, the theme is compiled in a sandbox called [React DOM Server](https://reactjs.org/docs/react-dom-server.html). You can see this as a "headless browser", where there is no `window` or `document`, only React. SSR produces static HTML pages.
 - During **client-side rendering**, the theme is compiled to JavaScript that gets eventually executed in the browser, so it has access to browser variables.
 
-:::info SSR or SSG?
+:::info информация SSR or SSG?
 
 _Server-side rendering_ and _static site generation_ can be different concepts, but we use them interchangeably.
 
@@ -121,7 +121,7 @@ If you want to render any dynamic content on your screen that relies on the brow
 
 You may need to escape from SSR since static HTML can't display anything useful without knowing the client state.
 
-:::caution
+:::caution осторожно
 
 It is important for the first client-side render to produce the exact same DOM structure as server-side rendering, otherwise, React will correlate virtual DOM with the wrong DOM elements.
 

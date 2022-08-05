@@ -2,7 +2,7 @@
 
 Let's see how Docusaurus handles **versioning, releases and breaking changes**.
 
-:::info
+:::info информация
 
 This topic is particularly important for highly customized sites that may have difficulties to upgrade.
 
@@ -19,7 +19,7 @@ Respecting Semantic Versioning is important for multiple reasons:
 - A new major version is an opportunity to thoroughly document breaking changes
 - A new major/minor version is an opportunity to communicate new features through a blog post
 
-:::note
+:::note примечание
 
 Releasing Docusaurus 2.0 took a very long time. From now on, Docusaurus will **release new major versions more regularly**. In practice, you can expect a new major version every 2–4 months.
 
@@ -36,7 +36,7 @@ Whenever a new major version is released, we publish:
 - a blog post with feature highlights, major bug fixes, **breaking changes, and upgrade instructions**.
 - an exhaustive changelog entry
 
-:::tip
+:::tip совет
 
 Read our [public API surface](#public-api-surface) section to clearly understand what we consider as a breaking change.
 
@@ -51,7 +51,7 @@ Whenever a new minor version is released, we publish:
 - a blog post with a list of feature highlights and major bug fixes
 - an exhaustive changelog entry
 
-:::tip
+:::tip совет
 
 If you only use our [public API surface](##public-api-surface), you should be able to upgrade in no time!
 
@@ -81,7 +81,7 @@ The Docusaurus team is usually working on 2 major versions at the same time:
 - **Docusaurus <StableMajorVersion/>**: the **stable** version, on the <StableMajorBranchLink/> branch
 - **Docusaurus <NextMajorVersion/>**: the **next** version, on the <NextMajorBranchLink/> branch
 
-:::note
+:::note примечание
 
 The <StableMajorBranchLink/> branch is created just before releasing the first v<StableMajorVersion/> release candidate.
 
@@ -93,7 +93,7 @@ The stable version (v<StableMajorVersion/>, on <StableMajorBranchLink/>) is reco
 
 We regularly backport retro-compatible features, bug and security fixes from <NextMajorBranchLink/> to <StableMajorBranchLink/> with `git cherry-pick` to make them available to those not ready for the next version.
 
-:::info
+:::info информация
 
 After a new stable version has been released, the former stable version will continue to receive support only for **major security issues** for **3 months**. Otherwise, all features will be frozen and non-critical bugs will not be fixed.
 
@@ -115,13 +115,13 @@ There are 3 ways to use the next version:
 - with the `@next` npm dist tag for the latest pre-release
 - with a [canary release](./4-canary.md) for the very latest features
 
-:::tip
+:::tip совет
 
 The next version passes all our automated tests and is used by the Docusaurus site itself. It is relatively safe: don't be afraid to give it a try.
 
 :::
 
-:::caution
+:::caution осторожно
 
 Breaking changes can happen on the next version: detailed upgrade instructions are available in the changelog and pull requests.
 
@@ -133,7 +133,7 @@ At the `beta` and `rc` (release candidate) phases, we avoid introducing major br
 
 Docusaurus commits to respecting Semantic Versioning. This means that whenever changes occur in Docusaurus public APIs and break backward compatibility, we will increment the `major` version number.
 
-:::tip
+:::tip совет
 
 Docusaurus guarantees public API retro-compatibility across `minor` versions. Unless you use internal APIs, `minor` version upgrades should be easy.
 
@@ -156,7 +156,7 @@ We will outline what accounts as the public API surface.
 - `@docusaurus/types` TypeScript types
   - We still retain the freedom to make types stricter (which may break type-checking).
 
-:::tip
+:::tip совет
 
 For non-theme APIs, any documented API is considered public (and will be stable); any undocumented API is considered internal.
 
@@ -181,7 +181,7 @@ This system also implicitly creates a very large API surface. To be able to move
 - The theme user experience
 - Browser support
 
-:::tip
+:::tip совет
 
 You may not be able to achieve your site customization through this public API.
 
@@ -197,7 +197,7 @@ In this case, please [report your customization use case](https://github.com/fac
 - React components that import from `@docusaurus/theme-common/internal`
 - The exact visual appearance of the theme
 
-:::note
+:::note примечание
 
 When [swizzling](/docs/swizzling) safe components, you might encounter components that import undocumented APIs from `@docusaurus/theme-common` (without the `/internal` subpath).
 

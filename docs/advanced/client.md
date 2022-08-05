@@ -52,7 +52,7 @@ export default function CodeBlock(props) {
 
 Check the code of `@docusaurus/theme-live-codeblock` for details.
 
-:::caution
+:::caution осторожно
 
 Unless you want to publish a re-usable "theme enhancer" (like `@docusaurus/theme-live-codeblock`), you likely don't need `@theme-init`.
 
@@ -179,7 +179,7 @@ export default module;
 
 Both lifecycles will fire on first render, but they will not fire on server-side, so you can safely access browser globals in them.
 
-:::tip Prefer using React
+:::tip совет Prefer using React
 
 Client module lifecycles are purely imperative, and you can't use React hooks or access React contexts within them. If your operations are state-driven or involve complicated DOM manipulations, you should consider [swizzling components](../swizzling.md) instead.
 

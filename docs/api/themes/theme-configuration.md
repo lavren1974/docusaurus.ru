@@ -51,7 +51,7 @@ module.exports = {
 };
 ```
 
-:::caution
+:::caution осторожно
 
 With `respectPrefersColorScheme: true`, the `defaultMode` is overridden by user system preferences.
 
@@ -302,7 +302,7 @@ Accepted fields:
 </APITable>
 ```
 
-:::note
+:::note примечание
 
 In addition to the fields above, you can specify other arbitrary attributes that can be applied to a HTML link.
 
@@ -462,7 +462,7 @@ Accepted fields:
 </APITable>
 ```
 
-:::tip
+:::tip совет
 
 Use this navbar item type if your sidebar is updated often and the order is not stable.
 
@@ -810,7 +810,7 @@ module.exports = {
 };
 ```
 
-:::note
+:::note примечание
 
 If you use the line highlighting Markdown syntax, you might need to specify a different highlight background color for the dark mode syntax highlighting theme. Refer to the [docs for guidance](../../guides/markdown-features/markdown-features-code-blocks.mdx#line-highlighting).
 
@@ -1048,7 +1048,7 @@ const Example = () => {
 };
 ```
 
-:::note
+:::note примечание
 
 The component calling `useColorMode` must be a child of the `Layout` component.
 

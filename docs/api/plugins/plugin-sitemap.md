@@ -9,7 +9,7 @@ slug: /api/plugins/@docusaurus/plugin-sitemap
 
 This plugin creates sitemaps for your site so that search engine crawlers can crawl your site more accurately.
 
-:::caution production only
+:::caution осторожно production only
 
 This plugin is always inactive in development and **only active in production** because it works on the build output.
 
@@ -21,7 +21,7 @@ This plugin is always inactive in development and **only active in production** 
 npm install --save @docusaurus/plugin-sitemap
 ```
 
-:::tip
+:::tip совет
 
 If you use the preset `@docusaurus/preset-classic`, you don't need to install this plugin as a dependency.
 
@@ -48,7 +48,7 @@ Accepted fields:
 </APITable>
 ```
 
-:::info
+:::info информация
 
 This plugin also respects some site config:
 
@@ -61,7 +61,7 @@ This plugin also respects some site config:
 
 You can configure this plugin through preset options or plugin options.
 
-:::tip
+:::tip совет
 
 Most Docusaurus users configure this plugin through the preset options.
 

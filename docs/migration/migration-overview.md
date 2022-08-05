@@ -53,7 +53,7 @@ After the migration, your Docusaurus 2 site could look like:
     ├── docusaurus.config.js
 ```
 
-:::info
+:::info информация
 
 This migration does not change the `/docs` folder location, but Docusaurus v2 sites generally have the `/docs` folder inside `/website`
 
@@ -80,7 +80,7 @@ The [migration CLI](./migration-automated.md) will handle many things of the mig
 
 However, some parts can't easily be automated, and you will have to fallback to the manual process.
 
-:::note
+:::note примечание
 
 We recommend running the migration CLI, and complete the missing parts thanks to the manual migration process.
 

@@ -13,7 +13,7 @@ There are a few options you can use to add search to your website:
 - 👥 [Local Search](#using-local-search)
 - 👥 [Your own `SearchBar` component](#using-your-own-search)
 
-:::info
+:::info информация
 
 🥇 Docusaurus provides **first-class support** for [Algolia DocSearch](#using-algolia-docsearch).
 
@@ -31,13 +31,13 @@ DocSearch crawls your website once a week (the schedule is configurable from the
 
 If your website is [not eligible](https://docsearch.algolia.com/docs/who-can-apply) for the free, hosted version of DocSearch, or if your website sits behind a firewall and is not public, then you can [run your own](https://docsearch.algolia.com/docs/run-your-own/) DocSearch crawler.
 
-:::note
+:::note примечание
 
 By default, the Docusaurus preset generates a [sitemap.xml](https://docusaurus.io/sitemap.xml) that the Algolia crawler can use.
 
 :::
 
-:::info From the old docsearch?
+:::info информация From the old docsearch?
 
 You can read more about migration from the legacy DocSearch infra in [our blog post](/blog/2021/11/21/algolia-docsearch-migration) or [the DocSearch migration docs](https://docsearch.algolia.com/docs/migrating-from-legacy).
 
@@ -47,7 +47,7 @@ You can read more about migration from the legacy DocSearch infra in [our blog p
 
 After your application has been approved and deployed, you will receive an email with all the details for you to add DocSearch to your project. Editing and managing your crawls can be done via [the web interface](https://crawler.algolia.com/). Indices are readily available after deployment, so manual configuration usually isn't necessary.
 
-:::tip
+:::tip совет
 
 It is highly recommended to use a config similar to the [**Docusaurus 2 website config**](https://docsearch.algolia.com/docs/templates/#docusaurus-v2-template).
 
@@ -117,7 +117,7 @@ module.exports = {
 };
 ```
 
-:::info
+:::info информация
 
 The `searchParameters` option used to be named `algoliaOptions` in Docusaurus v1.
 
@@ -125,7 +125,7 @@ Refer to its [official DocSearch documentation](https://docsearch.algolia.com/do
 
 :::
 
-:::caution
+:::caution осторожно
 
 The search feature will not work reliably until Algolia crawls your site.
 
@@ -164,7 +164,7 @@ To solve this problem, the contextual search feature understands that you are br
 - on `/en/docs/v1/myDoc`, search results will only include **English** results for the **v1** docs (+ other unversioned pages)
 - on `/fr/docs/v2/myDoc`, search results will only include **French** results for the **v2** docs (+ other unversioned pages)
 
-:::info
+:::info информация
 
 When using `contextualSearch: true` (default), the contextual facet filters will be merged with the ones provided with `algolia.searchParameters.facetFilters` .
 

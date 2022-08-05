@@ -80,7 +80,7 @@ Your site is accessible at [http://localhost:3000/fr/](http://localhost:3000/fr/
 
 We haven't provided any translation yet, so the site is mostly untranslated.
 
-:::tip
+:::tip совет
 
 Docusaurus provides **default translations** for generic theme labels, such as "Next" and "Previous" for the pagination.
 
@@ -88,7 +88,7 @@ Please help us complete those **[default translations](https://github.com/facebo
 
 :::
 
-:::caution
+:::caution осторожно
 
 Each locale is a **distinct standalone single-page application**: it is not possible to start the Docusaurus sites in all locales at the same time.
 
@@ -98,7 +98,7 @@ Each locale is a **distinct standalone single-page application**: it is not poss
 
 All translation data for the French locale is stored in `website/i18n/fr`. Each plugin sources its own translated content under the corresponding folder, while the `code.json` file defines all text labels used in the React code.
 
-:::note
+:::note примечание
 
 After copying files around, restart your site with `npm run start -- --locale fr`. Hot-reload will work better when editing existing files.
 
@@ -208,7 +208,7 @@ export default function Home() {
 </Tabs>
 ```
 
-:::info
+:::info информация
 
 Docusaurus provides a **very small and lightweight translation runtime** on purpose, and only supports basic [placeholders interpolation](../docusaurus-core.md#interpolate), using a subset of the [ICU Message Format](https://formatjs.io/docs/core-concepts/icu-syntax/).
 
@@ -218,7 +218,7 @@ Most documentation websites are generally **static** and don't need advanced i18
 
 The `docusaurus write-translations` command will statically analyze all React code files used in your site, extract calls to these APIs, and aggregate them in the `code.json` file. The translation files will be stored as maps from IDs to translation message objects (including the translated label and the description of the label). In your calls to the translation APIs (`<Translate>` or `translate()`), you need to specify either the default untranslated message or the ID, in order for Docusaurus to correctly correlate each translation entry to the API call.
 
-:::caution text labels must be static
+:::caution осторожно text labels must be static
 
 The `docusaurus write-translations` command only does **static analysis** of your code. It doesn't actually run your site. Therefore, dynamic messages can't be extracted, as the message is an _expression_, not a _string_:
 
@@ -306,7 +306,7 @@ function ItemsList({items}) {
 }
 ```
 
-:::note
+:::note примечание
 
 Docusaurus uses [`Intl.PluralRules`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules) to resolve and select plural forms. It is important to provide the right number of plural forms in the right order for `selectMessage` to work.
 
@@ -389,7 +389,7 @@ mkdir -p i18n/fr/docusaurus-plugin-content-docs/current
 cp -r docs/** i18n/fr/docusaurus-plugin-content-docs/current
 ```
 
-:::info
+:::info информация
 
 Notice that the `docusaurus-plugin-content-docs` plugin always divides its content by versions. The data in `./docs` folder will be translated in the `current` subfolder and `current.json` file. See [the doc versioning guide](../guides/docs/versioning.md#terminology) for more information about what "current" means.
 
@@ -414,13 +414,13 @@ cp -r src/pages/**.md i18n/fr/docusaurus-plugin-content-pages
 cp -r src/pages/**.mdx i18n/fr/docusaurus-plugin-content-pages
 ```
 
-:::caution
+:::caution осторожно
 
 We only copy `.md` and `.mdx` files, as React pages are translated through JSON translation files already.
 
 :::
 
-:::tip Use explicit heading IDs
+:::tip совет Use explicit heading IDs
 
 By default, a Markdown heading `### Hello World` will have a generated ID `hello-world`. Other documents can link it with `[link](#hello-world)`. However, after translation, the heading becomes `### Bonjour le Monde`, with ID `bonjour-le-monde`.
 
@@ -454,7 +454,7 @@ Docusaurus will build **one single-page application per locale**:
 
 You can now [deploy](../deployment.mdx) the `build` folder to the static hosting solution of your choice.
 
-:::note
+:::note примечание
 
 The Docusaurus v2 website uses this strategy:
 
@@ -463,7 +463,7 @@ The Docusaurus v2 website uses this strategy:
 
 :::
 
-:::tip
+:::tip совет
 
 Static hosting providers generally redirect `/unknown/url` to `/404.html` by convention, always showing an **English 404 page**.
 
@@ -489,7 +489,7 @@ On your [static hosting provider](../deployment.mdx):
 - configure the appropriate build command, using the `--locale` option
 - configure the (sub)domain of your choice for each deployment
 
-:::caution
+:::caution осторожно
 
 This strategy is **not possible** with GitHub Pages, as it is only possible to **have a single deployment**.
 

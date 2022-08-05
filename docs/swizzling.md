@@ -94,7 +94,7 @@ npm run swizzle -- --list
 
 Use `--help` to see all available CLI options, or refer to the reference [swizzle CLI documentation](./cli.md#docusaurus-swizzle).
 
-:::note
+:::note примечание
 
 After swizzling a component, **restart your dev server** in order for Docusaurus to know about the new component.
 
@@ -106,7 +106,7 @@ Be sure to understand [which components are **safe to swizzle**](#what-is-safe-t
 
 :::
 
-:::info
+:::info информация
 
 `docusaurus swizzle` is only an automated way to help you swizzle the component. You can also create the `src/theme/SomeComponent.js` file manually, and Docusaurus will [resolve it](./advanced/client.md#theme-aliases). There's no internal magic behind this command!
 
@@ -143,7 +143,7 @@ export default function Footer(props) {
 }
 ```
 
-:::caution
+:::caution осторожно
 
 Ejecting an [**unsafe**](#what-is-safe-to-swizzle) component can sometimes lead to copying a large amount of internal code, which you now have to maintain yourself. It can make Docusaurus upgrades more difficult, as you will need to migrate your customizations if the props received or internal theme APIs used have changed.
 
@@ -151,7 +151,7 @@ Ejecting an [**unsafe**](#what-is-safe-to-swizzle) component can sometimes lead 
 
 :::
 
-:::tip Re-swizzling
+:::tip совет Re-swizzling
 
 To keep ejected components up-to-date after a Docusaurus upgrade, re-run the eject command and compare the changes with `git diff`. You are also recommended to write a brief comment at the top of the file explaining what changes you have made, so that you could more easily re-apply your changes after re-ejection.
 
@@ -199,7 +199,7 @@ Docusaurus uses [theme aliases](./advanced/client.md#theme-aliases) to resolve t
 
 </details>
 
-:::tip
+:::tip совет
 
 Wrapping a theme is a great way to **add extra components around existing one** without [ejecting](#ejecting) it. For example, you can easily add a custom comment system under each blog post:
 
@@ -244,19 +244,19 @@ For each theme component, the swizzle CLI will indicate **3 different levels of 
 - **Unsafe**: this component is a theme implementation detail, not safe to be swizzled, and breaking changes might happen within a theme **minor version**
 - **Forbidden**: the swizzle CLI will prevent you from swizzling this component, because it is not designed to be swizzled at all
 
-:::note
+:::note примечание
 
 Some components might be safe to wrap, but not safe to eject.
 
 :::
 
-:::info
+:::info информация
 
 Don't be too **afraid to swizzle unsafe components**: just keep in mind that **breaking changes** might happen, and you might need to upgrade your customizations manually on minor version upgrades.
 
 :::
 
-:::note Report your use-case
+:::note примечание Report your use-case
 
 If you have a **strong use-case for swizzling an unsafe component**, please [**report it here**](https://github.com/facebook/docusaurus/discussions/5468) and we will work together to find a solution to make it safe.
 
@@ -266,7 +266,7 @@ If you have a **strong use-case for swizzling an unsafe component**, please [**r
 
 It is not always clear which component you should swizzle exactly to achieve the desired result. `@docusaurus/theme-classic`, which provides most of the theme components, has about [100 components](https://github.com/facebook/docusaurus/tree/main/packages/docusaurus-theme-classic/src/theme)!
 
-:::tip
+:::tip совет
 
 To print an overview of all the `@docusaurus/theme-classic` components:
 
@@ -283,7 +283,7 @@ You can follow these steps to locate the appropriate component to swizzle:
 3. **Start with a higher-level component.** Components form a tree with some components importing others. Every route will be associated with one top-level component that the route will render (most of them listed in [Routing in content plugins](./advanced/routing.md#routing-in-content-plugins)). For example, all blog post pages have `@theme/BlogPostPage` as the topmost component. You can start with swizzling this component, and then go down the component tree to locate the component that renders just what you are targeting. Don't forget to unswizzle the rest by deleting the files after you've found the correct one, so you don't maintain too many components.
 4. **Read the [theme source code](https://github.com/facebook/docusaurus/tree/main/packages/docusaurus-theme-classic/src/theme)** and use search wisely.
 
-:::tip Just ask!
+:::tip совет Just ask!
 
 If you still have no idea which component to swizzle to achieve the desired effect, you can reach out for help in one of our [support channels](/community/support).
 
@@ -298,7 +298,7 @@ Swizzling ultimately means you have to maintain some additional React code that 
 1. **Use CSS.** CSS rules and selectors can often help you achieve a decent degree of customization. Refer to [styling and layout](./styling-layout.md) for more details.
 2. **Use translations.** It may sound surprising, but translations are ultimately just a way to customize the text labels. For example, if your site's default language is `en`, you can still run `yarn write-translations -l en` and edit the `code.json` emitted. Refer to the [i18n tutorial](./i18n/i18n-tutorial.md) for more details.
 
-:::tip
+:::tip совет
 
 **The smaller, the better.** If swizzling is inevitable, prefer to swizzle only the relevant part and maintain as little code on your own as possible. Swizzling a small component often means less risk of **breaking changes** during upgrade.
 
@@ -321,7 +321,7 @@ export default function Root({children}) {
 }
 ```
 
-:::tip
+:::tip совет
 
 Use this component to render React Context providers.
 

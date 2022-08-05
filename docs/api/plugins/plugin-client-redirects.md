@@ -11,13 +11,13 @@ Docusaurus-плагин для создания **браузерных реди�
 
 This plugin will write additional HTML pages to your static site that redirect the user to your existing Docusaurus pages with JavaScript.
 
-:::caution production only
+:::caution осторожно production only
 
 This plugin is always inactive in development and **only active in production** because it works on the build output.
 
 :::
 
-:::caution
+:::caution осторожно
 
 Если это возможно, лучше использовать серверные редиректы.
 
@@ -50,7 +50,7 @@ Accepted fields:
 </APITable>
 ```
 
-:::note
+:::note примечание
 
 This plugin will also read the [`siteConfig.onDuplicateRoutes`](../docusaurus.config.js.md#onDuplicateRoutes) config to adjust its logging level when multiple files will be emitted to the same location.
 
@@ -67,7 +67,7 @@ type RedirectRule = {
 };
 ```
 
-:::note
+:::note примечание
 
 The idea of "from" and "to" is central in this plugin. "From" means a path that you want to _create_, i.e. an extra HTML file that will be written; "to" means a path to want to redirect _to_, usually a route that Docusaurus already knows about.
 

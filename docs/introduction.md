@@ -38,7 +38,7 @@ npx docusaurus start
 
 Откройте `http://localhost:3000` и следуйте инструкциям.
 
-:::tip Совет
+:::tip совет
 
 Используйте **[docusaurus.new](https://docusaurus.new)** чтобы протестировать Docusaurus прямо в браузере!
 

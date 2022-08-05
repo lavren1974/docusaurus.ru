@@ -31,7 +31,7 @@ Meanwhile, the default doc site functionalities provided by Docusaurus 1 are now
 }
 ```
 
-:::tip
+:::tip совет
 
 Please use the most recent Docusaurus 2 version, which you can check out [here](https://www.npmjs.com/package/@docusaurus/core) (using the `latest` tag).
 
@@ -293,7 +293,7 @@ module.exports = {
 };
 ```
 
-:::caution
+:::caution осторожно
 
 Your Algolia DocSearch v1 config (found [here](https://github.com/algolia/docsearch-configs/blob/master/configs)) should be updated for Docusaurus v2 ([example](https://github.com/algolia/docsearch-configs/tree/master/configs/docusaurus-2.json)).
 

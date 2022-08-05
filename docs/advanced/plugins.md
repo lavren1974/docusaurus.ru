@@ -92,7 +92,7 @@ When plugins have loaded their content, the data is made available to the client
 
 For example, a Docusaurus blog may consist of a blog plugin and a blog theme.
 
-:::note
+:::note примечание
 
 This is a contrived example: in practice, `@docusaurus/theme-classic` provides the theme for docs, blog, and layouts.
 

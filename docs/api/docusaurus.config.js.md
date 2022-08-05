@@ -107,7 +107,7 @@ Allow to customize the presence/absence of a trailing slash at the end of URLs/l
 - `true`: add trailing slashes to URLs/links, and emit `/docs/myDoc/index.html` for `/docs/myDoc.md`
 - `false`: remove trailing slashes from URLs/links, and emit `/docs/myDoc.html` for `/docs/myDoc.md`
 
-:::tip
+:::tip совет
 
 Each static hosting provider serves static files differently (this behavior may even change over time).
 
@@ -183,7 +183,7 @@ The behavior of Docusaurus when it detects any broken link.
 
 By default, it throws an error, to ensure you never ship any broken link, but you can lower this security if needed.
 
-:::note
+:::note примечание
 
 The broken links detection is only available for a production build (`docusaurus build`).
 
@@ -474,7 +474,7 @@ module.exports = {
 };
 ```
 
-:::info
+:::info информация
 
 By default, the `<link>` tags will have `rel="stylesheet"`, but you can explicitly add a custom `rel` value to inject any kind of `<link>` tag, not necessarily stylesheets.
 
@@ -569,7 +569,7 @@ module.exports = {
 
 ![baseUrlIssueBanner](/img/baseUrlIssueBanner.png)
 
-:::caution
+:::caution осторожно
 
 This banner needs to inline CSS / JS in case all asset loading fails due to wrong base URL.
 

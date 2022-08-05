@@ -9,7 +9,7 @@ slug: /api/plugins/@docusaurus/plugin-content-blog
 
 Provides the [Blog](blog.mdx) feature and is the default blog plugin for Docusaurus.
 
-:::caution some features production only
+:::caution осторожно some features production only
 
 The [feed feature](../../blog.mdx#feed) works by extracting the build output, and is **only active in production**.
 
@@ -21,7 +21,7 @@ The [feed feature](../../blog.mdx#feed) works by extracting the build output, an
 npm install --save @docusaurus/plugin-content-blog
 ```
 
-:::tip
+:::tip совет
 
 If you use the preset `@docusaurus/preset-classic`, you don't need to install this plugin as a dependency.
 
@@ -121,7 +121,7 @@ type FeedType = 'rss' | 'atom' | 'json';
 
 You can configure this plugin through preset options or plugin options.
 
-:::tip
+:::tip совет
 
 Most Docusaurus users configure this plugin through the preset options.
 

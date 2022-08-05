@@ -44,7 +44,7 @@ const config = {
 module.exports = config;
 ```
 
-:::info
+:::info информация
 
 `appId` is now **required**.
 

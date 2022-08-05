@@ -18,7 +18,7 @@ Returns validated and normalized options for the plugin. This method is called b
 
 `validateOptions` is called with `validate` function which takes a **[Joi](https://www.npmjs.com/package/joi)** schema and options as the arguments, returns validated and normalized options. `validate` will automatically handle error and validation config.
 
-:::tip
+:::tip совет
 
 [Joi](https://www.npmjs.com/package/joi) is recommended for validation and normalization of options.
 
@@ -76,7 +76,7 @@ Return validated and normalized configuration for the theme.
 
 `validateThemeConfig` is called with `validate` function which takes a **[Joi](https://www.npmjs.com/package/joi)** schema and `themeConfig` as the arguments, returns validated and normalized options. `validate` will automatically handle error and validation config.
 
-:::tip
+:::tip совет
 
 [Joi](https://www.npmjs.com/package/joi) is recommended for validation and normalization of theme config.
 

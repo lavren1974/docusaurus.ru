@@ -33,7 +33,7 @@ module.exports = function (context, options) {
 
 Register an extra command to enhance the CLI of Docusaurus. `cli` is a [commander](https://www.npmjs.com/package/commander/v/5.1.0) object.
 
-:::caution
+:::caution осторожно
 
 The commander version matters! We use commander v5, and make sure you are referring to the right version documentation for available APIs.
 
@@ -84,7 +84,7 @@ module.exports = function (context, options) {
 
 Similar to `getThemePath()`, it should return the path to the directory where the source code of TypeScript theme components can be found. This path is purely for swizzling TypeScript theme components, and theme components under this path will **not** be resolved by Webpack. Therefore, it is not a replacement for `getThemePath()`. Typically, you can make the path returned by `getTypeScriptThemePath()` be your source directory, and make the path returned by `getThemePath()` be the compiled JavaScript output.
 
-:::tip
+:::tip совет
 
 For TypeScript theme authors: you are strongly advised to make your compiled output as human-readable as possible. Only strip type annotations and don't transpile any syntaxes, because they will be handled by Webpack's Babel loader based on the targeted browser versions.
 

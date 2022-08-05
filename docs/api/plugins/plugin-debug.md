@@ -14,7 +14,7 @@ import TabItem from '@theme/TabItem';
 
 Как правило, отладочная информация пригодится разработчикам плагинов, которые с лёгкостью смогут посмотреть содержимое директории `.docusaurus` (например, созданные маршруты). Кроме этого, можно будет увидеть данные, которые не записываются в файлы сборки, например, данные плагина, загруженные с помощью хука жизненного цикла `contentLoaded`.
 
-:::info
+:::info информация
 
 If you use the plugin via the classic preset, the preset will **enable the plugin in development and disable it in production** by default (`debug: undefined`) to avoid exposing potentially sensitive information. You can use `debug: true` to always enable it or `debug: false` to always disable it.
 
@@ -31,7 +31,7 @@ module.exports = {
 
 :::
 
-:::note
+:::note примечание
 
 Когда вы будете сообщать об ошибках в Docusaurus, мы может быть попросим вас активировать этот плагин в продакшен-сборке вашего сайта, чтобы упростить нам изучение его конфигурации.
 
@@ -45,7 +45,7 @@ If you don't have any sensitive information, you can keep it on in production [l
 npm install --save @docusaurus/plugin-debug
 ```
 
-:::tip
+:::tip совет
 
 If you use the preset `@docusaurus/preset-classic`, you don't need to install this plugin as a dependency.
 
@@ -61,7 +61,7 @@ This plugin currently has no options.
 
 You can configure this plugin through preset options or plugin options.
 
-:::tip
+:::tip совет
 
 Most Docusaurus users configure this plugin through the preset options.
 

@@ -11,7 +11,7 @@ import TabItem from '@theme/TabItem';
 
 Docusaurus - это, по сути, набор [пакетов npm](https://github.com/facebook/docusaurus/tree/main/packages).
 
-:::tip Совет
+:::tip совет
 
 Используйте **[быстрый трек](introduction.md#fast-track)** чтобы понять Docusaurus за **5 минут ⏱**!
 
@@ -40,7 +40,7 @@ npx create-docusaurus@latest my-website classic
 npx create-docusaurus@latest my-website classic --typescript
 ```
 
-:::info FB-Only
+:::info информация FB-Only
 
 Если вы настраиваете новый веб-сайт Docusaurus для проекта Facebook с открытым исходным кодом, используйте шаблон `facebook` , который поставляется с некоторыми полезными настройками по умолчанию для Facebook:
 

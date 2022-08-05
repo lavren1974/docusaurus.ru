@@ -16,7 +16,7 @@ The main themes implement the user interface for the [docs](../plugins/plugin-co
 - [@docusaurus/theme-classic](./theme-classic.md)
 - 🚧 other themes are planned
 
-:::caution
+:::caution осторожно
 
 The goal is to have all themes share the exact same features, user-experience and configuration.
 

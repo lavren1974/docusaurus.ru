@@ -17,7 +17,7 @@ import styles from './markdown-features-react.module.css';
 
 Docusaurus has built-in support for [MDX v1](https://mdxjs.com/), which allows you to write JSX within your Markdown files and render them as React components.
 
-:::note
+:::note примечание
 
 While Docusaurus parses both `.md` and `.mdx` files using MDX, some of the syntaxes are treated slightly differently by third-party tools. For the most accurate parsing and better editor support, we recommend using the `.mdx` extension for files containing MDX syntax.
 
@@ -72,7 +72,7 @@ I can write **Markdown** alongside my _JSX_!
 </BrowserWindow>
 ```
 
-:::caution MDX is JSX
+:::caution осторожно MDX is JSX
 
 Since all doc files are parsed using MDX, anything that looks like HTML is actually JSX. Therefore, if you need to inline-style a component, follow JSX flavor and provide style objects.
 
@@ -104,7 +104,7 @@ import Button from '@mui/material/Button';
 import BrowserWindow from '@site/src/components/BrowserWindow';
 ```
 
-:::tip
+:::tip совет
 
 The `@site` alias points to your website's directory, usually where the `docusaurus.config.js` file is. Using an alias instead of relative paths (`'../../src/components/BrowserWindow'`) saves you from updating import paths when moving files around, or when [versioning docs](../docs/versioning.md) and [translating](../../i18n/i18n-tutorial.md).
 
@@ -136,7 +136,7 @@ import Highlight from '@site/src/components/Highlight';
 <Highlight color="#25c2a0">Docusaurus green</Highlight>
 ```
 
-:::tip
+:::tip совет
 
 If you use the same component across a lot of files, you don't need to import it everywhere—consider adding it to the global scope. [See below](#mdx-component-scope)
 
@@ -194,13 +194,13 @@ I can conveniently use <highlight color="#25c2a0">Docusaurus green</highlight> e
 </BrowserWindow>
 ```
 
-:::info
+:::info информация
 
 We use lower-case tag names like `highlight` to "pretend" that they are intrinsic elements, but you can use capitalized ones like `Highlight` as well.
 
 :::
 
-:::caution
+:::caution осторожно
 
 This feature is powered by [a wrapper provider](https://mdx-git-renovate-babel-monorepo-mdx.vercel.app/advanced/components#mdxprovider). If you are importing Markdown in a React page, you have to supply this provider yourself through the `MDXContent` theme component.
 
@@ -483,7 +483,7 @@ import MyComponentSource from '!!raw-loader!@site/src/pages/examples/_myComponen
 
 See [using code blocks in JSX](./markdown-features-code-blocks.mdx#usage-in-jsx) for more details of the `<CodeBlock>` component.
 
-:::note
+:::note примечание
 
 You have to use `<CodeBlock>` rather than the Markdown triple-backtick ` ``` `, because the latter will ship out any of its content as-is, but you want to interpolate the imported text here.
 
@@ -523,7 +523,7 @@ import PartialExample from './_markdown-partial-example.mdx';
 
 This way, you can reuse content among multiple pages and avoid duplicating materials.
 
-:::caution
+:::caution осторожно
 
 В настоящее время оглавление не содержит импортированных Markdown-заголовков. This is a technical limitation that we are trying to solve ([issue](https://github.com/facebook/docusaurus/issues/3915)).
 

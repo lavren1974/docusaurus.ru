@@ -23,7 +23,7 @@ Using Git also present some shortcomings:
 - **Hard for professional translators**: they are used to SaaS translation softwares and advanced features
 - **Hard to maintain**: you have to keep the translated files **in sync** with the untranslated files
 
-:::note
+:::note примечание
 
 Some **large-scale technical projects** (React, Vue.js, MDN, TypeScript, Nuxt.js, etc.) use Git for translations.
 
@@ -100,7 +100,7 @@ npm run write-translations -- --locale fr
   3 translations written at i18n/fr/docusaurus-plugin-content-docs/current.json
 ```
 
-:::tip
+:::tip совет
 
 Use the `--messagePrefix '(fr) '` option to make the untranslated strings stand out.
 
@@ -166,7 +166,7 @@ npm run write-translations -- --locale fr
 
 New translations will be appended, and existing ones will not be overridden.
 
-:::tip
+:::tip совет
 
 Reset your translations with the `--override` option.
 

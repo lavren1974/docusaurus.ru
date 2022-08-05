@@ -15,7 +15,7 @@ The default pages plugin for Docusaurus. The classic template ships with this pl
 npm install --save @docusaurus/plugin-content-pages
 ```
 
-:::tip
+:::tip совет
 
 If you use the preset `@docusaurus/preset-classic`, you don't need to install this plugin as a dependency.
 
@@ -51,7 +51,7 @@ Accepted fields:
 
 You can configure this plugin through preset options or plugin options.
 
-:::tip
+:::tip совет
 
 Most Docusaurus users configure this plugin through the preset options.
 
