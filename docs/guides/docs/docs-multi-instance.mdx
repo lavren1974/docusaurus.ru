@@ -4,9 +4,9 @@ description: Используйте несколько экземпляров п
 slug: /docs-multi-instance
 ---
 
-# Мульти-инстансы документации
+# Мультиэкземпляры документации
 
-Плагин `@docusaurus/plugin-content-docs` поддерживает [несколько инстансов](../../using-plugins.md#multi-instance-plugins-and-plugin-ids).
+Плагин `@docusaurus/plugin-content-docs` может поддерживать [мультиэкземпляры документов](../../using-plugins.md#multi-instance-plugins-and-plugin-ids).
 
 :::note примечание
 
@@ -44,7 +44,7 @@ slug: /docs-multi-instance
 Мы используем этот паттерн на самом сайте Docusaurus:
 
 - Раздел [/docs/\*](/docs) имеет несколько версий
-- Раздел [/community/\*](/community/support) без версий
+- Раздел [/community/\*](https://docusaurus.io/community/support) без версий
 
 ## Настройка {#setup}
 
@@ -159,7 +159,7 @@ module.exports = {
 
 Вы можете не указывать атрибут `id` (по умолчанию `default`) для одного из экземпляров плагина документации.
 
-Пути этого инстанса будут проще и совместимы с настройкой с одним экземпляром.
+Пути к экземплярам будут проще и совместимы с настройкой с одним экземпляром.
 
 :::
 
@@ -211,3 +211,5 @@ module.exports = {
   },
 };
 ```
+
+**Последнее обновление страницы : 6 августа 2022 г.**
