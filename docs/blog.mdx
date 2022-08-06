@@ -19,7 +19,7 @@ import TabItem from '@theme/TabItem';
 
 Чтобы настроить блог на своем сайте, начните с создания директории `blog`.
 
-Затем добавьте в шапку страницы ссылку на блог, используя файл с настройками `siteConfig.js`:
+Затем добавьте ссылку на элемент в свой блог в `docusaurus.config.js`:
 
 ```js title="docusaurus.config.js"
 module.exports = {
@@ -96,7 +96,7 @@ title: Пример обрезки
 Или это.
 ```
 
-По умолчанию на каждой странице списка отображается 10 постов, но при помощи опци `postsPerPage` в конфигурации плагина вы можете изменить это число. Если вы установите `postsPerPage: 'Все'`, пагинация будет отключена и все записи будут отображаться на первой странице. Вы также можете добавить meta description на страницу со списком блогов для улучшения SEO:
+По умолчанию на каждой странице списка блогов отображается 10 сообщений, но вы можете управлять нумерацией страниц с помощью `postsPerPage` параметра в конфигурации плагина. Если вы установите `postsPerPage: 'ALL'`, нумерация страниц будет отключена, и все сообщения будут отображаться на первой странице. Вы также можете добавить мета-описание на страницу со списком блогов для улучшения SEO:
 
 ```js title="docusaurus.config.js"
 module.exports = {
@@ -144,7 +144,7 @@ module.exports = {
 
 ## Дата публикации поста {#blog-post-date}
 
-Docusaurus извлечет дату в формате `YYYYY-MM-DD` из имени файла например `YYYY-MM-DD-my-blog-post-title.md`.
+Docusaurus извлечет дату в формате `YYYYY-MM-DD` из имени файла/папки например `YYYY-MM-DD-my-blog-post-title.md`.
 
 <details>
 <summary>Пример поддерживаемых шаблонов</summary>
@@ -194,7 +194,7 @@ date: 2021-09-13T18:00
 
 ```mdx-code-block
 <Tabs groupId="author-front-matter">
-<TabItem value="single" label="Single author">
+<TabItem value="single" label="Один автор">
 ```
 
 ```md title="my-blog-post.md"
@@ -210,7 +210,7 @@ authors:
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="multiple" label="Multiple authors">
+<TabItem value="multiple" label="Несколько авторов">
 ```
 
 ```md title="my-blog-post.md"
@@ -285,7 +285,7 @@ slorber:
 
 ```mdx-code-block
 <Tabs groupId="author-front-matter">
-<TabItem value="single" label="Single author">
+<TabItem value="single" label="Один автор">
 ```
 
 ```md title="my-blog-post.md"
@@ -296,7 +296,7 @@ authors: jmarcey
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="multiple" label="Multiple authors">
+<TabItem value="multiple" label="Несколько авторов">
 ```
 
 ```md title="my-blog-post.md"
@@ -363,11 +363,11 @@ website/i18n/[locale]/docusaurus-plugin-content-blog/authors.yml
 
 :::
 
-Автор, описанный либо во front matter, либо через карту авторов, должен иметь имя или аватар, или и то, и другое. Если у всех авторов поста нет имен, Docusaurus будет компактно отображать их аватары. См. [эту тестовую публикацию](/tests/blog/2022/01/20/image-only-authors), чтобы понять, как это выглядит.
+Автор, описанный либо во front matter, либо через карту авторов, должен иметь имя или аватар, или и то, и другое. Если у всех авторов поста нет имен, Docusaurus будет компактно отображать их аватары. Смотрите [эту тестовую публикацию](https://docusaurus.io/tests/blog/2022/01/20/image-only-authors), чтобы понять, как это выглядит.
 
-:::caution осторожно Генерация фида
+:::caution Генерация фида
 
-Для [RSS фидов](#feed) необходимо указать адрес электронной почты автора, чтобы автор отображался в фиде.
+[RSS-каналы](#feed) требуют, чтобы адрес электронной почты автора был установлен, чтобы автор отображался в канале.
 
 :::
 
@@ -394,17 +394,17 @@ module.exports = {
 };
 ```
 
-Коллбек `readingTime` получает три параметра: текст поста в виде строки, front matter в виде строковых ключей и их значений, и дефолтную функцию времени чтения. Он возвращает число (время чтения в минутах) или `undefined` (отключить время чтения для этой страницы).
+Обратный вызов `readingTime` получает три параметра: текст поста в виде строки, front matter в виде строковых ключей и их значений, и функцию времени чтения по умолчанию. Он возвращает число (время чтения в минутах) или `undefined` (отключить время чтения для этой страницы).
 
 Время чтения по умолчанию может принимать дополнительные параметры: `wordsPerMinute` в виде числа (по умолчанию: 300) и `wordBound` в виде функции преобразования строки в логическое значение. Если строка, переданная в `wordBound`, должна быть связана со словом (пробелы, табуляция и разрывы строк по умолчанию), функция должна вернуть `true`.
 
 :::tip совет
 
-Используйте коллбек для всех ваших потребностей настройки:
+Используйте обратный вызов для всех ваших потребностей в настройке:
 
 ```mdx-code-block
 <Tabs>
-<TabItem value="disable-per-post" label="Per-post disabling">
+<TabItem value="disable-per-post" label="Отключение для каждого поста">
 ```
 
 **Отключение времени чтения на одной странице:**
@@ -442,10 +442,10 @@ hide_reading_time: true
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="passing-options" label="Passing options">
+<TabItem value="passing-options" label="Варианты прохождения">
 ```
 
-**Передача параметров дефолтной функции времени чтения:**
+**Передайте параметры функции времени чтения по умолчанию:**
 
 ```js title="docusaurus.config.js"
 module.exports = {
@@ -467,7 +467,7 @@ module.exports = {
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="using-custom-algo" label="Using custom algorithms">
+<TabItem value="using-custom-algo" label="Использование пользовательских алгоритмов">
 ```
 
 **Использование собственной реализации времени чтения:**
@@ -636,4 +636,6 @@ module.exports = {
 };
 ```
 
-В качестве примера мы размещаем второй блог [здесь](/tests/blog).
+В качестве примера мы размещаем второй блог [здесь](https://docusaurus.io/tests/blog).
+
+**Последнее обновление страницы : 6 августа 2022 г.**
