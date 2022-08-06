@@ -36,6 +36,7 @@
     "color": "^4.2.3",
     "fs-extra": "^10.1.0",
     "netlify-plugin-cache": "^1.0.3",
+    "prismjs": "^1.28.0",
     "pure-react-carousel": "^1.29.0",
     "raw-loader": "^4.0.2",
     "react": "^17.0.2",
